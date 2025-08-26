@@ -15,10 +15,10 @@ function Root({ playSwap }) {
   }, []);
 
   const rootItems = [
-    { name: "bio", description: "About me and my background" },
-    { name: "projects", description: "My coding projects and work" },
-    { name: "resume", description: "Professional experience and skills" },
-    { name: "archive", description: "Collection of various content" }
+    { name: "bio", description: "about me and my values" },
+    { name: "projects", description: "gallery of previous projects" },
+    { name: "resume", description: "my skills and experience" },
+    { name: "archive", description: "collection of content i resonate with" }
   ];
 
   const handleItemClick = (item) => {

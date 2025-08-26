@@ -4,27 +4,33 @@ import React from "react";
 function ArchiveBookmarks() {
   const bookmarks = [
     {
-      url: "https://learngitbranching.js.org/",
-      title: "Learn Git Branching"
-    },
+      url: "https://bdsmovement.net/Act-Now-Against-These-Companies-Profiting-From-Genocide",
+      title: "BDS Boycott List"
+    }
+    ,
     {
-      url: "https://www.cs.usfca.edu/~galles/visualization/Algorithms.html",
-      title: "Algorithm Visualizations"
-    },
+      url: "https://www.healpalestine.org/",
+      title: "Heal Palestine"
+    }
+    ,
     {
-      url: "https://huggingface.co/learn/agents-course/unit0/introduction",
-      title: "Hugging Face Agents Course"
+      url: "https://justice4palestinians.org/history-timeline/",
+      title: "Palestinian Genocide Timeline"
     },
     {
       url: "https://acousticgender.space/",
-      title: "Voice Training Tool"
+      title: "voice training tool"
     },    {
       url: "https://mydoctor.kaiserpermanente.org/ncal/structured-content/hormone-therapy-with-estrogen-and-androgen-blockers-1123088",
-      title: "Hormone Therapy Guide"
+      title: "trans hormone therapy guide"
     },
     {
-      url: "https://strudel.cc/",
-      title: "Strudel Polyrhythms Demo"
+      url: "https://learngitbranching.js.org/",
+      title: "learn git branching"
+    },
+    {
+      url: "https://www.cs.usfca.edu/~galles/visualization/Algorithms.html",
+      title: "algorithm visualizations"
     }
   ];
 

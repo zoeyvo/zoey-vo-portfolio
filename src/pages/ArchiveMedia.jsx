@@ -6,9 +6,13 @@ function ArchiveMedia() {
     {
       type: "video",
       src: "https://www.youtube.com/embed/RiwEzF3DsGk",
-      caption: "JRJRJR"
+      caption: "jrjrjr!"
+    },
+    {
+      type: "video",
+      src: "https://www.youtube.com/watch?v=UNYqwpx7Cys",
+      caption: "*music*"
     }
-    // Add more media items here as needed
   ];
 
   return (

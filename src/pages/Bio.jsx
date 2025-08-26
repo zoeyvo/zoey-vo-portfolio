@@ -20,10 +20,8 @@ const Bio = () => (
         </div>
       </h1>
       <span className="gothic-text bio-desc">
-        Developer exploring systems design and scalable web applications to build
-        meaningful tools that empower communities and challenge injustice.
-        Rooted in the belief that code, like connection, should dismantle
-        barriers and amplify voices.
+        Developer committed to building technology that serves people. 
+        Focused on systems and applications that meet real human needs, with a passion for social justice, accessibility, and strengthening local communities.
       </span>
     </div>
   </div>

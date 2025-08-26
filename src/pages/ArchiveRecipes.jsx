@@ -9,7 +9,7 @@ function ArchiveRecipes() {
       <div className="archive-content">
         <span className="archive-title">~/archive/recipes</span>
         <div style={{ fontFamily: 'Typewriter, monospace', marginTop: '0.5em', fontSize: '1rem', opacity: 0.8 }}>
-          ~nothing here for now~
+          yummy enchilada | https://www.thismamacooks.com/2020/11/chicken-enchilada-casserole-recipe.html
         </div>
       </div>
     </div>

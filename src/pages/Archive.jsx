@@ -15,11 +15,11 @@ function Archive({ playSwap }) {
   }, []);
 
   const archiveItems = [
-    { name: "bookmarks", description: "Interesting links and resources" },
-    { name: "cardgames", description: "Card games I've learned to play" },
-    { name: "recipes", description: "Cooking recipes and experiments" },
-    { name: "media", description: "Photo collection and memories" },
-    { name: "notes", description: "Random thoughts and observations" }
+    { name: "bookmarks", description: "good links and resources" },
+    { name: "cardgames", description: "card games i like" },
+    { name: "recipes", description: "favorite foods to make and consume" },
+    { name: "media", description: "media i resonate with" },
+    { name: "notes", description: "stream of concisousness" }
   ];
 
   const handleItemClick = (item) => {

@@ -1,4 +1,3 @@
-// App.js
 import React, { useState, useRef, useEffect } from "react";
 import { useNavigate, Routes, Route, useLocation } from "react-router-dom";
 import { CursorTrail, CustomCursor, PageLayout } from "./components";
@@ -47,15 +46,15 @@ function App() {  const [entered, setEntered] = useState(false);
   // Set up audio volumes and mute state
   useEffect(() => {
     if (phwipRef.current) {
-      phwipRef.current.volume = 0.05;
+      phwipRef.current.volume = 0.025;
       phwipRef.current.muted = isMuted;
     }
     if (musicRef.current) {
-      musicRef.current.volume = 0.15;
+      musicRef.current.volume = 0.10;
       musicRef.current.muted = isMuted;
     }
     if (audioRef.current) {
-      audioRef.current.volume = 0.15;
+      audioRef.current.volume = 0.10;
       audioRef.current.muted = isMuted;
     }
   }, [isMuted]);
