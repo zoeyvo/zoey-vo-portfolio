@@ -26,11 +26,11 @@
            |   |  C:\> cat [page]                        |    |
            |   |      ~ navigates to page                |    |
            |   |  C:\> cat .                             |    |
-           |   |       ~ will display root directory     |    |
-           |   |         contents                        |    |
+           |   |      ~ will display root directory      |    |
+           |   |        contents                         |    |
            |   |  C:\> cat archive                       |    |
-           |   |       ~ will disiplay archive directory |    |
-           |   |         contents                        |    |
+           |   |      ~ will disiplay archive directory  |    |
+           |   |        contents                         |    |
            |   |_________________________________________|    |
            |                                                  |
             \_________________________________________________/
@@ -45,14 +45,7 @@
 `---._.-------------------------------------------------------------._.---'
 ```
 
-A minimal portfolio site built with React + Vite.
-
-## Features
-
-- Dark, terminal-inspired UI
-- Custom cursor effects and animations
-- Retro-cyber aesthetic with glitch effects
-- Responsive design
+zoey's portfolio site built with React + Vite.
 
 ## License
 
