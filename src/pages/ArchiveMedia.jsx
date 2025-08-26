@@ -12,7 +12,13 @@ function ArchiveMedia() {
       type: "video",
       src: "https://www.youtube.com/watch?v=UNYqwpx7Cys",
       caption: "*music*"
-    }
+    },
+    {
+      type: "video",
+      src: "https://www.imdb.com/title/tt15574270",
+      caption: "the tv glows!"
+    },
+    
   ];
 
   return (
@@ -29,7 +35,7 @@ function ArchiveMedia() {
                     height="315"
                     src={item.src}
                     title={item.caption}
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                     allowFullScreen
                   ></iframe>
                 </div>
