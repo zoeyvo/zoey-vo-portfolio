@@ -1189,7 +1189,7 @@ $terminal-btn-bg-active: $accent;        // Use accent for active button backgro
 .media-video, .media-image {
   width: 100%;
   max-width: $width-content;
-  margin: 0 auto 1rem auto;
+  margin: 1rem;
   
   iframe {
     width: 100%;
