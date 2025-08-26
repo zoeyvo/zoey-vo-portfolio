@@ -1,4 +1,3 @@
-// ArchiveMedia.jsx
 import React from "react";
 
 function ArchiveMedia() {
@@ -14,11 +13,10 @@ function ArchiveMedia() {
       caption: "*music*"
     },
     {
-      type: "video",
+      type: "movie",
       src: "https://www.imdb.com/title/tt15574270",
       caption: "the tv glows!"
     },
-    
   ];
 
   return (
@@ -39,9 +37,20 @@ function ArchiveMedia() {
                     allowFullScreen
                   ></iframe>
                 </div>
+              ) : item.type === "movie" ? (
+                <div className="media-movie terminal-glow-border">
+                  <a
+                    href={item.src}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mono"
+                  >
+                    🎬 {item.caption}
+                  </a>
+                </div>
               ) : (
                 <div className="media-image terminal-glow-border">
-                  <img src={item.src} alt={item.caption} style={{ maxWidth: '100%' }} />
+                  <img src={item.src} alt={item.caption} style={{ maxWidth: "100%" }} />
                 </div>
               )}
               <div className="media-caption mono">{item.caption}</div>
