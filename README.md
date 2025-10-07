@@ -50,4 +50,3 @@ zoey's portfolio site built with React + Vite.
 ## License
 
 MIT
-

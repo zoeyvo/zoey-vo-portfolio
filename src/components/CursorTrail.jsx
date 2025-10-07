@@ -11,7 +11,7 @@
 
 import React, { useEffect, useState } from "react";
 
-const chars = ['0', '1'];
+const chars = ["0", "1"];
 
 function CursorTrail() {
   const [trail, setTrail] = useState([]);
@@ -25,26 +25,24 @@ function CursorTrail() {
     const handleMove = (e) => {
       const now = Date.now();
       if (now - lastTime < minInterval) return;
-      lastTime = now;      const x = e.clientX;
+      lastTime = now;
+      const x = e.clientX;
       const y = e.clientY;
       if (lastX !== null && lastY !== null) {
         const dx = x - lastX;
         const dy = y - lastY;
-        if (Math.sqrt(dx*dx + dy*dy) < minDistance) return;
+        if (Math.sqrt(dx * dx + dy * dy) < minDistance) return;
       }
       lastX = x;
       lastY = y;
       const id = now + Math.random();
       const char = chars[Math.floor(Math.random() * chars.length)];
       // Randomize initial velocity for a "spilling" effect
-      const angle = (Math.random() - 0.5) * Math.PI / 1.5; // -60deg to +60deg
+      const angle = ((Math.random() - 0.5) * Math.PI) / 1.5; // -60deg to +60deg
       const speed = 5 + Math.random() * 3; // px per frame
       const vx = Math.cos(angle) * speed * (Math.random() > 0.5 ? 1 : -1); // left or right
       const vy = -6 - Math.random() * 2; // initial upward velocity
-      setTrail((prev) => [
-        ...prev,
-        { id, x, y, char, vx, vy, t: 0 }
-      ]);
+      setTrail((prev) => [...prev, { id, x, y, char, vx, vy, t: 0 }]);
       setTimeout(() => {
         setTrail((prev) => prev.filter((item) => item.id !== id));
       }, 500); // disappear after 400ms
@@ -62,7 +60,7 @@ function CursorTrail() {
           const gravity = 0.7;
           const newVy = item.vy + gravity;
           const newY = item.y + item.vy + gravity * item.t;
-          const newX = item.x + item.vx * (0.98 ** item.t); // horizontal drift slows over time
+          const newX = item.x + item.vx * 0.98 ** item.t; // horizontal drift slows over time
           return { ...item, vy: newVy, y: newY, x: newX, t: item.t + 1 };
         })
       );

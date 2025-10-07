@@ -10,7 +10,7 @@ import { getAssetUrl } from "../utils/constants";
  * - No unused code or styles.
  */
 
-const Resume = ({ playSwap }) => (
+const Resume = () => (
   <div
     className="grid-cell cell1"
     style={{
