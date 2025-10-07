@@ -7,6 +7,9 @@ function ArchiveCardGames() {
     <div className="grid-cell cell1">
       <div className="archive-content">
         <span className="archive-title">~/archive/cardgames</span>
+          <div> 
+          <br />
+        </div>
         <div className="archive-cardgames-grid">
           {/* Card Game Section 1: Tiến Lên */}
           <div className="cardgame-section cardgame-box">
@@ -27,6 +30,7 @@ function ArchiveCardGames() {
               <ol className="rules-list font-size-base">
                 <li><strong className="rule-label">Deck:</strong> Standard 52-card deck (no jokers)</li>
                 <li><strong className="rule-label">Card Rank:</strong> 3 (lowest) to 2 (highest): 3-4-5-6-7-8-9-10-J-Q-K-A-2</li>
+                <li><strong className="rule-label">Suit Rank:</strong> lowest to highest → ♠ (Spades), ♣ (Clubs), ♦ (Diamonds), ♥ (Hearts)</li>
                 <li><strong className="rule-label">Setup:</strong> 4 players, each dealt 13 cards. Player with the 3 of spades starts.</li>
                 <li><strong className="rule-label">Gameplay:</strong> Turns go clockwise. On your turn, play a higher-ranking card/combination than the last play, or pass. If all pass, last player starts new round.</li>                
                 <li><strong className="rule-label">Valid Plays:</strong>

@@ -8,8 +8,13 @@ function ArchiveRecipes() {
     <div className="grid-cell cell1">
       <div className="archive-content">
         <span className="archive-title">~/archive/recipes</span>
-        <div style={{ fontFamily: 'Typewriter, monospace', marginTop: '0.5em', fontSize: '1rem', opacity: 0.8 }}>
-          yummy enchilada | https://www.thismamacooks.com/2020/11/chicken-enchilada-casserole-recipe.html
+        <div> 
+          <br />
+        </div>
+        <div style={{ fontFamily: 'Typewriter, monospace', fontSize: '1rem'}}>
+          <a href="https://www.thismamacooks.com/2020/11/chicken-enchilada-casserole-recipe.html" target="_blank" rel="noopener noreferrer">
+            Easy Enchilada
+          </a>
         </div>
       </div>
     </div>

@@ -6,11 +6,6 @@ function ArchiveMedia() {
       type: "video",
       src: "https://www.youtube.com/watch?v=RiwEzF3DsGk",
       caption: "jrjrjr!!!"
-    },
-    {
-      type: "video",
-      src: "https://www.youtube.com/watch?v=UNYqwpx7Cys",
-      caption: "music"
     }
   ];
 
@@ -27,6 +22,9 @@ function ArchiveMedia() {
     <div className="grid-cell cell1">
       <div className="archive-content">
         <span className="archive-title">~/archive/media</span>
+        <div>
+          <br />
+        </div>
         <div className="archive-media-list">
           {mediaItems.map((item, idx) => (
             <div className="media-video" key={idx}>
