@@ -8,7 +8,7 @@ function Archive({ playSwap }) {
   // Ensure font is loaded to reduce browser warnings
   useEffect(() => {
     if (document.fonts && document.fonts.load) {
-      document.fonts.load('1rem Typewriter').catch(() => {
+      document.fonts.load("1rem Typewriter").catch(() => {
         // Font loading failed, fallback will be used
       });
     }
@@ -19,7 +19,7 @@ function Archive({ playSwap }) {
     { name: "cardgames", description: "card games i like" },
     { name: "recipes", description: "favorite foods to make and consume" },
     { name: "media", description: "media i resonate with" },
-    { name: "notes", description: "stream of concisousness" }
+    { name: "notes", description: "stream of concisousness" },
   ];
 
   const handleItemClick = (item) => {
@@ -30,9 +30,10 @@ function Archive({ playSwap }) {
   return (
     <div className="grid-cell cell1">
       <div className="archive-content">
-        <span className="archive-title">~/archive</span>        <div className="archive-grid">
+        <span className="archive-title">~/archive</span>{" "}
+        <div className="archive-grid">
           {archiveItems.map((item) => (
-            <div 
+            <div
               key={item.name}
               className="archive-item archive-section-item"
               onClick={() => handleItemClick(item.name)}

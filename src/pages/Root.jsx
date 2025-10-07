@@ -8,7 +8,7 @@ function Root({ playSwap }) {
   // Ensure font is loaded to reduce browser warnings
   useEffect(() => {
     if (document.fonts && document.fonts.load) {
-      document.fonts.load('1rem Typewriter').catch(() => {
+      document.fonts.load("1rem Typewriter").catch(() => {
         // Font loading failed, fallback will be used
       });
     }
@@ -18,7 +18,7 @@ function Root({ playSwap }) {
     { name: "bio", description: "about me and my values" },
     { name: "projects", description: "gallery of previous projects" },
     { name: "resume", description: "my skills and experience" },
-    { name: "archive", description: "collection of content i resonate with" }
+    { name: "archive", description: "collection of content i resonate with" },
   ];
 
   const handleItemClick = (item) => {
@@ -32,7 +32,7 @@ function Root({ playSwap }) {
         <span className="archive-title">~./</span>
         <div className="archive-grid">
           {rootItems.map((item) => (
-            <div 
+            <div
               key={item.name}
               className="archive-item archive-section-item"
               onClick={() => handleItemClick(item.name)}

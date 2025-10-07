@@ -2,7 +2,7 @@
 import React from "react";
 
 function ArchiveNotes() {
- const notes = [
+  const notes = [
     {
       date: "2025-10-06",
       title: "note 21",
@@ -110,19 +110,24 @@ function ArchiveNotes() {
     },
   ];
 
-  
   return (
     <div className="grid-cell cell1">
       <div className="archive-content">
         <span className="archive-title">~/archive/notes</span>
-        <div> 
+        <div>
           <br />
         </div>
         {notes.map((note, index) => (
-          <div key={index} className="archive-item" style={{ textAlign: "center" }}>
-            <div className="note-header" style={{ justifyContent: "center", textAlign: "center" }}>
-              <span className="note-content">{note.content}</span>{" "}
-              <br />
+          <div
+            key={index}
+            className="archive-item"
+            style={{ textAlign: "center" }}
+          >
+            <div
+              className="note-header"
+              style={{ justifyContent: "center", textAlign: "center" }}
+            >
+              <span className="note-content">{note.content}</span> <br />
               <span className="note-date">[{note.date}]</span>
             </div>
             <br />

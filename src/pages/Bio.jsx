@@ -20,8 +20,9 @@ const Bio = () => (
         </div>
       </h1>
       <span className="gothic-text bio-desc">
-        Developer committed to building technology that serves people. 
-        Focused on systems and applications that meet real human needs, with a passion for social justice, accessibility, and strengthening local communities.
+        Developer committed to building technology that serves people. Focused
+        on systems and applications that meet real human needs, with a passion
+        for social justice, accessibility, and strengthening local communities.
       </span>
     </div>
   </div>

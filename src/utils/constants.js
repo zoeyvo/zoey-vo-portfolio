@@ -8,11 +8,13 @@ export const TERMINAL_OPTIONS = [
 
 export const ARCHIVE_SECTIONS = [
   "cardgames",
-  "recipes", 
+  "recipes",
   "media",
   "notes",
-  "bookmarks"
+  "bookmarks",
 ];
+
+export const LOADING_MSG = "loading...";
 
 // Simple asset URL helper for Vite
 export const getAssetUrl = (path) => {

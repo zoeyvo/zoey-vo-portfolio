@@ -5,8 +5,8 @@ function ArchiveMedia() {
     {
       type: "video",
       src: "https://www.youtube.com/watch?v=RiwEzF3DsGk",
-      caption: "jrjrjr!!!"
-    }
+      caption: "jrjrjr!!!",
+    },
   ];
 
   // Convert YouTube links into proper embed URLs with autoplay=0
