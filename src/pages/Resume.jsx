@@ -10,15 +10,11 @@ const Resume = () => (
       justifyContent: "center",
     }}
   >
-    {" "}
-    <div className="resume-content">
-      {" "}
-      <img
-        className="resume-img"
-        src={getAssetUrl("assets/images/Zoey-Vo-Resume-2025.png")}
-        alt="Resume - Zoey Vo"
-      />
-    </div>
+    <img
+      className="resume-img"
+      src={getAssetUrl("assets/images/Zoey-Vo-Resume-2025.png")}
+      alt="Resume - Zoey Vo"
+    />
   </div>
 );
 
