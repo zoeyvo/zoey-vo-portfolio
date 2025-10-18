@@ -1,24 +1,20 @@
 // Root.jsx
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 function Root({ playSwap }) {
   const navigate = useNavigate();
 
-  // Ensure font is loaded to reduce browser warnings
   useEffect(() => {
     if (document.fonts && document.fonts.load) {
-      document.fonts.load("1rem Typewriter").catch(() => {
-        // Font loading failed, fallback will be used
-      });
+      document.fonts.load("1rem Typewriter").catch(() => {});
     }
   }, []);
 
   const rootItems = [
-    { name: "bio", description: "about me and my values" },
-    { name: "projects", description: "gallery of previous projects" },
+    { name: "bio", description: "about me" },
     { name: "resume", description: "my skills and experience" },
-    { name: "archive", description: "collection of content i resonate with" },
+    { name: "archive", description: "content i resonate with" },
   ];
 
   const handleItemClick = (item) => {
@@ -27,18 +23,18 @@ function Root({ playSwap }) {
   };
 
   return (
-    <div className="grid-cell cell1">
-      <div className="archive-content">
-        <span className="archive-title">~./</span>
-        <div className="archive-grid">
+    <div className="grid-cell">
+      <div className="content">
+        <span className="title">~./</span>
+        <div className="grid">
           {rootItems.map((item) => (
             <div
               key={item.name}
-              className="archive-item archive-section-item"
+              className="item section-item"
               onClick={() => handleItemClick(item.name)}
               onMouseDown={playSwap}
             >
-              <div className="archive-item-header">
+              <div className="item-header">
                 <span className="cmd">{item.name}</span>
               </div>
             </div>

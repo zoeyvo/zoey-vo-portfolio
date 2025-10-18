@@ -4,7 +4,6 @@ import { CursorTrail, CustomCursor, PageLayout } from "./components";
 import {
   Root,
   Bio,
-  Projects,
   Resume,
   Archive,
   ArchiveCardGames,
@@ -252,9 +251,7 @@ function App() {
         appendOutput({ type: "cmd", value: "cat ." });
         clearTerminalInput();
         handleNavigate("root");
-      } else if (
-        ["cat bio", "cat projects", "cat resume", "cat archive"].includes(val)
-      ) {
+      } else if (["cat bio", "cat resume", "cat archive"].includes(val)) {
         appendOutput({ type: "cmd", value: val });
         clearTerminalInput();
         handleNavigate(val.replace("cat ", ""));
@@ -357,10 +354,10 @@ function App() {
         <Route
           path="/"
           element={
-            <div className="cyberia-root">
+            <div className="root">
               <CursorTrail />
               <header className="header"></header>
-              <div className="grid-cell cell1">
+              <div className="grid-cell">
                 {/* Row 1: (empty or for future use) */}
                 <div className="row1" />
                 {/* Row 2: Main content (Lain image/button or terminal) */}
@@ -374,7 +371,7 @@ function App() {
                   )}
                   {!entered && (
                     <button
-                      className="enter-btn gothic-text"
+                      className="enter-btn"
                       onMouseDown={playSwap}
                       onClick={() => setEntered(true)}
                     >
@@ -634,14 +631,6 @@ function App() {
           element={
             <PageLayout playSwap={playSwap}>
               <Bio />
-            </PageLayout>
-          }
-        />
-        <Route
-          path="/projects"
-          element={
-            <PageLayout playSwap={playSwap}>
-              <Projects />
             </PageLayout>
           }
         />

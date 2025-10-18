@@ -34,10 +34,10 @@ function ArchiveBookmarks() {
   ];
 
   return (
-    <div className="grid-cell cell1">
-      <div className="archive-content">
-        <span className="archive-title">~/archive/bookmarks</span>
-        <div className="archive-item">
+    <div className="grid-cell">
+      <div className="content">
+        <span className="title">~/archive/bookmarks</span>
+        <div className="item">
           <div className="bookmark-links">
             {bookmarks.map((bookmark, linkIndex) => (
               <div key={linkIndex} className="bookmark-link">

@@ -4,13 +4,13 @@ import React from "react";
 function ArchiveCardGames() {
   // Tiến Lên (Vietnamese card game) — Rules Summary
   return (
-    <div className="grid-cell cell1">
-      <div className="archive-content">
-        <span className="archive-title">~/archive/cardgames</span>
+    <div className="grid-cell">
+      <div className="content">
+        <span className="title">~/archive/cardgames</span>
         <div>
           <br />
         </div>
-        <div className="archive-cardgames-grid">
+        <div className="cardgames-grid">
           {/* Card Game Section 1: Tiến Lên */}
           <div className="cardgame-section cardgame-box">
             <div className="game-header">

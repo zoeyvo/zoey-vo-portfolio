@@ -47,7 +47,7 @@ function PageLayout({ children, playSwap }) {
   }, []);
 
   return (
-    <div className="cyberia-root">
+    <div className="root">
       {/* Navi header bar with pixel-art icon */}
       <div className="header-navi">
         {" "}

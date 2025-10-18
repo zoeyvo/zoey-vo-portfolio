@@ -1,18 +1,8 @@
-import React from "react";
 import { getAssetUrl } from "../utils/constants";
-
-/**
- * Resume.jsx
- * Renders the Resume page.
- * - Provides a link to the PDF resume (no in-page render).
- * - Uses .page-cell for layout, always grid row 2.
- * - Accessibility: link has aria-label, keyboard accessible.
- * - No unused code or styles.
- */
 
 const Resume = () => (
   <div
-    className="grid-cell cell1"
+    className="grid-cell"
     style={{
       minHeight: "60vh",
       display: "flex",
@@ -26,7 +16,7 @@ const Resume = () => (
       <img
         className="resume-img"
         src={getAssetUrl("assets/images/Zoey-Vo-Resume-2025.png")}
-        alt="Resume screenshot - Zoey Vo 2025"
+        alt="Resume - Zoey Vo"
       />
     </div>
   </div>

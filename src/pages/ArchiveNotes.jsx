@@ -121,16 +121,16 @@ function ArchiveNotes() {
   ];
 
   return (
-    <div className="grid-cell cell1">
-      <div className="archive-content">
-        <span className="archive-title">~/archive/notes</span>
+    <div className="grid-cell">
+      <div className="content">
+        <span className="title">~/archive/notes</span>
         <div>
           <br />
         </div>
         {notes.map((note, index) => (
           <div
             key={index}
-            className="archive-item"
+            className="item"
             style={{ textAlign: "center" }}
           >
             <div

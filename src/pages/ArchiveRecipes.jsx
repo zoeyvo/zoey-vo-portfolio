@@ -3,9 +3,9 @@ import React from "react";
 
 function ArchiveRecipes() {
   return (
-    <div className="grid-cell cell1">
-      <div className="archive-content">
-        <span className="archive-title">~/archive/recipes</span>
+    <div className="grid-cell">
+      <div className="content">
+        <span className="title">~/archive/recipes</span>
         <div>
           <br />
         </div>

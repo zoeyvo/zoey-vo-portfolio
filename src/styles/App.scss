@@ -1,21 +1,35 @@
-// =========================
-// CYBERIA SITE GLOBAL STYLES (Consolidated & Cleaned)
-// =========================
-// This SCSS file provides all global and page-level styles for the Cyberia site.
-// Major sections: Color/Font Variables, Layout, Typography, Terminal, Archive, Projects, Resume, Card Game, Responsive.
-// All styles are grouped and deduplicated for maintainability.
+// ==========
+// APP STYLES
+// ==========
 
-// =========================
-// COLOR PALETTE AND FONT VARIABLES
-// =========================
+// =========================================
+// FONTS, COLOR PALETTE, VARIABLES, & MIXINS
+// =========================================
+
+
+// FONTS
+
+@font-face {
+  font-family: "Typewriter";
+  src: url("/assets/fonts/typewriter.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap; // Improves loading performance and reduces font warnings
+  unicode-range: U+0020-007F; // Basic Latin characters only to reduce font processing
+}
+$typewriter-font:
+  "Typewriter", "Courier New", "Lucida Console", "Monaco", monospace; // Enhanced fallback
+
+
+// COLORS
 
 $bg-1: #101010; // Main background
 $bg-2: #656865; // Footer/header background
 $accent: #aec8a4; // Accent color
-$accent2: #e7efc7; // Accent color
 $link-accent: #90c87a;
 $text-color: #e9ecda; // Main text color
 $white: #ebebeb; // White color variable
+$error-color: #fc7676; // Error color for terminal and error messages
 
 // Shared glow color variables (used for cursor, navi, and other glowing elements)
 $glow-green: rgb(0, 159, 32); // Base green color for all glows
@@ -23,7 +37,11 @@ $glow-light: rgba($glow-green, 0.27); // Light glow (27% opacity)
 $glow-medium: rgba($glow-green, 0.53); // Medium glow (53% opacity)
 $glow-strong: rgba($glow-green, 0.8); // Strong glow (80% opacity)
 
-// Shadow size variables
+
+// SIZING/SPACING
+
+$mute-icon-size: 18px; // 75% of 24px
+
 $shadow-size-xs: 2px; // Extra small shadow blur
 $shadow-size-sm: 4px; // Small shadow blur
 $shadow-size-md: 6px; // Medium shadow blur
@@ -32,7 +50,6 @@ $shadow-size-xl: 12px; // Extra large shadow blur
 $shadow-size-xxl: 16px; // XXL shadow blur
 $shadow-size-huge: 24px; // Huge shadow blur
 
-// Glow and shadow variables
 $shadow-strong: 0 0 $shadow-size-xxl rgba($bg-1, 0.65);
 $shadow-soft:
   0 0 $shadow-size-sm $text-color,
@@ -40,11 +57,6 @@ $shadow-soft:
   0 0 $shadow-size-lg $text-color,
   0 0 $shadow-size-xl $text-color;
 
-// Font variables
-$typewriter-font:
-  "Typewriter", "Courier New", "Lucida Console", "Monaco", monospace; // Enhanced fallback
-
-// Font size variables
 $font-size-hero: 2rem; // Gothic text/hero headings
 $font-size-xl: 1.5rem; // Page titles (bio, resume, archive)
 $font-size-lg: 1.25rem; // Section headings (projects, bio content)
@@ -52,17 +64,12 @@ $font-size-base: 1rem; // Bio description, Base text, terminal text, project des
 $font-size-xs: 0.75rem; // Mobile bio/project text, Footer, mobile buttons, links, tags, note dates, mobile terminal text
 $font-size-cursor: 1.1rem; // Cursor trail text size
 
-// Spacing variables
-$spacing-xs: 0.25rem; // 4px - Very small gaps
 $spacing-sm: 0.5rem; // 8px - Small gaps, inner padding
 $spacing-md: 1rem; // 16px - Standard spacing
 $spacing-lg: 1.5rem; // 24px - Section spacing
-$spacing-xl: 2rem; // 32px - Large section spacing
-$spacing-xxl: 3rem; // 48px - Major section spacing
 
 // Fine-grained spacing for specific use cases
 $spacing-2: 0.125rem; // 2px - Very fine spacing
-$spacing-6: 0.375rem; // 6px - Small padding
 $spacing-10: 0.625rem; // 10px - Medium-small padding
 $spacing-15: 0.9375rem; // 15px - Content padding
 
@@ -75,8 +82,8 @@ $spacing-2-2: 2.2rem; // 35.2px - Footer min-height
 
 // Layout variables
 $width-full: 100vw; // Full viewport width
-$width-content: 720px; // Max content width
-$width-archive: 420px; // Archive and bio content width
+$max-content-width: 720px; // Max content width
+$content-width: 420px; // Archive and bio content width
 $height-full: 100vh; // Full viewport height
 $height-terminal: 320px; // Terminal height
 $height-min-content: 60vh; // Minimum content height
@@ -95,43 +102,12 @@ $border-thick: 2px; // Thick borders
 
 // Letter spacing variables
 $letter-spacing-normal: 0.1em; // Normal letter spacing
-$letter-spacing-wide: 0.15em; // Wide letter spacing
-
-// Line height variables
-$line-height-tight: 1.2; // Tight line height
-$line-height-normal: 1.5; // Normal line height
-$line-height-loose: 1.8; // Loose line height
 
 // Opacity variables
 $opacity-light: 0.3; // Light opacity
-$opacity-medium: 0.6; // Medium opacity
-$opacity-strong: 0.8; // Strong opacity
 
-// =========================
-// CURSOR TRAIL STYLES
-// =========================
 
-.cursor-trail-char {
-  position: fixed;
-  pointer-events: none;
-  color: $white;
-  text-shadow:
-    0 0 $shadow-size-md $glow-green,
-    0 0 $shadow-size-xl $glow-green;
-  background: none;
-  border: none;
-  letter-spacing: $letter-spacing-normal;
-  font-family: $typewriter-font;
-  font-weight: bold;
-  z-index: 2147483647;
-  box-shadow: none;
-  font-size: $font-size-cursor;
-  -webkit-text-stroke: none;
-}
-
-// =========================
 // UTILITY MIXINS
-// =========================
 
 @mixin flex-center {
   display: flex;
@@ -143,7 +119,6 @@ $opacity-strong: 0.8; // Strong opacity
   box-shadow: $shadow;
 }
 
-// Glow text effect mixin
 @mixin text-glow(
   $color: $accent,
   $size1: $shadow-size-sm,
@@ -154,7 +129,6 @@ $opacity-strong: 0.8; // Strong opacity
     0 0 $size2 $color;
 }
 
-// Terminal-style glow effect mixin
 @mixin terminal-glow {
   border-radius: $radius-lg;
   border: $border-thick solid $accent;
@@ -188,12 +162,21 @@ $opacity-strong: 0.8; // Strong opacity
   transition: all 0.18s ease;
 }
 
-// =========================
-// LAYOUT
-// =========================
 
-// Main app container, sets up flex column and theme
-.cyberia-root {
+// =======
+// LAYOUTS
+// =======
+
+// UNIVERSAL
+body {
+  height: 100vh;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+
+// ROOT
+.root {
   display: flex;
   flex-direction: column;
   min-height: $height-full;
@@ -203,50 +186,18 @@ $opacity-strong: 0.8; // Strong opacity
   font-family: $typewriter-font;
 }
 
-// Center landing and terminal pages vertically
-.cyberia-root.landing {
+.root.landing {
   justify-content: center;
   align-items: center;
 }
-.cyberia-root.landing,
-.cyberia-root.terminal {
+.root.landing,
+.root.terminal {
   min-height: $height-full;
   @include flex-center;
 }
 
-// =========================
-// FONTS
-// =========================
 
-// Custom font faces for retro look
-@font-face {
-  font-family: "Typewriter";
-  src: url("/assets/fonts/typewriter.ttf") format("truetype");
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap; // Improves loading performance and reduces font warnings
-  unicode-range: U+0020-007F; // Basic Latin characters only to reduce font processing
-}
-
-// Fallback font stack to reduce dependency on custom font
-$typewriter-font:
-  "Typewriter", "Courier New", "Lucida Console", "Monaco", monospace; // Enhanced fallback
-
-// =========================
-// BASE ELEMENTS
-// =========================
-
-body {
-  height: 100vh;
-  margin: 0;
-  box-sizing: border-box;
-}
-
-// =========================
-// GRID & PAGE CELLS
-// =========================
-
-// Main content containers for all pages
+// GRID
 .grid-cell,
 .page-cell {
   display: flex;
@@ -259,7 +210,7 @@ body {
   position: relative;
   flex: 1 1 auto;
   width: 100%;
-  max-width: $width-content;
+  max-width: $max-content-width;
   margin: 0 auto;
   box-sizing: border-box;
   overflow-x: hidden; // Prevent horizontal overflow
@@ -281,11 +232,29 @@ body {
   margin: 0 auto;
 }
 
-// =========================
-// HEADER NAVI
-// =========================
 
-// Navi icon header bar
+// CELL
+
+.row1 {
+  flex: 1 0 0;
+}
+
+.row2 {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.row3 {
+  flex: 1 0 0;
+}
+
+
+// HEADER
+
 .header-navi {
   width: 100vw;
   display: flex;
@@ -297,8 +266,11 @@ body {
   margin-bottom: 1.5rem;
   z-index: 10;
   pointer-events: none;
+
   .navi-img {
-    width: 100%;
+    width: 20vh;
+    min-width: $spacing-10px * 4; // 40px
+    max-width: $spacing-10px * 12; // 120px
     height: auto;
     display: block;
     filter: drop-shadow(0 0 1px #{$glow-medium})
@@ -315,18 +287,10 @@ body {
     transition: filter 0.2s;
   }
 }
-.header-navi img {
-  width: 20vw; // Responsive width
-  min-width: $spacing-10px * 4; // 40px
-  max-width: $spacing-10px * 12; // 120px
-  height: auto;
-}
 
-// =========================
+
 // FOOTER
-// =========================
 
-// Footer bar with links and email
 .footer {
   display: flex;
   flex-direction: row;
@@ -355,11 +319,13 @@ body {
       letter-spacing: 0;
     }
   }
+
   a:hover,
   a:focus {
     color: $link-accent;
     text-decoration: underline;
   }
+
   > span {
     display: flex;
     justify-content: center;
@@ -369,7 +335,112 @@ body {
   }
 }
 
-// Simple mute button in top right corner - icon only, no background
+// ======================
+// ELEMENT & CLASS STYLES
+// ======================
+
+
+// GENERAL
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: $height-min-content;
+  text-align: center;
+  font-size: $font-size-lg;
+  font-family: $typewriter-font;
+  letter-spacing: 0.04em;
+  line-height: 1.6;
+  max-width: $content-width * 2.85; // 1200px
+  width: 100%;
+  margin: 0 auto;
+  box-sizing: border-box;
+  padding: 0 $spacing-md; // Use spacing var for padding
+}
+
+.title {
+  text-align: center;
+  font-weight: bold;
+  font-size: $font-size-xl;
+  margin-bottom: $spacing-lg * 0.8; // 1.2em
+  letter-spacing: 0.08em;
+  color: $white;
+  text-shadow:
+    0 0 $shadow-size-xl $accent,
+    0 0 $shadow-size-xxl #222;
+  font-family: $typewriter-font;
+}
+
+.item {
+  margin-bottom: $spacing-lg;
+  width: 100%;
+  max-width: $content-width;
+}
+
+.grid {
+  width: 100%;
+  max-width: $content-width;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-sm * 1.2; // 0.6em
+  box-sizing: border-box;
+}
+
+.section-item {
+  color: $accent;
+  border: $border-thin solid $accent;
+  background: rgba($accent, 0.07);
+  box-shadow: 0 0 $shadow-size-lg $glow-medium;
+  border-radius: $radius-lg;
+  margin-bottom: $spacing-lg * 0.8;
+  transition:
+    background 0.18s,
+    color 0.18s,
+    border 0.18s;
+}
+
+.section-item:hover,
+.section-item:focus {
+  background: rgba($accent, 0.18);
+  color: $white;
+  border-color: $white;
+  box-shadow: 0 0 $shadow-size-xl $glow-medium;
+}
+
+.section-item .item-header .cmd {
+  color: $accent;
+  text-shadow:
+    0 0 $shadow-size-xs $accent,
+    0 0 $shadow-size-sm $glow-light;
+}
+
+
+// CURSOR
+
+.cursor-trail-char {
+  position: fixed;
+  pointer-events: none;
+  color: $white;
+  text-shadow:
+    0 0 $shadow-size-md $glow-green,
+    0 0 $shadow-size-xl $glow-green;
+  background: none;
+  border: none;
+  letter-spacing: $letter-spacing-normal;
+  font-family: $typewriter-font;
+  font-weight: bold;
+  z-index: 256;
+  box-shadow: none;
+  font-size: $font-size-cursor;
+  -webkit-text-stroke: none;
+}
+
+
+// BUTTONS
+
 .mute-btn-fixed {
   position: fixed;
   top: 1rem;
@@ -383,26 +454,19 @@ body {
   z-index: 1000;
   font-family:
     "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif;
-
-  // Remove all touch highlights and ensure it works on mobile
   -webkit-tap-highlight-color: transparent;
   touch-action: manipulation;
   user-select: none;
   -webkit-user-select: none;
 
-  // Simple hover effect for desktop
   &:hover {
     opacity: 0.8;
   }
 
-  // Simple active state for all devices
   &:active {
     transform: scale(0.9);
   }
 }
-
-// Mute button icon styles
-$mute-icon-size: 18px; // 75% of 24px
 
 .mute-btn-icon {
   width: $mute-icon-size;
@@ -415,23 +479,7 @@ $mute-icon-size: 18px; // 75% of 24px
   // If you switch to SVGs, use: fill: currentColor; color: $text-color;
 }
 
-// =========================
-// TYPOGRAPHY
-// =========================
-
-.gothic-text {
-  font-family: $typewriter-font; // Updated to use typewriter font
-  font-size: $font-size-hero;
-  letter-spacing: 0.05em;
-  color: $white;
-  text-shadow:
-    0 0 4px $accent,
-    0 0 8px #222;
-  position: relative;
-  display: inline-block;
-}
-// Enter button style
-.enter-btn.gothic-text {
+.enter-btn {
   color: $white;
   background: none;
   border: none;
@@ -452,8 +500,8 @@ $mute-icon-size: 18px; // 75% of 24px
   z-index: 2;
   filter: none;
 }
-.enter-btn.gothic-text:hover,
-.enter-btn.gothic-text:focus {
+.enter-btn:hover,
+.enter-btn:focus {
   background: none;
   color: $white;
   border: none;
@@ -465,95 +513,25 @@ $mute-icon-size: 18px; // 75% of 24px
   transition: transform 0.18s cubic-bezier(0.4, 1.4, 0.6, 1);
 }
 
-// Link styles
+
+// LINKS
+
 a,
-.project-link {
-  font-size: $font-size-xs; // Desktop default
-  color: $text-color;
-  text-decoration: underline;
-  font-family: "Typewriter", monospace;
-  transition: color 0.15s;
-}
 a:hover,
 a:focus,
-.project-link:hover,
-.project-link:focus {
+.link:hover,
+.link:focus {
   color: $link-accent;
   text-decoration: underline;
 }
 
-// =========================
-// CURSOR
-// =========================
 
-// Hide native cursor globally for custom React cursor overlay on desktop only
-@media (min-width: 601px) {
-  *,
-  *:hover,
-  *:active,
-  *:focus {
-    cursor: none !important;
-  }
-  html,
-  body,
-  .cyberia-root,
-  .xp-content,
-  .xp-content *,
-  html:active,
-  body:active,
-  .cyberia-root:active,
-  .xp-content:active,
-  .xp-content *:active,
-  html:focus,
-  body:focus,
-  .cyberia-root:focus,
-  .xp-content:focus,
-  .xp-content *:focus {
-    cursor: none !important;
-  }
-}
+// TERMINAL
 
-// On mobile, allow normal cursor for interactive elements
-@media (max-width: 600px) {
-  button,
-  a,
-  input,
-  [contenteditable],
-  .terminal-input {
-    cursor: pointer !important;
-  }
-  input,
-  [contenteditable],
-  .terminal-input {
-    cursor: text !important;
-  }
-}
-
-// =========================
-// FONT ENFORCEMENT
-// =========================
-
-// Ensure all main elements use typewriter font
-.cyberia-root,
-.header,
-.footer,
-.grid-cell,
-.gothic-text,
-.enter-btn {
-  font-family: "Typewriter", monospace !important;
-}
-
-// =========================
-// TERMINAL STYLES
-// =========================
-
-// Terminal-specific variables (using existing variables where possible)
 $terminal-btn-bg: $bg-1;
 $terminal-output-bg: #{$bg-1}cc;
 $terminal-output-shadow: #{$bg-1}aa;
-$error-color: #fc7676; // Error color for terminal and error messages
 
-// Aliases using existing variables
 $terminal-bg: $bg-1; // Use main background
 $terminal-border-color: $accent; // Use accent color for borders
 $terminal-shadow: $shadow-soft; // Use existing shadow-soft
@@ -567,7 +545,7 @@ $terminal-btn-bg-active: $accent; // Use accent for active button background
 .terminal-container {
   position: relative;
   width: 100%;
-  max-width: $width-content;
+  max-width: $max-content-width;
   height: $height-terminal;
   max-height: $height-terminal;
   background: $terminal-bg;
@@ -601,7 +579,7 @@ $terminal-btn-bg-active: $accent; // Use accent for active button background
     text-align: left;
   }
 }
-// Ensure the terminal glow matches the border radius
+
 .terminal-container::before {
   content: "";
   position: absolute;
@@ -611,7 +589,7 @@ $terminal-btn-bg-active: $accent; // Use accent for active button background
   box-shadow: $terminal-shadow;
   z-index: 1;
 }
-// Static noise overlay for terminal
+
 .pixel-stream-bg {
   position: absolute;
   inset: 0;
@@ -623,7 +601,6 @@ $terminal-btn-bg-active: $accent; // Use accent for active button background
   opacity: 50%;
 }
 
-// Terminal row (prompt + input)
 .terminal-row {
   display: flex;
   align-items: flex-start;
@@ -635,7 +612,7 @@ $terminal-btn-bg-active: $accent; // Use accent for active button background
   max-width: 100%;
   box-sizing: border-box;
 }
-// Terminal prompt
+
 .terminal-prompt {
   position: relative;
   display: inline-block;
@@ -651,7 +628,7 @@ $terminal-btn-bg-active: $accent; // Use accent for active button background
     padding-right: $spacing-sm; // Tighter spacing for flicker prompt
   }
 }
-// Terminal input area
+
 .terminal-input {
   outline: none;
   min-width: 3ch;
@@ -679,7 +656,7 @@ $terminal-btn-bg-active: $accent; // Use accent for active button background
     color: $white;
   }
 }
-// Terminal blinking cursor
+
 .terminal-cursor {
   color: $text-color;
   margin-left: 2px;
@@ -702,7 +679,7 @@ $terminal-btn-bg-active: $accent; // Use accent for active button background
     position: relative;
   }
 }
-// Blinking and flicker animations
+
 .blink {
   animation: blink 1s steps(1) infinite;
 }
@@ -716,6 +693,7 @@ $terminal-btn-bg-active: $accent; // Use accent for active button background
     opacity: 0;
   }
 }
+
 .flicker {
   animation: flicker 1.2s infinite alternate;
   color: $text-color !important;
@@ -740,7 +718,7 @@ $terminal-btn-bg-active: $accent; // Use accent for active button background
     opacity: 0.95;
   }
 }
-// Terminal options/buttons
+
 .terminal-options {
   margin-bottom: 0.6rem;
   display: flex;
@@ -748,6 +726,7 @@ $terminal-btn-bg-active: $accent; // Use accent for active button background
   justify-content: space-between;
   width: 100%;
 }
+
 .terminal-btn {
   background: $terminal-btn-bg;
   color: $accent;
@@ -768,6 +747,7 @@ $terminal-btn-bg-active: $accent; // Use accent for active button background
   outline: none;
   position: relative;
 }
+
 .terminal-btn.selected,
 .terminal-btn:hover,
 .terminal-btn:focus {
@@ -776,7 +756,7 @@ $terminal-btn-bg-active: $accent; // Use accent for active button background
   border-color: $terminal-btn-border-active;
   box-shadow: 0 0 4px $terminal-shadow; // reduced glow
 }
-// Terminal output area
+
 .terminal-output {
   margin-top: 0.6rem;
   color: $accent;
@@ -794,7 +774,7 @@ $terminal-btn-bg-active: $accent; // Use accent for active button background
   border: 1px solid rgba($accent, 0.3);
   text-shadow: 0 0 2px $accent;
 }
-// Terminal user prompt
+
 .terminal-user {
   margin-right: 0.4em;
   font-family: $typewriter-font !important;
@@ -807,7 +787,6 @@ $terminal-btn-bg-active: $accent; // Use accent for active button background
   }
 }
 
-// Output lines and lists
 .terminal-output-line,
 .ls-list,
 .help-list,
@@ -819,17 +798,26 @@ $terminal-btn-bg-active: $accent; // Use accent for active button background
   display: block;
   color: $link-accent;
   text-align: left;
-  letter-spacing: 0.08em; // Updated for consistency
+  letter-spacing: 0.08em; 
   text-shadow: 0 0 1px $accent;
 }
 
-// Error messages get special red highlighting
+.terminal-input-history {
+  color: $white;
+  font-family: $typewriter-font;
+  font-size: $font-size-base;
+  font-weight: normal;
+  letter-spacing: 0.08em;
+  text-shadow:
+    0 0 1px $accent,
+    0 0 4px #222;
+}
+
 .error {
   color: $error-color !important;
   text-shadow: 0 0 1px $error-color !important;
 }
 
-// Terminal ls command output styling
 .ls-items {
   display: flex;
   flex-direction: column;
@@ -850,7 +838,7 @@ $terminal-btn-bg-active: $accent; // Use accent for active button background
   flex: 0 0 auto;
   min-width: fit-content;
   text-shadow: 0 0 1px $accent;
-  // Clickable item styling for cat . command
+
   &.clickable-item {
     cursor: pointer;
     transition:
@@ -873,292 +861,29 @@ $terminal-btn-bg-active: $accent; // Use accent for active button background
   }
 }
 
-// =========================
-// DESKTOP BG
-// =========================
 
-// Projects/desktop background
-.desktop-bg {
-  min-height: $height-min-content;
-  width: 100%;
-  background: $bg-1;
-  position: relative;
-  display: flex;
-  align-items: flex-start;
-  justify-content: flex-start;
-  padding: 2.5rem 1.5rem 2.5rem 2.5rem;
-  box-sizing: border-box;
-  border-radius: $radius-xl;
-  overflow: auto;
-}
-
-// =========================
-// GRID 1x3 LAYOUT
-// =========================
-
-// Used for landing/terminal page
-.grid-cell.cell1 {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  justify-content: center;
-  align-items: center;
-  gap: 3rem;
-}
-.row1 {
-  flex: 1 0 0;
-}
-.row2 {
-  flex: 0 0 auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-}
-.row3 {
-  flex: 1 0 0;
-}
-
-// =========================
-// RESPONSIVE: MOBILE
-// =========================
-
-@media (max-width: 600px) {
-  // Footer links stack vertically
-  .footer > span {
-    flex-direction: column;
-    gap: 0.5em;
-    align-items: center;
-    justify-content: center;
-  }
-  // Terminal container and inner shrink to viewport
-  .terminal-container {
-    min-width: 0;
-    max-width: 98vw;
-  }
-  .terminal-inner {
-    font-size: $font-size-xs;
-    padding: 0.3rem 0.3rem 0.3rem 0.3rem; // Even less padding on mobile
-    max-width: 96vw;
-    box-sizing: border-box;
-  } // Bio and project description text smaller and wrapped
-  .bio-content,
-  .project-description {
-    font-size: $font-size-xs;
-    line-height: 1.35;
-    max-width: 96vw;
-    word-break: break-word;
-  }
-  .project-description {
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  .lain-img {
-    width: 70%;
-  } // Enter button and link text size
-  .enter-btn.gothic-text {
-    font-size: $font-size-xs;
-  }
-  a,
-  .project-link {
-    font-size: $font-size-xs;
-  } // Terminal text size - ensure all terminal text is consistent
-  .terminal-inner,
-  .terminal-row,
-  .terminal-prompt,
-  .terminal-input,
-  .terminal-cursor,
-  .terminal-output,
-  .terminal-user,
-  .terminal-output-line,
-  .ls-list,
-  .help-list,
-  .error,
-  .ls-item,
-  .terminal-input-history {
-    font-size: $font-size-xs !important;
-  }
-  // Additional specific sizing for terminal elements
-  .terminal-prompt {
-    font-size: $font-size-xs !important;
-  }
-
-  .terminal-input {
-    font-size: $font-size-xs !important;
-  }
-
-  .terminal-user {
-    font-size: $font-size-xs !important;
-  }
-
-  .terminal-cursor {
-    font-size: $font-size-xs !important;
-  } // Terminal buttons
-  .terminal-btn {
-    font-size: $font-size-xs !important;
-    padding: 0.15em 0.8em !important;
-  }
-
-  // Archive responsive styles
-  .archive-content {
-    padding: 0 $spacing-sm;
-    max-width: 100vw;
-    overflow-x: hidden;
-  }
-
-  .archive-grid {
-    max-width: 100%;
-    padding: 0 $spacing-sm;
-    box-sizing: border-box;
-  }
-  .archive-section-item {
-    margin-bottom: $spacing-md;
-  }
-
-  // Reduce grid-cell padding on mobile
-  .grid-cell,
-  .page-cell {
-    padding: $spacing-sm; // Reduce from default 15px to smaller spacing
-  }
-}
-
-// =========================
-// BIO SECTION STYLES
-// =========================
-
-.bio-content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: auto;
-  text-align: center;
-  font-size: $font-size-lg;
-  font-family: "Typewriter", monospace;
-  letter-spacing: 0.04em;
-  line-height: 1.6;
-  max-width: $width-archive;
-  margin: 0 auto;
-  padding: 1.5rem 0;
-}
-// Bio title styling (inherits from archive-title for consistency)
-.bio-title {
-  // Let archive-title handle the main styling
-  // Only override margin for bio-specific spacing
-  margin-bottom: 0.5em;
-}
+// BIO
 
 .bio-desc {
   font-size: $font-size-base;
   margin-top: 1.2em;
   line-height: 1.5;
   color: $white;
-  // Removed text-shadow for no glow
   text-shadow: none;
 }
 
-// Bio title responsive layout
-.bio-title-desktop {
-  display: inline;
-}
-
-.bio-title-mobile {
-  display: none;
-}
-
-// Mobile bio title layout - columnar format with dots
-@media (max-width: 600px) {
-  .bio-title-desktop {
-    display: none;
-  }
-
-  .bio-title-mobile {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.3em;
-    // Remove font styling here since archive-title will handle it
-  }
-
-  .bio-mobile-item {
-    text-align: center;
-  }
-
-  .bio-mobile-dot {
-    font-size: 0.8em;
-    opacity: 0.8;
-  }
-}
-
-// =========================
-// PROJECTS SECTION
-// =========================
-
-// Styles for projects section
-.projects-root {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-.project-title {
-  font-family: "Typewriter", monospace;
-  font-weight: bold;
-  font-size: $font-size-lg;
-  color: $white;
-  margin-bottom: 1.2rem;
-  letter-spacing: 0.08em;
+.bio-mobile-item {
   text-align: center;
-  width: 100%;
-  max-width: 480px;
-  text-shadow: 0 0 6px $text-color;
-  display: inline-block;
-  margin-left: auto;
-  margin-right: auto;
-}
-.project-description {
-  font-family: "Typewriter", monospace;
-  color: $white;
-  font-size: $font-size-xs;
-  margin-bottom: 1.2rem;
-  text-align: center;
-  max-width: 480px;
-  width: 100%;
-  line-height: 1.6;
-  text-shadow: 0 0 4px $text-color;
-  display: inline-block;
-  margin-left: auto;
-  margin-right: auto;
-}
-.project-links {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  align-items: center;
-  margin-top: 1.2rem;
-}
-.project-link {
-  color: $text-color;
-  text-decoration: underline;
-  font-family: "Typewriter", monospace;
-  font-size: $font-size-xs;
 }
 
-.bio-tech {
-  color: $text-color;
-  font-family: "Typewriter", monospace;
-  font-size: $font-size-xs;
-  margin-top: 0.5rem;
-  margin-bottom: 0.5rem;
+.bio-mobile-dot {
+  font-size: 0.8em;
+  opacity: 0.8;
 }
 
-// =========================
-// RESUME STYLES
-// =========================
 
-// Resume uses its own container for full-width display
+// RESUME
+
 .resume-root {
   width: 100%;
   max-width: 100%;
@@ -1169,9 +894,10 @@ $terminal-btn-bg-active: $accent; // Use accent for active button background
   justify-content: center;
   align-items: center;
 }
+
 .resume-img {
   width: 100%;
-  max-width: 1200px; // Match grid-cell max-width
+  max-width: 1200px;
   height: auto;
   display: block;
   margin: 0 auto;
@@ -1180,7 +906,6 @@ $terminal-btn-bg-active: $accent; // Use accent for active button background
   @include box-shadow($shadow-strong);
 }
 
-// Resume content styles
 .resume-content {
   display: flex;
   flex-direction: column;
@@ -1196,6 +921,7 @@ $terminal-btn-bg-active: $accent; // Use accent for active button background
   margin: 2rem auto;
   margin-top: 0;
 }
+
 .resume-title {
   font-weight: bold;
   font-size: $font-size-xl;
@@ -1207,160 +933,8 @@ $terminal-btn-bg-active: $accent; // Use accent for active button background
   font-family: $typewriter-font; // Updated to use typewriter font
 }
 
-// =========================
-// ARCHIVE STYLES
-// =========================
 
-.terminal-input-history {
-  color: $white;
-  font-family: $typewriter-font;
-  font-size: $font-size-base; // Updated for consistency
-  font-weight: normal;
-  letter-spacing: 0.08em;
-  text-shadow:
-    0 0 1px $accent,
-    0 0 4px #222;
-}
-
-.archive-content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: $height-min-content;
-  text-align: center;
-  font-size: $font-size-lg;
-  font-family: $typewriter-font;
-  letter-spacing: 0.04em;
-  line-height: 1.6;
-  max-width: $width-archive * 2.85; // 1200px
-  width: 100%;
-  margin: 0 auto;
-  box-sizing: border-box;
-  padding: 0 $spacing-md; // Use spacing var for padding
-}
-
-.archive-title {
-  font-weight: bold;
-  font-size: $font-size-xl;
-  margin-bottom: $spacing-lg * 0.8; // 1.2em
-  letter-spacing: 0.08em;
-  color: $white;
-  text-shadow:
-    0 0 $shadow-size-xl $accent,
-    0 0 $shadow-size-xxl #222;
-  font-family: $typewriter-font;
-}
-
-// Archive item spacing for notes
-.archive-item {
-  margin-bottom: $spacing-lg;
-  width: 100%;
-  max-width: $width-archive;
-}
-
-// Archive grid styles
-.archive-grid {
-  width: 100%;
-  max-width: $width-archive;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  gap: $spacing-sm * 1.2; // 0.6em
-  box-sizing: border-box;
-}
-
-// Archive section item
-.archive-section-item {
-  color: $accent;
-  border: $border-thin solid $accent;
-  background: rgba($accent, 0.07);
-  box-shadow: 0 0 $shadow-size-lg $glow-medium;
-  border-radius: $radius-lg;
-  margin-bottom: $spacing-lg * 0.8;
-  transition:
-    background 0.18s,
-    color 0.18s,
-    border 0.18s;
-}
-.archive-section-item:hover,
-.archive-section-item:focus {
-  background: rgba($accent, 0.18);
-  color: $white;
-  border-color: $white;
-  box-shadow: 0 0 $shadow-size-xl $glow-medium;
-}
-.archive-section-item .archive-item-header .cmd {
-  color: $accent;
-  text-shadow:
-    0 0 $shadow-size-xs $accent,
-    0 0 $shadow-size-sm $glow-light;
-}
-
-// Terminal-style glow for media borders
-.terminal-glow-border {
-  border-radius: $radius-lg;
-  border: $border-thick solid $accent;
-  box-shadow:
-    0 0 4px $text-color,
-    0 0 6px $text-color,
-    0 0 8px $text-color,
-    0 0 12px $text-color;
-  background: $bg-1;
-  margin-bottom: 1rem;
-  overflow: hidden;
-}
-
-// Media-specific styles
-.media-video,
-.media-image {
-  width: 100%;
-  max-width: $width-content;
-  margin: 1rem;
-
-  iframe {
-    width: 100%;
-    height: 315px;
-    border: none;
-    border-radius: $radius-xl; // Slightly smaller radius than container
-    display: block;
-  }
-
-  img {
-    width: 100%;
-    height: auto;
-    border-radius: $radius-md; // Slightly smaller radius than container
-    display: block;
-  }
-}
-
-// Ensure video container matches iframe height
-.media-video.terminal-glow-border {
-  height: 315px; // Match iframe height exactly
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-// Image container adjusts to content
-.media-image.terminal-glow-border {
-  height: auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.media-caption {
-  text-align: center;
-  margin-top: 0.5rem;
-  font-size: $font-size-xs;
-  color: $text-color;
-  font-family: $typewriter-font;
-}
-
-// =========================
-// CARD GAME STYLES
-// =========================
+// CARDGAMES
 
 .cardgame-box {
   background: $bg-1;
@@ -1383,6 +957,7 @@ $terminal-btn-bg-active: $accent; // Use accent for active button background
   position: relative;
   line-height: 1.6;
 }
+
 .cardgame-box:hover,
 .cardgame-box:focus {
   box-shadow:
@@ -1391,13 +966,15 @@ $terminal-btn-bg-active: $accent; // Use accent for active button background
     0 0 $shadow-size-xxl $text-color,
     0 0 $shadow-size-huge $text-color;
 }
+
 .cardgame-divider {
   border: none;
   border-top: $border-thick solid $text-color;
   margin: 1.1em 0 1.1em 0;
   opacity: 0.8;
 }
-.archive-cardgames-grid {
+
+.cardgames-grid {
   display: flex;
   flex-direction: column;
   gap: 0.75em;
@@ -1405,7 +982,6 @@ $terminal-btn-bg-active: $accent; // Use accent for active button background
   width: 100%;
 }
 
-// Card game header styles
 .game-header {
   .game-name {
     span {
@@ -1416,9 +992,7 @@ $terminal-btn-bg-active: $accent; // Use accent for active button background
   }
 }
 
-// Card game rules section styling
 .game-rules {
-  // Base styling for rules sections
   padding-left: $spacing-sm;
   padding-right: $spacing-sm;
 
@@ -1427,39 +1001,32 @@ $terminal-btn-bg-active: $accent; // Use accent for active button background
     text-decoration-skip-ink: auto;
     text-underline-offset: 2px;
 
-    // Section headings in accent color
     &.section-heading {
       color: $accent;
     }
   }
 
-  // Style for main bullet point labels (Deck, Card Rank, etc.)
   .rule-label {
     color: $accent;
   }
 
-  // Style for round labels (Round 1, Round 2, etc.)
   .round-label {
     color: $accent;
   }
 
-  // Objective text centering
   .objective-text {
     text-align: center;
     margin-top: 0.25rem;
   }
 
-  // Ordered lists styling
   ol.rules-list {
     text-align: left;
     padding-left: 1.2em;
 
-    // Nested ordered lists
     ol {
       padding-left: 1.2em;
     }
 
-    // Style ordered list numbers for rules with accent-colored labels
     li:has(.rule-label)::marker,
     li:has(.round-label)::marker {
       color: $accent;
@@ -1467,7 +1034,6 @@ $terminal-btn-bg-active: $accent; // Use accent for active button background
   }
 }
 
-// Game header styling
 .game-header {
   .game-name {
     color: $accent;
@@ -1480,82 +1046,6 @@ $terminal-btn-bg-active: $accent; // Use accent for active button background
   }
 }
 
-// Archive content styles
-.archive-content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: $height-min-content;
-  text-align: center;
-  font-size: $font-size-lg;
-  font-family: "Typewriter", monospace;
-  letter-spacing: 0.04em;
-  line-height: 1.6;
-  max-width: $width-archive * 2.85; // 1200px
-  width: 100%;
-  margin: 0 auto;
-  box-sizing: border-box;
-  padding: 0 $spacing-md; // Use spacing var for padding
-}
-.archive-title {
-  font-weight: bold;
-  font-size: $font-size-xl;
-  margin-bottom: $spacing-lg * 0.8; // 1.2em
-  letter-spacing: 0.08em;
-  color: $white;
-  text-shadow:
-    0 0 $shadow-size-xl $accent,
-    0 0 $shadow-size-xxl #222;
-  font-family: $typewriter-font;
-}
-
-// Archive item spacing for notes
-.archive-item {
-  margin-bottom: $spacing-lg;
-  width: 100%;
-  max-width: $width-archive;
-}
-
-// Archive grid styles
-.archive-grid {
-  width: 100%;
-  max-width: $width-archive;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  gap: $spacing-sm * 1.2; // 0.6em
-  box-sizing: border-box;
-}
-
-// Archive section item
-.archive-section-item {
-  color: $accent;
-  border: $border-thin solid $accent;
-  background: rgba($accent, 0.07);
-  box-shadow: 0 0 $shadow-size-lg $glow-medium;
-  border-radius: $radius-lg;
-  margin-bottom: $spacing-lg * 0.8;
-  transition:
-    background 0.18s,
-    color 0.18s,
-    border 0.18s;
-}
-.archive-section-item:hover,
-.archive-section-item:focus {
-  background: rgba($accent, 0.18);
-  color: $white;
-  border-color: $white;
-  box-shadow: 0 0 $shadow-size-xl $glow-medium;
-}
-.archive-section-item .archive-item-header .cmd {
-  color: $accent;
-  text-shadow:
-    0 0 $shadow-size-xs $accent,
-    0 0 $shadow-size-sm $glow-light;
-}
-
-// Terminal-style glow for media borders
 .terminal-glow-border {
   border-radius: $radius-lg;
   border: $border-thick solid $accent;
@@ -1569,11 +1059,10 @@ $terminal-btn-bg-active: $accent; // Use accent for active button background
   overflow: hidden;
 }
 
-// Media-specific styles
 .media-video,
 .media-image {
   width: 100%;
-  max-width: $width-content;
+  max-width: $max-content-width;
   margin: 0 auto 1rem auto;
 
   iframe {
@@ -1592,7 +1081,6 @@ $terminal-btn-bg-active: $accent; // Use accent for active button background
   }
 }
 
-// Ensure video container matches iframe height
 .media-video.terminal-glow-border {
   height: 315px; // Match iframe height exactly
   display: flex;
@@ -1600,7 +1088,6 @@ $terminal-btn-bg-active: $accent; // Use accent for active button background
   justify-content: center;
 }
 
-// Image container adjusts to content
 .media-image.terminal-glow-border {
   height: auto;
   display: flex;
@@ -1616,790 +1103,169 @@ $terminal-btn-bg-active: $accent; // Use accent for active button background
   font-family: $typewriter-font;
 }
 
+
 // =========================
-// CARD GAME STYLES
+// RESPONSIVE STYLES
 // =========================
 
-.cardgame-box {
-  background: $bg-1;
-  border-radius: $radius-xl;
-  border: $border-thick solid $accent;
-  box-shadow:
-    0 0 $shadow-size-md $text-color,
-    0 0 $shadow-size-lg $text-color,
-    0 0 $shadow-size-xl $text-color,
-    0 0 $shadow-size-xxl $text-color;
-  margin-bottom: $spacing-lg;
-  padding: $spacing-sm $spacing-md $spacing-md $spacing-md;
-  padding-left: $spacing-sm;
-  padding-right: $spacing-sm;
-  max-width: 1200px;
-  width: 100%;
-  transition:
-    box-shadow 0.18s,
-    border 0.18s;
-  position: relative;
-  line-height: 1.6;
-}
-.cardgame-box:hover,
-.cardgame-box:focus {
-  box-shadow:
-    0 0 $shadow-size-lg $text-color,
-    0 0 $shadow-size-xl $text-color,
-    0 0 $shadow-size-xxl $text-color,
-    0 0 $shadow-size-huge $text-color;
-}
-.cardgame-divider {
-  border: none;
-  border-top: $border-thick solid $text-color;
-  margin: 1.1em 0 1.1em 0;
-  opacity: 0.8;
-}
-.archive-cardgames-grid {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75em;
-  align-items: center;
-  width: 100%;
-}
 
-// Card game header styles
-.game-header {
-  .game-name {
-    span {
-      text-decoration: underline;
-      text-decoration-skip-ink: auto;
-      text-underline-offset: 2px;
-    }
+// WEB
+
+@media (min-width: 601px) {
+  *,
+  *:hover,
+  *:active,
+  *:focus {
+    cursor: none !important;
+  }
+  
+  html,
+  body,
+  .root,
+  .xp-content,
+  .xp-content *,
+  html:active,
+  body:active,
+  .root:active,
+  .xp-content:active,
+  .xp-content *:active,
+  html:focus,
+  body:focus,
+  .root:focus,
+  .xp-content:focus,
+  .xp-content *:focus {
+    cursor: none !important;
+  }
+
+  .bio-title-desktop {
+    display: inline;
+  }
+
+  .bio-title-mobile {
+    display: none;
   }
 }
 
-// Card game rules section styling
-.game-rules {
-  // Base styling for rules sections
-  padding-left: $spacing-sm;
-  padding-right: $spacing-sm;
 
-  strong {
-    text-decoration: underline;
-    text-decoration-skip-ink: auto;
-    text-underline-offset: 2px;
+// MOBILE
 
-    // Section headings in accent color
-    &.section-heading {
-      color: $accent;
-    }
+@media (max-width: 600px) {
+  button,
+  a,
+  input,
+  [contenteditable],
+  .terminal-input {
+    cursor: pointer !important;
   }
 
-  // Style for main bullet point labels (Deck, Card Rank, etc.)
-  .rule-label {
-    color: $accent;
+  input,
+  [contenteditable],
+  .terminal-input {
+    cursor: text !important;
   }
 
-  // Style for round labels (Round 1, Round 2, etc.)
-  .round-label {
-    color: $accent;
+  .footer > span {
+    flex-direction: column;
+    gap: 0.5em;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .terminal-container {
+    min-width: 0;
+    max-width: 98vw;
   }
 
-  // Objective text centering
-  .objective-text {
+  .terminal-inner {
+    font-size: $font-size-xs;
+    padding: 0.3rem 0.3rem 0.3rem 0.3rem; // Even less padding on mobile
+    max-width: 96vw;
+    box-sizing: border-box;
+  }
+
+  .bio-content,
+  .project-description {
+    font-size: $font-size-xs;
+    line-height: 1.35;
+    max-width: 96vw;
+    word-break: break-word;
+  }
+
+  .project-description {
     text-align: center;
-    margin-top: 0.25rem;
+    margin-left: auto;
+    margin-right: auto;
   }
 
-  // Ordered lists styling
-  ol.rules-list {
-    text-align: left;
-    padding-left: 1.2em;
-
-    // Nested ordered lists
-    ol {
-      padding-left: 1.2em;
-    }
-
-    // Style ordered list numbers for rules with accent-colored labels
-    li:has(.rule-label)::marker,
-    li:has(.round-label)::marker {
-      color: $accent;
-    }
-  }
-}
-
-// Game header styling
-.game-header {
-  .game-name {
-    color: $accent;
-
-    span {
-      text-decoration: underline;
-      text-decoration-skip-ink: auto;
-      text-underline-offset: 2px;
-    }
-  }
-}
-
-// Archive content styles
-.archive-content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: $height-min-content;
-  text-align: center;
-  font-size: $font-size-lg;
-  font-family: "Typewriter", monospace;
-  letter-spacing: 0.04em;
-  line-height: 1.6;
-  max-width: $width-archive * 2.85; // 1200px
-  width: 100%;
-  margin: 0 auto;
-  box-sizing: border-box;
-  padding: 0 $spacing-md; // Use spacing var for padding
-}
-.archive-title {
-  font-weight: bold;
-  font-size: $font-size-xl;
-  margin-bottom: $spacing-lg * 0.8; // 1.2em
-  letter-spacing: 0.08em;
-  color: $white;
-  text-shadow:
-    0 0 $shadow-size-xl $accent,
-    0 0 $shadow-size-xxl #222;
-  font-family: $typewriter-font;
-}
-
-// Archive item spacing for notes
-.archive-item {
-  margin-bottom: $spacing-lg;
-  width: 100%;
-  max-width: $width-archive;
-}
-
-// Archive grid styles
-.archive-grid {
-  width: 100%;
-  max-width: $width-archive;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  gap: $spacing-sm * 1.2; // 0.6em
-  box-sizing: border-box;
-}
-
-// Archive section item
-.archive-section-item {
-  color: $accent;
-  border: $border-thin solid $accent;
-  background: rgba($accent, 0.07);
-  box-shadow: 0 0 $shadow-size-lg $glow-medium;
-  border-radius: $radius-lg;
-  margin-bottom: $spacing-lg * 0.8;
-  transition:
-    background 0.18s,
-    color 0.18s,
-    border 0.18s;
-}
-.archive-section-item:hover,
-.archive-section-item:focus {
-  background: rgba($accent, 0.18);
-  color: $white;
-  border-color: $white;
-  box-shadow: 0 0 $shadow-size-xl $glow-medium;
-}
-.archive-section-item .archive-item-header .cmd {
-  color: $accent;
-  text-shadow:
-    0 0 $shadow-size-xs $accent,
-    0 0 $shadow-size-sm $glow-light;
-}
-
-// Terminal-style glow for media borders
-.terminal-glow-border {
-  border-radius: $radius-lg;
-  border: $border-thick solid $accent;
-  box-shadow:
-    0 0 4px $text-color,
-    0 0 6px $text-color,
-    0 0 8px $text-color,
-    0 0 12px $text-color;
-  background: $bg-1;
-  margin-bottom: 1rem;
-  overflow: hidden;
-}
-
-// Media-specific styles
-.media-video,
-.media-image {
-  width: 100%;
-  max-width: $width-content;
-  margin: 0 auto 1rem auto;
-
-  iframe {
-    width: 100%;
-    height: 315px;
-    border: none;
-    border-radius: $radius-xl; // Slightly smaller radius than container
-    display: block;
+  .lain-img {
+    width: 70%;
+  } 
+  
+  .enter-btn {
+    font-size: $font-size-xs;
   }
 
-  img {
-    width: 100%;
-    height: auto;
-    border-radius: $radius-md; // Slightly smaller radius than container
-    display: block;
+  a,
+  .terminal-inner,
+  .terminal-row,
+  .terminal-prompt,
+  .terminal-input,
+  .terminal-cursor,
+  .terminal-output,
+  .terminal-user,
+  .terminal-output-line,
+  .ls-list,
+  .help-list,
+  .error,
+  .ls-item,
+  .terminal-input-history {
+    font-size: $font-size-xs !important;
   }
-}
-
-// Ensure video container matches iframe height
-.media-video.terminal-glow-border {
-  height: 315px; // Match iframe height exactly
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-// Image container adjusts to content
-.media-image.terminal-glow-border {
-  height: auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.media-caption {
-  text-align: center;
-  margin-top: 0.5rem;
-  font-size: $font-size-xs;
-  color: $text-color;
-  font-family: $typewriter-font;
-}
-
-// =========================
-// CARD GAME STYLES
-// =========================
-
-.cardgame-box {
-  background: $bg-1;
-  border-radius: $radius-xl;
-  border: $border-thick solid $accent;
-  box-shadow:
-    0 0 $shadow-size-md $text-color,
-    0 0 $shadow-size-lg $text-color,
-    0 0 $shadow-size-xl $text-color,
-    0 0 $shadow-size-xxl $text-color;
-  margin-bottom: $spacing-lg;
-  padding: $spacing-sm $spacing-md $spacing-md $spacing-md;
-  padding-left: $spacing-sm;
-  padding-right: $spacing-sm;
-  max-width: 1200px;
-  width: 100%;
-  transition:
-    box-shadow 0.18s,
-    border 0.18s;
-  position: relative;
-  line-height: 1.6;
-}
-.cardgame-box:hover,
-.cardgame-box:focus {
-  box-shadow:
-    0 0 $shadow-size-lg $text-color,
-    0 0 $shadow-size-xl $text-color,
-    0 0 $shadow-size-xxl $text-color,
-    0 0 $shadow-size-huge $text-color;
-}
-.cardgame-divider {
-  border: none;
-  border-top: $border-thick solid $text-color;
-  margin: 1.1em 0 1.1em 0;
-  opacity: 0.8;
-}
-.archive-cardgames-grid {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75em;
-  align-items: center;
-  width: 100%;
-}
-
-// Card game header styles
-.game-header {
-  .game-name {
-    span {
-      text-decoration: underline;
-      text-decoration-skip-ink: auto;
-      text-underline-offset: 2px;
-    }
-  }
-}
-
-// Card game rules section styling
-.game-rules {
-  // Base styling for rules sections
-  padding-left: $spacing-sm;
-  padding-right: $spacing-sm;
-
-  strong {
-    text-decoration: underline;
-    text-decoration-skip-ink: auto;
-    text-underline-offset: 2px;
-
-    // Section headings in accent color
-    &.section-heading {
-      color: $accent;
-    }
+  
+  .terminal-prompt {
+    font-size: $font-size-xs !important;
   }
 
-  // Style for main bullet point labels (Deck, Card Rank, etc.)
-  .rule-label {
-    color: $accent;
+  .terminal-input {
+    font-size: $font-size-xs !important;
   }
 
-  // Style for round labels (Round 1, Round 2, etc.)
-  .round-label {
-    color: $accent;
+  .terminal-user {
+    font-size: $font-size-xs !important;
   }
 
-  // Objective text centering
-  .objective-text {
-    text-align: center;
-    margin-top: 0.25rem;
+  .terminal-cursor {
+    font-size: $font-size-xs !important;
   }
 
-  // Ordered lists styling
-  ol.rules-list {
-    text-align: left;
-    padding-left: 1.2em;
-
-    // Nested ordered lists
-    ol {
-      padding-left: 1.2em;
-    }
-
-    // Style ordered list numbers for rules with accent-colored labels
-    li:has(.rule-label)::marker,
-    li:has(.round-label)::marker {
-      color: $accent;
-    }
-  }
-}
-
-// Game header styling
-.game-header {
-  .game-name {
-    color: $accent;
-
-    span {
-      text-decoration: underline;
-      text-decoration-skip-ink: auto;
-      text-underline-offset: 2px;
-    }
-  }
-}
-
-// Archive content styles
-.archive-content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: $height-min-content;
-  text-align: center;
-  font-size: $font-size-lg;
-  font-family: "Typewriter", monospace;
-  letter-spacing: 0.04em;
-  line-height: 1.6;
-  max-width: $width-archive * 2.85; // 1200px
-  width: 100%;
-  margin: 0 auto;
-  box-sizing: border-box;
-  padding: 0 $spacing-md; // Use spacing var for padding
-}
-.archive-title {
-  font-weight: bold;
-  font-size: $font-size-xl;
-  margin-bottom: $spacing-lg * 0.8; // 1.2em
-  letter-spacing: 0.08em;
-  color: $white;
-  text-shadow:
-    0 0 $shadow-size-xl $accent,
-    0 0 $shadow-size-xxl #222;
-  font-family: $typewriter-font;
-}
-
-// Archive item spacing for notes
-.archive-item {
-  margin-bottom: $spacing-lg;
-  width: 100%;
-  max-width: $width-archive;
-}
-
-// Archive grid styles
-.archive-grid {
-  width: 100%;
-  max-width: $width-archive;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  gap: $spacing-sm * 1.2; // 0.6em
-  box-sizing: border-box;
-}
-
-// Archive section item
-.archive-section-item {
-  color: $accent;
-  border: $border-thin solid $accent;
-  background: rgba($accent, 0.07);
-  box-shadow: 0 0 $shadow-size-lg $glow-medium;
-  border-radius: $radius-lg;
-  margin-bottom: $spacing-lg * 0.8;
-  transition:
-    background 0.18s,
-    color 0.18s,
-    border 0.18s;
-}
-.archive-section-item:hover,
-.archive-section-item:focus {
-  background: rgba($accent, 0.18);
-  color: $white;
-  border-color: $white;
-  box-shadow: 0 0 $shadow-size-xl $glow-medium;
-}
-.archive-section-item .archive-item-header .cmd {
-  color: $accent;
-  text-shadow:
-    0 0 $shadow-size-xs $accent,
-    0 0 $shadow-size-sm $glow-light;
-}
-
-// Terminal-style glow for media borders
-.terminal-glow-border {
-  border-radius: $radius-lg;
-  border: $border-thick solid $accent;
-  box-shadow:
-    0 0 4px $text-color,
-    0 0 6px $text-color,
-    0 0 8px $text-color,
-    0 0 12px $text-color;
-  background: $bg-1;
-  margin-bottom: 1rem;
-  overflow: hidden;
-}
-
-// Media-specific styles
-.media-video,
-.media-image {
-  width: 100%;
-  max-width: $width-content;
-  margin: 0 auto 1rem auto;
-
-  iframe {
-    width: 100%;
-    height: 315px;
-    border: none;
-    border-radius: $radius-xl; // Slightly smaller radius than container
-    display: block;
+  .terminal-btn {
+    font-size: $font-size-xs !important;
+    padding: 0.15em 0.8em !important;
   }
 
-  img {
-    width: 100%;
-    height: auto;
-    border-radius: $radius-md; // Slightly smaller radius than container
-    display: block;
-  }
-}
-
-// Ensure video container matches iframe height
-.media-video.terminal-glow-border {
-  height: 315px; // Match iframe height exactly
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-// Image container adjusts to content
-.media-image.terminal-glow-border {
-  height: auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.media-caption {
-  text-align: center;
-  margin-top: 0.5rem;
-  font-size: $font-size-xs;
-  color: $text-color;
-  font-family: $typewriter-font;
-}
-
-// =========================
-// CARD GAME STYLES
-// =========================
-
-.cardgame-box {
-  background: $bg-1;
-  border-radius: $radius-xl;
-  border: $border-thick solid $accent;
-  box-shadow:
-    0 0 $shadow-size-md $text-color,
-    0 0 $shadow-size-lg $text-color,
-    0 0 $shadow-size-xl $text-color,
-    0 0 $shadow-size-xxl $text-color;
-  margin-bottom: $spacing-lg;
-  padding: $spacing-sm $spacing-md $spacing-md $spacing-md;
-  padding-left: $spacing-sm;
-  padding-right: $spacing-sm;
-  max-width: 1200px;
-  width: 100%;
-  transition:
-    box-shadow 0.18s,
-    border 0.18s;
-  position: relative;
-  line-height: 1.6;
-}
-.cardgame-box:hover,
-.cardgame-box:focus {
-  box-shadow:
-    0 0 $shadow-size-lg $text-color,
-    0 0 $shadow-size-xl $text-color,
-    0 0 $shadow-size-xxl $text-color,
-    0 0 $shadow-size-huge $text-color;
-}
-.cardgame-divider {
-  border: none;
-  border-top: $border-thick solid $text-color;
-  margin: 1.1em 0 1.1em 0;
-  opacity: 0.8;
-}
-.archive-cardgames-grid {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75em;
-  align-items: center;
-  width: 100%;
-}
-
-// Card game header styles
-.game-header {
-  .game-name {
-    span {
-      text-decoration: underline;
-      text-decoration-skip-ink: auto;
-      text-underline-offset: 2px;
-    }
-  }
-}
-
-// Card game rules section styling
-.game-rules {
-  // Base styling for rules sections
-  padding-left: $spacing-sm;
-  padding-right: $spacing-sm;
-
-  strong {
-    text-decoration: underline;
-    text-decoration-skip-ink: auto;
-    text-underline-offset: 2px;
-
-    // Section headings in accent color
-    &.section-heading {
-      color: $accent;
-    }
+  .grid {
+    max-width: 100%;
+    padding: 0 $spacing-sm;
+    box-sizing: border-box;
   }
 
-  // Style for main bullet point labels (Deck, Card Rank, etc.)
-  .rule-label {
-    color: $accent;
+  .section-item {
+    margin-bottom: $spacing-md;
   }
 
-  // Style for round labels (Round 1, Round 2, etc.)
-  .round-label {
-    color: $accent;
+  .grid-cell,
+  .page-cell {
+    padding: $spacing-sm;
   }
 
-  // Objective text centering
-  .objective-text {
-    text-align: center;
-    margin-top: 0.25rem;
+  .bio-title-desktop {
+    display: none;
   }
 
-  // Ordered lists styling
-  ol.rules-list {
-    text-align: left;
-    padding-left: 1.2em;
-
-    // Nested ordered lists
-    ol {
-      padding-left: 1.2em;
-    }
-
-    // Style ordered list numbers for rules with accent-colored labels
-    li:has(.rule-label)::marker,
-    li:has(.round-label)::marker {
-      color: $accent;
-    }
+  .bio-title-mobile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.3em;
   }
-}
-
-// Game header styling
-.game-header {
-  .game-name {
-    color: $accent;
-
-    span {
-      text-decoration: underline;
-      text-decoration-skip-ink: auto;
-      text-underline-offset: 2px;
-    }
-  }
-}
-
-// Archive content styles
-.archive-content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: $height-min-content;
-  text-align: center;
-  font-size: $font-size-lg;
-  font-family: "Typewriter", monospace;
-  letter-spacing: 0.04em;
-  line-height: 1.6;
-  max-width: $width-archive * 2.85; // 1200px
-  width: 100%;
-  margin: 0 auto;
-  box-sizing: border-box;
-  padding: 0 $spacing-md; // Use spacing var for padding
-}
-.archive-title {
-  font-weight: bold;
-  font-size: $font-size-xl;
-  margin-bottom: $spacing-lg * 0.8; // 1.2em
-  letter-spacing: 0.08em;
-  color: $white;
-  text-shadow:
-    0 0 $shadow-size-xl $accent,
-    0 0 $shadow-size-xxl #222;
-  font-family: $typewriter-font;
-}
-
-// Archive item spacing for notes
-.archive-item {
-  margin-bottom: $spacing-lg;
-  width: 100%;
-  max-width: $width-archive;
-}
-
-// Archive grid styles
-.archive-grid {
-  width: 100%;
-  max-width: $width-archive;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  gap: $spacing-sm * 1.2; // 0.6em
-  box-sizing: border-box;
-}
-
-// Archive section item
-.archive-section-item {
-  color: $accent;
-  border: $border-thin solid $accent;
-  background: rgba($accent, 0.07);
-  box-shadow: 0 0 $shadow-size-lg $glow-medium;
-  border-radius: $radius-lg;
-  margin-bottom: $spacing-lg * 0.8;
-  transition:
-    background 0.18s,
-    color 0.18s,
-    border 0.18s;
-}
-.archive-section-item:hover,
-.archive-section-item:focus {
-  background: rgba($accent, 0.18);
-  color: $white;
-  border-color: $white;
-  box-shadow: 0 0 $shadow-size-xl $glow-medium;
-}
-.archive-section-item .archive-item-header .cmd {
-  color: $accent;
-  text-shadow:
-    0 0 $shadow-size-xs $accent,
-    0 0 $shadow-size-sm $glow-light;
-}
-
-// Terminal-style glow for media borders
-.terminal-glow-border {
-  border-radius: $radius-lg;
-  border: $border-thick solid $accent;
-  box-shadow:
-    0 0 4px $text-color,
-    0 0 6px $text-color,
-    0 0 8px $text-color,
-    0 0 12px $text-color;
-  background: $bg-1;
-  margin-bottom: 1rem;
-  overflow: hidden;
-}
-
-// Media-specific styles
-.media-video,
-.media-image {
-  width: 100%;
-  max-width: $width-content;
-  margin: 0 auto 1rem auto;
-
-  iframe {
-    width: 100%;
-    height: 315px;
-    border: none;
-    border-radius: $radius-xl; // Slightly smaller radius than container
-    display: block;
-  }
-
-  img {
-    width: 100%;
-    height: auto;
-    border-radius: $radius-md; // Slightly smaller radius than container
-    display: block;
-  }
-}
-
-// Ensure video container matches iframe height
-.media-video.terminal-glow-border {
-  height: 315px; // Match iframe height exactly
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-// Image container adjusts to content
-.media-image.terminal-glow-border {
-  height: auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.media-caption {
-  text-align: center;
-  margin-top: 0.5rem;
-  font-size: $font-size-xs;
-  color: $text-color;
-  font-family: $typewriter-font;
-}
-
-// =========================
-// UTILITY CLASSES
-// =========================
-
-.font-size-lg {
-  font-size: $font-size-lg !important;
-}
-.font-size-base {
-  font-size: $font-size-base !important;
-}
-.font-size-xs {
-  font-size: $font-size-xs !important;
 }

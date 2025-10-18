@@ -19,13 +19,13 @@ function ArchiveMedia() {
   };
 
   return (
-    <div className="grid-cell cell1">
-      <div className="archive-content">
-        <span className="archive-title">~/archive/media</span>
+    <div className="grid-cell">
+      <div className="content">
+        <span className="title">~/archive/media</span>
         <div>
           <br />
         </div>
-        <div className="archive-media-list">
+        <div className="media-list">
           {mediaItems.map((item, idx) => (
             <div className="media-video" key={idx}>
               {item.type === "video" ? (
