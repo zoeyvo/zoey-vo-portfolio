@@ -1,5 +1,8 @@
-import React, { useState, useRef, useEffect } from "react";
-import { useNavigate, Routes, Route, useLocation } from "react-router-dom";
+// ==========================================
+// FILE: src/App.jsx (MAIN FILE - SIMPLIFIED)
+// ==========================================
+import React, { useState, useEffect } from "react";
+import { useNavigate, Routes, Route } from "react-router-dom";
 import { CursorTrail, CustomCursor, PageLayout } from "./components";
 import {
   Root,
@@ -12,25 +15,19 @@ import {
   ArchiveNotes,
   ArchiveBookmarks,
 } from "./pages";
+import { Terminal } from "./components/Terminal/Terminal";
+import { MuteButton } from "./components/MuteButton";
+import { useTerminal } from "./hooks/useTerminal";
+import { useAudio } from "./hooks/useAudio";
 import { useCursorEnlargeOnClick } from "./hooks";
-import { TERMINAL_OPTIONS, ARCHIVE_SECTIONS, LOADING_MSG } from "./utils";
 import "./styles/App.scss";
 
 function App() {
   const [entered, setEntered] = useState(false);
-  const [terminalValue, setTerminalValue] = useState("");
-  const [caretPos, setCaretPos] = useState(0);
-  const [output, setOutput] = useState([]); // Store terminal output lines
-  const [isMuted, setIsMuted] = useState(false); // Start with audio enabled by default
-  const [hasInteracted, setHasInteracted] = useState(true); // Allow audio to play immediately
-  const [touchUsed, setTouchUsed] = useState(false); // Prevent double-firing of touch/click events
-  const inputRef = useRef(null);
-  const terminalInnerRef = useRef(null); // Add ref for terminal-inner
   const navigate = useNavigate();
-  const location = useLocation();
-  const phwipRef = useRef(null);
-  const musicRef = useRef(null);
-  const audioRef = useRef(null);
+  const terminal = useTerminal();
+  const audio = useAudio(entered);
+
   useCursorEnlargeOnClick();
 
   // Handle GitHub Pages SPA routing redirect
@@ -42,314 +39,27 @@ function App() {
     }
   }, [navigate]);
 
-  // Set up audio volumes and mute state
-  useEffect(() => {
-    if (phwipRef.current) {
-      phwipRef.current.volume = 0.025;
-      phwipRef.current.muted = isMuted;
-    }
-    if (musicRef.current) {
-      musicRef.current.volume = 0.1;
-      musicRef.current.muted = isMuted;
-    }
-    if (audioRef.current) {
-      audioRef.current.volume = 0.1;
-      audioRef.current.muted = isMuted;
-    }
-  }, [isMuted]);
-  useEffect(() => {
-    // Audio will start muted due to HTML attributes, only unmute if user has interacted and not muted
-    if (!entered && audioRef.current) {
-      // Wind audio plays when not entered
-      if (hasInteracted) {
-        audioRef.current
-          .play()
-          .catch((e) => console.log("Wind play error:", e));
-      }
-    } else if (entered && audioRef.current) {
-      // Stop wind audio when entered
-      audioRef.current.pause();
-      audioRef.current.currentTime = 0;
-    }
-  }, [entered, hasInteracted]);
-
-  // Ensure input is always focusable and editable
-  useEffect(() => {
-    if (entered && inputRef.current) {
-      inputRef.current.focus();
-      // Place caret at end
-      const el = inputRef.current;
-      const range = document.createRange();
-      range.selectNodeContents(el);
-      range.collapse(false);
-      const sel = window.getSelection();
-      sel.removeAllRanges();
-      sel.addRange(range);
-    }
-  }, [entered, output]);
-
-  // Scroll to bottom when output changes (after Enter)
-  useEffect(() => {
-    if (entered && terminalInnerRef.current) {
-      terminalInnerRef.current.scrollTop =
-        terminalInnerRef.current.scrollHeight;
-    }
-  }, [output, entered]); // Play swap.mp3 on page swap (route change)
-  useEffect(() => {
-    if (phwipRef.current) {
-      phwipRef.current.currentTime = 0;
-      phwipRef.current.play();
-    }
-  }, [location.pathname]);
-
-  // Add background music (within.mp3) looped, play/pause based on user interaction
-  useEffect(() => {
-    if (musicRef.current) {
-      musicRef.current.loop = true;
-      // Only play after user has entered (interacted)
-      if (entered) {
-        musicRef.current.play().catch(() => {});
-      } else {
-        musicRef.current.pause();
-        musicRef.current.currentTime = 0;
-      }
-    }
-  }, [entered, location.pathname]); // Play swap.mp3 on link/button press (use only swap.mp3 everywhere)
-  const playSwap = () => {
-    if (phwipRef.current && !isMuted && hasInteracted) {
-      phwipRef.current.currentTime = 0;
-      phwipRef.current.play();
-    }
-  }; // Simple mute toggle function - iOS compatible
-  const handleMuteToggle = () => {
-    // On first interaction, ensure all audio can play for iOS
-    if (!hasInteracted) {
-      setHasInteracted(true);
-
-      // Explicitly start playback for iOS compatibility
-      if (audioRef.current && !entered) {
-        audioRef.current
-          .play()
-          .catch((e) => console.log("Wind audio play error:", e));
-      }
-      if (musicRef.current && entered) {
-        musicRef.current
-          .play()
-          .catch((e) => console.log("Music play error:", e));
-      }
-    }
-
-    // Toggle mute state
-    setIsMuted((prev) => !prev);
-  };
-  // Handle touch start - mark that touch was used
-  const handleTouchStart = (e) => {
-    e.preventDefault();
-    setTouchUsed(true);
-  };
-
-  // Handle touch end - only trigger if still over the button
-  const handleTouchEnd = (e) => {
-    e.preventDefault();
-    const touch = e.changedTouches[0];
-    const element = document.elementFromPoint(touch.clientX, touch.clientY);
-
-    // Only trigger if the touch ended on the button or its children
-    if (
-      element &&
-      (element.classList.contains("mute-btn-fixed") ||
-        element.closest(".mute-btn-fixed"))
-    ) {
-      handleMuteToggle();
-    }
-
-    // Reset touch flag after a short delay
-    setTimeout(() => setTouchUsed(false), 300);
-  };
-
-  // Handle click - only if touch wasn't used
-  const handleClick = (e) => {
-    e.preventDefault();
-    if (!touchUsed) {
-      handleMuteToggle();
-    }
-  };
-
-  const handleTerminalInput = (e) => {
-    setTerminalValue(e.target.innerText);
-    // Update caret position
-    const sel = window.getSelection();
-    if (sel && sel.anchorNode === e.target.firstChild) {
-      setCaretPos(sel.anchorOffset);
-    } else {
-      setCaretPos(e.target.innerText.length);
-    }
-  };
-
-  // Helper to clear terminal input
-  const clearTerminalInput = () => {
-    setTerminalValue("");
-    if (inputRef.current) {
-      inputRef.current.innerText = "";
-    }
-  };
-
-  // Helper to append output
-  const appendOutput = (line) => {
-    setOutput((prev) => [...prev, line]);
-  };
-
-  // Terminal keydown handler
-  const handleTerminalKeyDown = (e) => {
-    if (e.key === "Enter") {
-      const val = terminalValue.trim().toLowerCase();
-
-      const handleNavigate = (route) => {
-        navigate(`/${route}`);
-        clearTerminalInput();
-      };
-      if (val === ".\\forever.exe") {
-        appendOutput({
-          type: "cmd",
-          value: ".\\forever.exe",
-          output: LOADING_MSG,
-        });
-        clearTerminalInput();
-      } else if (val === "ls") {
-        appendOutput({
-          type: "cmd",
-          value: "ls",
-          output: TERMINAL_OPTIONS.map((opt) => opt.label),
-        });
-        clearTerminalInput();
-      } else if (val === "ls archive") {
-        appendOutput({
-          type: "cmd",
-          value: "ls archive",
-          output: ARCHIVE_SECTIONS,
-        });
-        clearTerminalInput();
-      } else if (val === "clear") {
-        setOutput([]);
-        clearTerminalInput();
-      } else if (val === "help") {
-        appendOutput({
-          type: "cmd",
-          value: "help",
-          output: [
-            "ls",
-            "ls archive",
-            "cat .",
-            "cat [section]",
-            "cat archive/[section]",
-            "help",
-            "clear",
-          ],
-        });
-        clearTerminalInput();
-      } else if (val === "cat .") {
-        appendOutput({ type: "cmd", value: "cat ." });
-        clearTerminalInput();
-        handleNavigate("root");
-      } else if (["cat bio", "cat resume", "cat archive"].includes(val)) {
-        appendOutput({ type: "cmd", value: val });
-        clearTerminalInput();
-        handleNavigate(val.replace("cat ", ""));
-      } else if (val.startsWith("cat archive/")) {
-        const section = val.replace("cat archive/", "");
-        if (ARCHIVE_SECTIONS.includes(section)) {
-          appendOutput({ type: "cmd", value: val });
-          clearTerminalInput();
-          handleNavigate(`archive/${section}`);
-        } else {
-          appendOutput({
-            type: "cmd",
-            value: val,
-            output: `archive section "${section}" not found. Use 'ls archive' to see available sections.`,
-          });
-          clearTerminalInput();
-        }
-      } else if (val === "cat") {
-        appendOutput({
-          type: "cmd",
-          value: val,
-          output: "Usage: cat [section] or cat archive/[section]",
-        });
-        clearTerminalInput();
-      } else if (TERMINAL_OPTIONS.some((opt) => opt.label === val)) {
-        appendOutput({ type: "cmd", value: val });
-        clearTerminalInput();
-      } else if (val.length > 0) {
-        appendOutput({
-          type: "cmd",
-          value: val,
-          output: `"${val}" is not a command. Use 'help' for a list of commands.`,
-        });
-        clearTerminalInput();
-      }
-
-      e.preventDefault();
-      return;
-    }
-
-    // Update caret position
-    setTimeout(() => {
-      const el = inputRef.current;
-      if (el) {
-        const sel = window.getSelection();
-        if (sel && sel.anchorNode === el.firstChild) {
-          setCaretPos(sel.anchorOffset);
-        } else {
-          setCaretPos(el.innerText.length);
-        }
-      }
-    }, 0);
-  };
   return (
     <>
-      {" "}
-      <CustomCursor /> {/* Mute button positioned at top right */}
-      <button
-        className="mute-btn-fixed"
-        onClick={handleClick}
-        onTouchStart={handleTouchStart}
-        onTouchEnd={handleTouchEnd}
-        aria-label={isMuted ? "Unmute audio" : "Mute audio"}
-      >
-        {/* 
-          Make sure these files exist:
-          public/assets/images/volume.png
-          public/assets/images/mute.png
-        */}
-        {isMuted ? (
-          <img
-            src="/assets/images/mute.png"
-            alt="Muted"
-            className="mute-btn-icon"
-          />
-        ) : (
-          <img
-            src="/assets/images/volume.png"
-            alt="Volume on"
-            className="mute-btn-icon"
-          />
-        )}
-      </button>
-      <audio ref={phwipRef} src="/assets/audio/swap.mp3" preload="auto" />
+      <CustomCursor />
+      <MuteButton isMuted={audio.isMuted} onToggle={audio.toggleMute} />
+
+      <audio ref={audio.phwipRef} src="/assets/audio/swap.mp3" preload="auto" />
       <audio
-        ref={musicRef}
+        ref={audio.musicRef}
         src="/assets/audio/within.mp3"
         preload="auto"
         loop
         style={{ display: "none" }}
       />
       <audio
-        ref={audioRef}
+        ref={audio.windRef}
         src="/assets/audio/wind.mp3"
         loop
         autoPlay
         style={{ display: "none" }}
       />
+
       <Routes>
         <Route
           path="/"
@@ -358,238 +68,45 @@ function App() {
               <CursorTrail />
               <header className="header"></header>
               <div className="grid-cell">
-                {/* Row 1: (empty or for future use) */}
                 <div className="row1" />
-                {/* Row 2: Main content (Lain image/button or terminal) */}
                 <div className="row2">
                   {!entered && (
-                    <img
-                      className="lain-img"
-                      src="/assets/images/lain.gif"
-                      alt="Lain"
+                    <>
+                      <img
+                        className="lain-img"
+                        src="/assets/images/lain.gif"
+                        alt="Lain"
+                      />
+                      <button
+                        className="enter-btn"
+                        onMouseDown={audio.playSwap}
+                        onClick={() => setEntered(true)}
+                      >
+                        [enter]
+                      </button>
+                    </>
+                  )}
+
+                  {entered && (
+                    <Terminal
+                      terminalState={terminal.state}
+                      inputRef={terminal.inputRef}
+                      terminalInnerRef={terminal.terminalInnerRef}
+                      onInput={terminal.handleInput}
+                      onKeyDown={terminal.handleKeyDown}
                     />
                   )}
-                  {!entered && (
-                    <button
-                      className="enter-btn"
-                      onMouseDown={playSwap}
-                      onClick={() => setEntered(true)}
-                    >
-                      [enter]
-                    </button>
-                  )}
-                  {entered && (
-                    <div
-                      className="terminal-container"
-                      onClick={() => {
-                        if (inputRef.current) {
-                          inputRef.current.focus();
-                          // Place caret at end
-                          const el = inputRef.current;
-                          const range = new Range();
-                          range.selectNodeContents(el);
-                          range.collapse(false);
-                          const sel = window.getSelection();
-                          sel.removeAllRanges();
-                          sel.addRange(range);
-                        }
-                      }}
-                    >
-                      <div className="pixel-stream-bg"></div>
-                      <div className="terminal-inner" ref={terminalInnerRef}>
-                        {/* Output history, each command and its output (if any) */}
-                        {output.map((line, idx) => (
-                          <React.Fragment key={idx}>
-                            <div className="terminal-row">
-                              <span className="terminal-user">
-                                zoey<span className="at-symbol">@</span>wired
-                              </span>
-                              <span className="terminal-prompt flicker">
-                                &gt;
-                              </span>
-                              <span className="terminal-input-history">
-                                <span className="cmd">{line.value}</span>
-                              </span>
-                            </div>{" "}
-                            {/* Only render output line for ls, help, and specific commands */}
-                            {line.output &&
-                              (line.value === "ls" ||
-                              line.value === "ls archive" ||
-                              line.value === "help" ? (
-                                <div className="terminal-row">
-                                  <span
-                                    className="terminal-user"
-                                    style={{ visibility: "hidden" }}
-                                  >
-                                    <span className="footer-email">
-                                      zoey<span className="at-symbol">@</span>
-                                      wired
-                                    </span>
-                                  </span>
-                                  <span
-                                    className="terminal-prompt flicker"
-                                    style={{ visibility: "hidden" }}
-                                  >
-                                    &gt;
-                                  </span>
-                                  <span
-                                    className={
-                                      line.value === "ls" ||
-                                      line.value === "ls archive"
-                                        ? "ls-list"
-                                        : "help-list"
-                                    }
-                                  >
-                                    {/* Highlight commands in output */}
-                                    {Array.isArray(line.output) ? (
-                                      line.value === "ls" ||
-                                      line.value === "ls archive" ? (
-                                        <div className="ls-items">
-                                          {line.output.map((item, i) => (
-                                            <span key={i} className="ls-item">
-                                              {item}
-                                            </span>
-                                          ))}
-                                        </div>
-                                      ) : (
-                                        line.output.map((l, i) =>
-                                          typeof l === "string" &&
-                                          (l.includes("ls") ||
-                                            l.includes("help") ||
-                                            l.includes("clear") ||
-                                            l.includes("cat") ||
-                                            l.includes("archive")) ? (
-                                            <div
-                                              key={i}
-                                              dangerouslySetInnerHTML={{
-                                                __html: l.replace(
-                                                  /(ls|help|clear|cat \[?\w*\/?\w*\]?|archive)/g,
-                                                  '<span class="cmd-accent">$1</span>'
-                                                ),
-                                              }}
-                                            />
-                                          ) : (
-                                            <div key={i}>{l}</div>
-                                          )
-                                        )
-                                      )
-                                    ) : typeof line.output === "string" &&
-                                      (line.output.includes("ls") ||
-                                        line.output.includes("help") ||
-                                        line.output.includes("clear") ||
-                                        line.includes("cat") ||
-                                        line.output.includes("archive")) ? (
-                                      <span
-                                        dangerouslySetInnerHTML={{
-                                          __html: line.output.replace(
-                                            /(ls|help|clear|cat \[?\w*\/?\w*\]?|archive)/g,
-                                            '<span class="cmd-accent">$1</span>'
-                                          ),
-                                        }}
-                                      />
-                                    ) : (
-                                      line.output
-                                    )}
-                                  </span>
-                                </div>
-                              ) : line.value === "cat" ||
-                                line.value.startsWith("command not found:") ||
-                                line.output
-                                  .toString()
-                                  .includes("is not a command") ||
-                                line.output.toString().includes("not found") ? (
-                                <div className="terminal-row">
-                                  <span
-                                    className="terminal-user"
-                                    style={{ visibility: "hidden" }}
-                                  >
-                                    <span className="footer-email">
-                                      zoey<span className="at-symbol">@</span>
-                                      wired
-                                    </span>
-                                  </span>
-                                  <span
-                                    className="terminal-prompt flicker"
-                                    style={{ visibility: "hidden" }}
-                                  >
-                                    &gt;
-                                  </span>
-                                  <span className="error">{line.output}</span>
-                                </div>
-                              ) : (
-                                <div className="terminal-row">
-                                  <span
-                                    className="terminal-user"
-                                    style={{ visibility: "hidden" }}
-                                  >
-                                    <span className="footer-email">
-                                      zoey<span className="at-symbol">@</span>
-                                      wired
-                                    </span>
-                                  </span>
-                                  <span
-                                    className="terminal-prompt flicker"
-                                    style={{ visibility: "hidden" }}
-                                  >
-                                    &gt;
-                                  </span>
-                                  <span>{line.output}</span>
-                                </div>
-                              ))}
-                          </React.Fragment>
-                        ))}
-                        {/* Input row */}
-                        <div className="terminal-row">
-                          <span className="terminal-user">
-                            zoey<span className="at-symbol">@</span>wired
-                          </span>
-                          <span className="terminal-prompt flicker">&gt;</span>
-                          <span
-                            className="terminal-input"
-                            contentEditable
-                            suppressContentEditableWarning
-                            ref={inputRef}
-                            spellCheck={false}
-                            onInput={handleTerminalInput}
-                            onKeyDown={handleTerminalKeyDown}
-                            tabIndex={0}
-                            aria-label="Type a command"
-                            onClick={(e) => {
-                              // Place caret at end on click
-                              const el = e.currentTarget;
-                              const range = new Range();
-                              range.selectNodeContents(el);
-                              range.collapse(false);
-                              const sel = window.getSelection();
-                              sel.removeAllRanges();
-                              sel.addRange(range);
-                            }}
-                            style={{
-                              flex: 1,
-                              minWidth: 0,
-                              display: "inline-block",
-                            }}
-                          />{" "}
-                          {terminalValue.length > 0 && (
-                            <span className="terminal-cursor blink input-cursor">
-                              {terminalValue[caretPos] || " "}
-                            </span>
-                          )}
-                        </div>
-                      </div>
-                    </div>
-                  )}
                 </div>
-                {/* Row 3: (empty or for future use) */}
                 <div className="row3" />
-              </div>{" "}
+              </div>
+
               <footer className="footer">
                 <span>
                   <a
                     href="https://github.com/zoeyvo"
                     target="_blank"
                     rel="noopener noreferrer"
-                    onClick={playSwap}
+                    onClick={audio.playSwap}
                   >
                     github.com/zoeyvo
                   </a>
@@ -598,7 +115,7 @@ function App() {
                     href="https://www.linkedin.com/in/zoeyvo"
                     target="_blank"
                     rel="noopener noreferrer"
-                    onClick={playSwap}
+                    onClick={audio.playSwap}
                   >
                     linkedin.com/in/zoeyvo
                   </a>
@@ -608,7 +125,7 @@ function App() {
                       href="https://mail.google.com/mail/?view=cm&to=zoeyvo256@gmail.com"
                       target="_blank"
                       rel="noopener noreferrer"
-                      onClick={playSwap}
+                      onClick={audio.playSwap}
                     >
                       zoeyvo256<span className="at-symbol">@</span>gmail.com
                     </a>
@@ -618,18 +135,19 @@ function App() {
             </div>
           }
         />
+
         <Route
           path="/root"
           element={
-            <PageLayout playSwap={playSwap}>
-              <Root playSwap={playSwap} />
+            <PageLayout playSwap={audio.playSwap}>
+              <Root playSwap={audio.playSwap} />
             </PageLayout>
           }
         />
         <Route
           path="/bio"
           element={
-            <PageLayout playSwap={playSwap}>
+            <PageLayout playSwap={audio.playSwap}>
               <Bio />
             </PageLayout>
           }
@@ -637,7 +155,7 @@ function App() {
         <Route
           path="/resume"
           element={
-            <PageLayout playSwap={playSwap}>
+            <PageLayout playSwap={audio.playSwap}>
               <Resume />
             </PageLayout>
           }
@@ -645,15 +163,15 @@ function App() {
         <Route
           path="/archive"
           element={
-            <PageLayout playSwap={playSwap}>
-              <Archive playSwap={playSwap} />
+            <PageLayout playSwap={audio.playSwap}>
+              <Archive playSwap={audio.playSwap} />
             </PageLayout>
           }
         />
         <Route
           path="/archive/cardgames"
           element={
-            <PageLayout playSwap={playSwap}>
+            <PageLayout playSwap={audio.playSwap}>
               <ArchiveCardGames />
             </PageLayout>
           }
@@ -661,7 +179,7 @@ function App() {
         <Route
           path="/archive/recipes"
           element={
-            <PageLayout playSwap={playSwap}>
+            <PageLayout playSwap={audio.playSwap}>
               <ArchiveRecipes />
             </PageLayout>
           }
@@ -669,7 +187,7 @@ function App() {
         <Route
           path="/archive/media"
           element={
-            <PageLayout playSwap={playSwap}>
+            <PageLayout playSwap={audio.playSwap}>
               <ArchiveMedia />
             </PageLayout>
           }
@@ -677,7 +195,7 @@ function App() {
         <Route
           path="/archive/notes"
           element={
-            <PageLayout playSwap={playSwap}>
+            <PageLayout playSwap={audio.playSwap}>
               <ArchiveNotes />
             </PageLayout>
           }
@@ -685,7 +203,7 @@ function App() {
         <Route
           path="/archive/bookmarks"
           element={
-            <PageLayout playSwap={playSwap}>
+            <PageLayout playSwap={audio.playSwap}>
               <ArchiveBookmarks />
             </PageLayout>
           }
