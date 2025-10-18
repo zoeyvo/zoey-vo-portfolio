@@ -4,6 +4,16 @@ import React from "react";
 function ArchiveNotes() {
   const notes = [
     {
+      date: "2025-10-16",
+      title: "note 23",
+      content: "'alleged misandrist'",
+    },
+    {
+      date: "2025-10-10",
+      title: "thousand yard stare",
+      content: "",
+    },
+    {
       date: "2025-10-06",
       title: "note 21",
       content: "they are bogarting it all",
