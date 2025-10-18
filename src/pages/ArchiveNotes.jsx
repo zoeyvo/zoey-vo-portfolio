@@ -1,6 +1,3 @@
-// ArchiveNotes.jsx
-import React from "react";
-
 function ArchiveNotes() {
   const notes = [
     {
@@ -10,8 +7,8 @@ function ArchiveNotes() {
     },
     {
       date: "2025-10-10",
-      title: "thousand yard stare",
-      content: "",
+      title: "note 22",
+      content: "thousand yard stare",
     },
     {
       date: "2025-10-06",
@@ -128,11 +125,7 @@ function ArchiveNotes() {
           <br />
         </div>
         {notes.map((note, index) => (
-          <div
-            key={index}
-            className="item"
-            style={{ textAlign: "center" }}
-          >
+          <div key={index} className="item" style={{ textAlign: "center" }}>
             <div
               className="note-header"
               style={{ justifyContent: "center", textAlign: "center" }}

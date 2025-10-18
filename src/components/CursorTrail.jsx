@@ -1,15 +1,4 @@
-/**
- * CursorTrail.jsx
- * Renders the custom mouse particle/cursor effect.
- * - Uses react-mouse-particles for trailing effect.
- * - Enforces custom angel wings cursor globally.
- * - Particle frequency is controlled by minDistance and minInterval.
- *   Lower values = more frequent 1/0 particles.
- *   Current: minDistance = 24px, minInterval = 24ms (high frequency)
- * - No unused code or styles.
- */
-
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 const chars = ["0", "1"];
 

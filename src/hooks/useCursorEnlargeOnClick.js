@@ -1,6 +1,5 @@
 import { useEffect } from "react";
 
-// Custom hook for cursor enlargement on click
 export function useCursorEnlargeOnClick() {
   useEffect(() => {
     const handleMouseDown = () => {

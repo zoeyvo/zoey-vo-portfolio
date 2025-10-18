@@ -224,12 +224,7 @@ body {
   border-top: $border-thick solid $text-color;
   margin-top: auto;
 
-  a,
   .footer-email {
-    color: $text-color;
-    text-decoration: none;
-    transition: color 0.15s;
-
     .at-symbol {
       font-family: "IBM Plex Mono", "Courier New", "monospace", $typewriter-font;
       font-size: inherit;
@@ -239,12 +234,6 @@ body {
     }
   }
 
-  a:hover,
-  a:focus {
-    color: $link-accent;
-    text-decoration: underline;
-  }
-
   > span {
     @include flex-center;
     gap: 1.5em;
@@ -252,6 +241,15 @@ body {
   }
 }
 
+a {
+  color: $white;
+  
+  &:hover,
+  &:focus {
+    color: $link-accent;
+    text-decoration: underline;
+  }
+}
 
 // ======================
 // ELEMENT & CLASS STYLES
@@ -405,7 +403,6 @@ body {
 
 // LINKS
 
-a,
 a:hover,
 a:focus,
 .link:hover,

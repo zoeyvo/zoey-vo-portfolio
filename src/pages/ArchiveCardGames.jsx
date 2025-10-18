@@ -1,6 +1,3 @@
-// ArchiveCardGames.jsx
-import React from "react";
-
 function ArchiveCardGames() {
   // Tiến Lên (Vietnamese card game) — Rules Summary
   return (

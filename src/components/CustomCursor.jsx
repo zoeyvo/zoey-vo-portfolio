@@ -1,7 +1,7 @@
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import "./CustomCursor.scss";
 
-// Custom cursor overlay that follows the mouse and plumps up on click
+// Custom cursor overlay that follows the mouse and expands on click
 const CustomCursor = () => {
   const cursorRef = useRef(null);
   const [enlarged, setEnlarged] = useState(false);
@@ -53,7 +53,7 @@ const CustomCursor = () => {
     };
   }, []);
 
-  // Click plump up animation
+  // Click expand animation
   useEffect(() => {
     const handleDown = () => {
       setEnlarged(true);

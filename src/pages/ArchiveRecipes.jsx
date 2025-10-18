@@ -1,6 +1,3 @@
-// ArchiveRecipes.jsx
-import React from "react";
-
 function ArchiveRecipes() {
   return (
     <div className="grid-cell">

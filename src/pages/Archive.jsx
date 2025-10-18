@@ -1,5 +1,4 @@
-// Archive.jsx
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 function Archive({ playSwap }) {
@@ -8,9 +7,7 @@ function Archive({ playSwap }) {
   // Ensure font is loaded to reduce browser warnings
   useEffect(() => {
     if (document.fonts && document.fonts.load) {
-      document.fonts.load("1rem Typewriter").catch(() => {
-        // Font loading failed, fallback will be used
-      });
+      document.fonts.load("1rem Typewriter").catch(() => {});
     }
   }, []);
 

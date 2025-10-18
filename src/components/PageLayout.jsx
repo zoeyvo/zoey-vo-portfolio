@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import CursorTrail from "./CursorTrail";
 import { getAssetUrl } from "../utils/constants";
 
@@ -9,6 +9,7 @@ import { getAssetUrl } from "../utils/constants";
  * - Passes playSwap to children for consistent sound effects.
  * - All layout and sizing is handled by SCSS for consistency.
  */
+
 function PageLayout({ children, playSwap }) {
   // Preload all major assets for instant navigation
   useEffect(() => {

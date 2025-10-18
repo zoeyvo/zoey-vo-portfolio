@@ -1,6 +1,3 @@
-// ArchiveBookmarks.jsx
-import React from "react";
-
 function ArchiveBookmarks() {
   const bookmarks = [
     {
@@ -37,22 +34,13 @@ function ArchiveBookmarks() {
     <div className="grid-cell">
       <div className="content">
         <span className="title">~/archive/bookmarks</span>
-        <div className="item">
-          <div className="bookmark-links">
-            {bookmarks.map((bookmark, linkIndex) => (
-              <div key={linkIndex} className="bookmark-link">
-                <a
-                  href={bookmark.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="link-name mono"
-                >
-                  {bookmark.title}
-                </a>
-              </div>
-            ))}
+        {bookmarks.map((bookmark, linkIndex) => (
+          <div key={linkIndex}>
+            <a href={bookmark.url} target="_blank" rel="noopener noreferrer">
+              {bookmark.title}
+            </a>
           </div>
-        </div>
+        ))}
       </div>
     </div>
   );
