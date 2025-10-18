@@ -697,6 +697,7 @@ a:focus,
   }
 }
 
+
 // BIO
 
 .bio-desc {
@@ -713,6 +714,12 @@ a:focus,
 .bio-mobile-dot {
   font-size: 0.8em;
   opacity: 0.8;
+}
+
+.bio-picture {
+  width: 20vh;
+  align-items: center;
+  margin-bottom: 1.2em;
 }
 
 // RESUME
