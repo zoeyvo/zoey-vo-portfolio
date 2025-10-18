@@ -2,11 +2,9 @@
 // APP STYLES
 // ==========
 
-
 // =========================================
 // FONTS, COLOR PALETTE, VARIABLES, & MIXINS
 // =========================================
-
 
 // FONTS
 
@@ -17,8 +15,8 @@
   font-style: normal;
   font-display: swap;
 }
-$typewriter-font: "Typewriter", "Courier New", "Lucida Console", "Monaco", monospace;
-
+$typewriter-font: "Typewriter", "Courier New", "Lucida Console", "Monaco",
+  monospace;
 
 // COLORS
 
@@ -35,7 +33,6 @@ $glow-light: rgba($glow-green, 0.27);
 $glow-medium: rgba($glow-green, 0.53);
 $glow-strong: rgba($glow-green, 0.8);
 
-
 // SIZING/SPACING
 
 $mute-icon-size: 18px;
@@ -49,7 +46,8 @@ $shadow-size-xxl: 16px;
 $shadow-size-huge: 24px;
 
 $shadow-strong: 0 0 $shadow-size-xxl rgba($bg-1, 0.65);
-$shadow-soft: 0 0 $shadow-size-sm $text-color, 0 0 $shadow-size-md $text-color, 0 0 $shadow-size-lg $text-color, 0 0 $shadow-size-xl $text-color;
+$shadow-soft: 0 0 $shadow-size-sm $text-color, 0 0 $shadow-size-md $text-color,
+  0 0 $shadow-size-lg $text-color, 0 0 $shadow-size-xl $text-color;
 
 $font-size-hero: 2rem;
 $font-size-xl: 1.5rem;
@@ -90,7 +88,6 @@ $border-thick: 2px;
 $letter-spacing-normal: 0.1em;
 $opacity-light: 0.3;
 
-
 // UTILITY MIXINS
 
 @mixin flex-center {
@@ -99,7 +96,11 @@ $opacity-light: 0.3;
   align-items: center;
 }
 
-@mixin text-glow($color: $accent, $size1: $shadow-size-sm, $size2: $shadow-size-lg) {
+@mixin text-glow(
+  $color: $accent,
+  $size1: $shadow-size-sm,
+  $size2: $shadow-size-lg
+) {
   text-shadow: 0 0 $size1 $color, 0 0 $size2 $color;
 }
 
@@ -120,11 +121,9 @@ $opacity-light: 0.3;
   letter-spacing: 0.08em;
 }
 
-
 // =======
 // LAYOUTS
 // =======
-
 
 body {
   height: 100vh;
@@ -183,7 +182,6 @@ body {
   width: 100%;
 }
 
-
 // HEADER
 
 .header-navi {
@@ -206,15 +204,18 @@ body {
 
   .navi-img,
   .navi-img-wrapper {
-    filter: drop-shadow(0 0 1px #{$glow-medium}) drop-shadow(0 0 2px #{$glow-light});
+    filter: drop-shadow(0 0 1px #{$glow-medium})
+      drop-shadow(0 0 2px #{$glow-light});
   }
 }
 
-
 // FOOTER
-
 .footer {
   @include flex-center;
+  position: fixed; // Change to fixed
+  bottom: 0; // Stick to bottom
+  left: 0; // Start from left edge
+  right: 0; // Extend to right edge
   text-align: center;
   font-size: $font-size-xs;
   padding: $spacing-0-7 $spacing-sm;
@@ -222,7 +223,7 @@ body {
   background: $bg-2;
   color: $text-color;
   border-top: $border-thick solid $text-color;
-  margin-top: auto;
+  z-index: 100; // Ensure it stays on top of other content
 
   .footer-email {
     .at-symbol {
@@ -243,7 +244,7 @@ body {
 
 a {
   color: $white;
-  
+
   &:hover,
   &:focus {
     color: $link-accent;
@@ -254,7 +255,6 @@ a {
 // ======================
 // ELEMENT & CLASS STYLES
 // ======================
-
 
 .content {
   @include flex-center;
@@ -322,7 +322,6 @@ a {
   }
 }
 
-
 // CURSOR
 
 .cursor-trail-char {
@@ -339,7 +338,6 @@ a {
   font-size: $font-size-cursor;
 }
 
-
 // BUTTONS
 
 .mute-btn-fixed {
@@ -353,7 +351,8 @@ a {
   cursor: pointer;
   padding: 0.5rem;
   z-index: 1000;
-  font-family: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif;
+  font-family: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji",
+    sans-serif;
   -webkit-tap-highlight-color: transparent;
   touch-action: manipulation;
   user-select: none;
@@ -373,7 +372,8 @@ a {
   height: $mute-icon-size;
   vertical-align: middle;
   display: inline-block;
-  filter: brightness(0) saturate(100%) invert(94%) sepia(6%) saturate(300%) hue-rotate(0deg) brightness(1) contrast(1);
+  filter: brightness(0) saturate(100%) invert(94%) sepia(6%) saturate(300%)
+    hue-rotate(0deg) brightness(1) contrast(1);
 }
 
 .enter-btn {
@@ -400,7 +400,6 @@ a {
   }
 }
 
-
 // LINKS
 
 a:hover,
@@ -410,7 +409,6 @@ a:focus,
   color: $link-accent;
   text-decoration: underline;
 }
-
 
 // TERMINAL
 
@@ -536,10 +534,12 @@ a:focus,
 }
 
 @keyframes blink {
-  0%, 50% {
+  0%,
+  50% {
     opacity: 1;
   }
-  51%, 100% {
+  51%,
+  100% {
     opacity: 0;
   }
 }
@@ -550,12 +550,24 @@ a:focus,
 }
 
 @keyframes flicker {
-  0% { opacity: 1; }
-  10% { opacity: 0.7; }
-  20% { opacity: 1; }
-  30% { opacity: 0.8; }
-  40% { opacity: 1; }
-  100% { opacity: 0.95; }
+  0% {
+    opacity: 1;
+  }
+  10% {
+    opacity: 0.7;
+  }
+  20% {
+    opacity: 1;
+  }
+  30% {
+    opacity: 0.8;
+  }
+  40% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.95;
+  }
 }
 
 .terminal-options {
@@ -685,7 +697,6 @@ a:focus,
   }
 }
 
-
 // BIO
 
 .bio-desc {
@@ -703,7 +714,6 @@ a:focus,
   font-size: 0.8em;
   opacity: 0.8;
 }
-
 
 // RESUME
 
@@ -735,14 +745,14 @@ a:focus,
   font-family: $typewriter-font;
 }
 
-
 // CARDGAMES
 
 .cardgame-box {
   background: $bg-1;
   border-radius: $radius-xl;
   border: $border-thick solid $accent;
-  box-shadow: 0 0 $shadow-size-md $text-color, 0 0 $shadow-size-lg $text-color, 0 0 $shadow-size-xl $text-color, 0 0 $shadow-size-xxl $text-color;
+  box-shadow: 0 0 $shadow-size-md $text-color, 0 0 $shadow-size-lg $text-color,
+    0 0 $shadow-size-xl $text-color, 0 0 $shadow-size-xxl $text-color;
   margin-bottom: $spacing-lg;
   padding: $spacing-sm $spacing-sm $spacing-md;
   max-width: 1200px;
@@ -753,7 +763,8 @@ a:focus,
 
   &:hover,
   &:focus {
-    box-shadow: 0 0 $shadow-size-lg $text-color, 0 0 $shadow-size-xl $text-color, 0 0 $shadow-size-xxl $text-color, 0 0 $shadow-size-huge $text-color;
+    box-shadow: 0 0 $shadow-size-lg $text-color, 0 0 $shadow-size-xl $text-color,
+      0 0 $shadow-size-xxl $text-color, 0 0 $shadow-size-huge $text-color;
   }
 }
 
@@ -866,11 +877,9 @@ a:focus,
   font-family: $typewriter-font;
 }
 
-
 // =========================
 // RESPONSIVE STYLES
 // =========================
-
 
 // WEB
 
@@ -896,7 +905,6 @@ a:focus,
   }
 }
 
-
 // MOBILE
 
 @media (max-width: 600px) {
@@ -915,7 +923,7 @@ a:focus,
     flex-direction: column;
     gap: 0.5em;
   }
-  
+
   .terminal-container {
     min-width: 0;
     max-width: 98vw;
@@ -936,8 +944,8 @@ a:focus,
 
   .lain-img {
     width: 70%;
-  } 
-  
+  }
+
   .enter-btn {
     font-size: $font-size-xs;
   }
