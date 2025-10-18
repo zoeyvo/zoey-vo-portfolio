@@ -2,6 +2,7 @@
 // APP STYLES
 // ==========
 
+
 // =========================================
 // FONTS, COLOR PALETTE, VARIABLES, & MIXINS
 // =========================================
@@ -14,97 +15,80 @@
   src: url("/assets/fonts/typewriter.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
-  font-display: swap; // Improves loading performance and reduces font warnings
-  unicode-range: U+0020-007F; // Basic Latin characters only to reduce font processing
+  font-display: swap;
 }
-$typewriter-font:
-  "Typewriter", "Courier New", "Lucida Console", "Monaco", monospace; // Enhanced fallback
+$typewriter-font: "Typewriter", "Courier New", "Lucida Console", "Monaco", monospace;
 
 
 // COLORS
 
-$bg-1: #101010; // Main background
-$bg-2: #656865; // Footer/header background
-$accent: #aec8a4; // Accent color
+$bg-1: #101010;
+$bg-2: #656865;
+$accent: #aec8a4;
 $link-accent: #90c87a;
-$text-color: #e9ecda; // Main text color
-$white: #ebebeb; // White color variable
-$error-color: #fc7676; // Error color for terminal and error messages
+$text-color: #e9ecda;
+$white: #ebebeb;
+$error-color: #fc7676;
 
-// Shared glow color variables (used for cursor, navi, and other glowing elements)
-$glow-green: rgb(0, 159, 32); // Base green color for all glows
-$glow-light: rgba($glow-green, 0.27); // Light glow (27% opacity)
-$glow-medium: rgba($glow-green, 0.53); // Medium glow (53% opacity)
-$glow-strong: rgba($glow-green, 0.8); // Strong glow (80% opacity)
+$glow-green: rgb(0, 159, 32);
+$glow-light: rgba($glow-green, 0.27);
+$glow-medium: rgba($glow-green, 0.53);
+$glow-strong: rgba($glow-green, 0.8);
 
 
 // SIZING/SPACING
 
-$mute-icon-size: 18px; // 75% of 24px
+$mute-icon-size: 18px;
 
-$shadow-size-xs: 2px; // Extra small shadow blur
-$shadow-size-sm: 4px; // Small shadow blur
-$shadow-size-md: 6px; // Medium shadow blur
-$shadow-size-lg: 8px; // Large shadow blur
-$shadow-size-xl: 12px; // Extra large shadow blur
-$shadow-size-xxl: 16px; // XXL shadow blur
-$shadow-size-huge: 24px; // Huge shadow blur
+$shadow-size-xs: 2px;
+$shadow-size-sm: 4px;
+$shadow-size-md: 6px;
+$shadow-size-lg: 8px;
+$shadow-size-xl: 12px;
+$shadow-size-xxl: 16px;
+$shadow-size-huge: 24px;
 
 $shadow-strong: 0 0 $shadow-size-xxl rgba($bg-1, 0.65);
-$shadow-soft:
-  0 0 $shadow-size-sm $text-color,
-  0 0 $shadow-size-md $text-color,
-  0 0 $shadow-size-lg $text-color,
-  0 0 $shadow-size-xl $text-color;
+$shadow-soft: 0 0 $shadow-size-sm $text-color, 0 0 $shadow-size-md $text-color, 0 0 $shadow-size-lg $text-color, 0 0 $shadow-size-xl $text-color;
 
-$font-size-hero: 2rem; // Gothic text/hero headings
-$font-size-xl: 1.5rem; // Page titles (bio, resume, archive)
-$font-size-lg: 1.25rem; // Section headings (projects, bio content)
-$font-size-base: 1rem; // Bio description, Base text, terminal text, project descriptions and links
-$font-size-xs: 0.75rem; // Mobile bio/project text, Footer, mobile buttons, links, tags, note dates, mobile terminal text
-$font-size-cursor: 1.1rem; // Cursor trail text size
+$font-size-hero: 2rem;
+$font-size-xl: 1.5rem;
+$font-size-lg: 1.25rem;
+$font-size-base: 1rem;
+$font-size-xs: 0.75rem;
+$font-size-cursor: 1.1rem;
 
-$spacing-sm: 0.5rem; // 8px - Small gaps, inner padding
-$spacing-md: 1rem; // 16px - Standard spacing
-$spacing-lg: 1.5rem; // 24px - Section spacing
+$spacing-sm: 0.5rem;
+$spacing-md: 1rem;
+$spacing-lg: 1.5rem;
+$spacing-2: 0.125rem;
+$spacing-10: 0.625rem;
+$spacing-15: 0.9375rem;
+$spacing-2px: 2px;
+$spacing-10px: 10px;
+$spacing-1-2: 1.2rem;
+$spacing-0-7: 0.7rem;
+$spacing-2-2: 2.2rem;
 
-// Fine-grained spacing for specific use cases
-$spacing-2: 0.125rem; // 2px - Very fine spacing
-$spacing-10: 0.625rem; // 10px - Medium-small padding
-$spacing-15: 0.9375rem; // 15px - Content padding
+$width-full: 100vw;
+$max-content-width: 720px;
+$content-width: 420px;
+$height-full: 100vh;
+$height-terminal: 320px;
+$height-min-content: 60vh;
+$height-min-small: 100px;
 
-// Specific spacing values found in the CSS
-$spacing-2px: 2px; // 2px for padding/margins
-$spacing-10px: 10px; // 10px for padding/margins
-$spacing-1-2: 1.2rem; // 19.2px - Terminal padding
-$spacing-0-7: 0.7rem; // 11.2px - Footer padding
-$spacing-2-2: 2.2rem; // 35.2px - Footer min-height
+$radius-xs: 2px;
+$radius-sm: 4px;
+$radius-md: 6px;
+$radius-lg: 8px;
+$radius-xl: 12px;
 
-// Layout variables
-$width-full: 100vw; // Full viewport width
-$max-content-width: 720px; // Max content width
-$content-width: 420px; // Archive and bio content width
-$height-full: 100vh; // Full viewport height
-$height-terminal: 320px; // Terminal height
-$height-min-content: 60vh; // Minimum content height
-$height-min-small: 100px; // Minimum small content height
+$border-thin: 1px;
+$border-thick: 2px;
 
-// Border radius variables
-$radius-xs: 2px; // Extra small radius
-$radius-sm: 4px; // Small radius
-$radius-md: 6px; // Medium radius
-$radius-lg: 8px; // Large radius
-$radius-xl: 12px; // Extra large radius
-
-// Border width variables
-$border-thin: 1px; // Thin borders
-$border-thick: 2px; // Thick borders
-
-// Letter spacing variables
-$letter-spacing-normal: 0.1em; // Normal letter spacing
-
-// Opacity variables
-$opacity-light: 0.3; // Light opacity
+$letter-spacing-normal: 0.1em;
+$opacity-light: 0.3;
 
 
 // UTILITY MIXINS
@@ -115,18 +99,8 @@ $opacity-light: 0.3; // Light opacity
   align-items: center;
 }
 
-@mixin box-shadow($shadow) {
-  box-shadow: $shadow;
-}
-
-@mixin text-glow(
-  $color: $accent,
-  $size1: $shadow-size-sm,
-  $size2: $shadow-size-lg
-) {
-  text-shadow:
-    0 0 $size1 $color,
-    0 0 $size2 $color;
+@mixin text-glow($color: $accent, $size1: $shadow-size-sm, $size2: $shadow-size-lg) {
+  text-shadow: 0 0 $size1 $color, 0 0 $size2 $color;
 }
 
 @mixin terminal-glow {
@@ -136,30 +110,14 @@ $opacity-light: 0.3; // Light opacity
   background: $bg-1;
 }
 
-// Standard content padding mixin
 @mixin content-padding {
   padding: $spacing-15;
 }
 
-// Button styling mixin
-@mixin button-style($bg: $accent, $color: $bg-1, $border-radius: $radius-sm) {
-  background: $bg;
-  color: $color;
-  border: none;
-  border-radius: $border-radius;
-  padding: $spacing-2 $spacing-10;
+@mixin typewriter-text($size: $font-size-base) {
   font-family: $typewriter-font;
-  cursor: pointer;
-  transition: all 0.15s ease;
-}
-
-// Card/section styling mixin
-@mixin card-style($padding: $spacing-md, $radius: $radius-lg) {
-  background: rgba($accent, 0.08);
-  border: $border-thin solid rgba($accent, $opacity-light);
-  border-radius: $radius;
-  padding: $padding;
-  transition: all 0.18s ease;
+  font-size: $size;
+  letter-spacing: 0.08em;
 }
 
 
@@ -167,15 +125,13 @@ $opacity-light: 0.3; // Light opacity
 // LAYOUTS
 // =======
 
-// UNIVERSAL
+
 body {
   height: 100vh;
   margin: 0;
   box-sizing: border-box;
 }
 
-
-// ROOT
 .root {
   display: flex;
   flex-direction: column;
@@ -184,20 +140,13 @@ body {
   background: $bg-1;
   color: $text-color;
   font-family: $typewriter-font;
+
+  &.landing,
+  &.terminal {
+    @include flex-center;
+  }
 }
 
-.root.landing {
-  justify-content: center;
-  align-items: center;
-}
-.root.landing,
-.root.terminal {
-  min-height: $height-full;
-  @include flex-center;
-}
-
-
-// GRID
 .grid-cell,
 .page-cell {
   display: flex;
@@ -213,43 +162,25 @@ body {
   max-width: $max-content-width;
   margin: 0 auto;
   box-sizing: border-box;
-  overflow-x: hidden; // Prevent horizontal overflow
-}
-// Center content for landing/terminal
-.landing .grid-cell,
-.landing .page-cell,
-.terminal .grid-cell,
-.terminal .page-cell {
-  @include flex-center;
-  min-height: $height-min-content;
-  margin: 0 auto;
-}
-// Center horizontally for other pages
-.grid-cell:not(.landing),
-.page-cell:not(.landing) {
-  align-items: center;
-  justify-content: flex-start;
-  margin: 0 auto;
+  overflow-x: hidden;
+
+  .landing &,
+  .terminal & {
+    @include flex-center;
+    min-height: $height-min-content;
+  }
 }
 
-
-// CELL
-
-.row1 {
+.row1,
+.row3 {
   flex: 1 0 0;
 }
 
 .row2 {
   flex: 0 0 auto;
-  display: flex;
+  @include flex-center;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
   width: 100%;
-}
-
-.row3 {
-  flex: 1 0 0;
 }
 
 
@@ -257,34 +188,25 @@ body {
 
 .header-navi {
   width: 100vw;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
+  @include flex-center;
   position: relative;
-  margin-top: 1.5rem;
-  margin-bottom: 1.5rem;
+  margin: 1.5rem 0;
   z-index: 10;
   pointer-events: none;
 
   .navi-img {
     width: 20vh;
-    min-width: $spacing-10px * 4; // 40px
-    max-width: $spacing-10px * 12; // 120px
+    min-width: $spacing-10px * 4;
+    max-width: $spacing-10px * 12;
     height: auto;
     display: block;
-    filter: drop-shadow(0 0 1px #{$glow-medium})
-      drop-shadow(0 0 2px #{$glow-light});
     border-radius: $radius-xl;
     transition: filter 0.2s;
   }
 
+  .navi-img,
   .navi-img-wrapper {
-    display: inline-block;
-    filter: drop-shadow(0 0 1px #{$glow-medium})
-      drop-shadow(0 0 2px #{$glow-light});
-    border-radius: $radius-xl;
-    transition: filter 0.2s;
+    filter: drop-shadow(0 0 1px #{$glow-medium}) drop-shadow(0 0 2px #{$glow-light});
   }
 }
 
@@ -292,10 +214,7 @@ body {
 // FOOTER
 
 .footer {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
+  @include flex-center;
   text-align: center;
   font-size: $font-size-xs;
   padding: $spacing-0-7 $spacing-sm;
@@ -304,15 +223,15 @@ body {
   color: $text-color;
   border-top: $border-thick solid $text-color;
   margin-top: auto;
+
   a,
   .footer-email {
     color: $text-color;
     text-decoration: none;
     transition: color 0.15s;
-    // Use fallback font for @ symbol
+
     .at-symbol {
-      font-family:
-        "IBM Plex Mono", "Courier New", "monospace", $typewriter-font;
+      font-family: "IBM Plex Mono", "Courier New", "monospace", $typewriter-font;
       font-size: inherit;
       font-style: normal;
       font-weight: inherit;
@@ -327,49 +246,42 @@ body {
   }
 
   > span {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    @include flex-center;
     gap: 1.5em;
     width: 100%;
   }
 }
+
 
 // ======================
 // ELEMENT & CLASS STYLES
 // ======================
 
 
-// GENERAL
-
 .content {
-  display: flex;
+  @include flex-center;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
   min-height: $height-min-content;
   text-align: center;
   font-size: $font-size-lg;
   font-family: $typewriter-font;
   letter-spacing: 0.04em;
   line-height: 1.6;
-  max-width: $content-width * 2.85; // 1200px
+  max-width: $content-width * 2.85;
   width: 100%;
   margin: 0 auto;
   box-sizing: border-box;
-  padding: 0 $spacing-md; // Use spacing var for padding
+  padding: 0 $spacing-md;
 }
 
 .title {
   text-align: center;
   font-weight: bold;
   font-size: $font-size-xl;
-  margin-bottom: $spacing-lg * 0.8; // 1.2em
+  margin-bottom: $spacing-lg * 0.8;
   letter-spacing: 0.08em;
   color: $white;
-  text-shadow:
-    0 0 $shadow-size-xl $accent,
-    0 0 $shadow-size-xxl #222;
+  text-shadow: 0 0 $shadow-size-xl $accent, 0 0 $shadow-size-xxl #222;
   font-family: $typewriter-font;
 }
 
@@ -385,7 +297,7 @@ body {
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: $spacing-sm * 1.2; // 0.6em
+  gap: $spacing-sm * 1.2;
   box-sizing: border-box;
 }
 
@@ -396,25 +308,20 @@ body {
   box-shadow: 0 0 $shadow-size-lg $glow-medium;
   border-radius: $radius-lg;
   margin-bottom: $spacing-lg * 0.8;
-  transition:
-    background 0.18s,
-    color 0.18s,
-    border 0.18s;
-}
+  transition: background 0.18s, color 0.18s, border 0.18s;
 
-.section-item:hover,
-.section-item:focus {
-  background: rgba($accent, 0.18);
-  color: $white;
-  border-color: $white;
-  box-shadow: 0 0 $shadow-size-xl $glow-medium;
-}
+  &:hover,
+  &:focus {
+    background: rgba($accent, 0.18);
+    color: $white;
+    border-color: $white;
+    box-shadow: 0 0 $shadow-size-xl $glow-medium;
+  }
 
-.section-item .item-header .cmd {
-  color: $accent;
-  text-shadow:
-    0 0 $shadow-size-xs $accent,
-    0 0 $shadow-size-sm $glow-light;
+  .item-header .cmd {
+    color: $accent;
+    text-shadow: 0 0 $shadow-size-xs $accent, 0 0 $shadow-size-sm $glow-light;
+  }
 }
 
 
@@ -424,18 +331,14 @@ body {
   position: fixed;
   pointer-events: none;
   color: $white;
-  text-shadow:
-    0 0 $shadow-size-md $glow-green,
-    0 0 $shadow-size-xl $glow-green;
+  text-shadow: 0 0 $shadow-size-md $glow-green, 0 0 $shadow-size-xl $glow-green;
   background: none;
   border: none;
   letter-spacing: $letter-spacing-normal;
   font-family: $typewriter-font;
   font-weight: bold;
   z-index: 256;
-  box-shadow: none;
   font-size: $font-size-cursor;
-  -webkit-text-stroke: none;
 }
 
 
@@ -452,8 +355,7 @@ body {
   cursor: pointer;
   padding: 0.5rem;
   z-index: 1000;
-  font-family:
-    "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif;
+  font-family: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif;
   -webkit-tap-highlight-color: transparent;
   touch-action: manipulation;
   user-select: none;
@@ -473,10 +375,7 @@ body {
   height: $mute-icon-size;
   vertical-align: middle;
   display: inline-block;
-  // Colorize black PNGs to $text-color using filter
-  filter: brightness(0) saturate(100%) invert(94%) sepia(6%) saturate(300%)
-    hue-rotate(0deg) brightness(1) contrast(1);
-  // If you switch to SVGs, use: fill: currentColor; color: $text-color;
+  filter: brightness(0) saturate(100%) invert(94%) sepia(6%) saturate(300%) hue-rotate(0deg) brightness(1) contrast(1);
 }
 
 .enter-btn {
@@ -485,32 +384,22 @@ body {
   border: none;
   padding: $spacing-2px $spacing-10px;
   border-radius: $radius-md;
-  font-size: $font-size-base; // Desktop default
+  font-size: $font-size-base;
   font-family: inherit;
   cursor: pointer;
   margin-top: $spacing-10px;
-  transition:
-    background 0.2s,
-    color 0.2s,
-    border 0.2s;
-  box-shadow: none;
+  transition: background 0.2s, color 0.2s, border 0.2s;
   letter-spacing: 0.1em;
   outline: none;
   position: relative;
   z-index: 2;
-  filter: none;
-}
-.enter-btn:hover,
-.enter-btn:focus {
-  background: none;
-  color: $white;
-  border: none;
-  box-shadow: none;
-  text-shadow:
-    0 0 12px $accent,
-    0 0 24px $accent;
-  transform: scale(1.12);
-  transition: transform 0.18s cubic-bezier(0.4, 1.4, 0.6, 1);
+
+  &:hover,
+  &:focus {
+    text-shadow: 0 0 12px $accent, 0 0 24px $accent;
+    transform: scale(1.12);
+    transition: transform 0.18s cubic-bezier(0.4, 1.4, 0.6, 1);
+  }
 }
 
 
@@ -528,66 +417,48 @@ a:focus,
 
 // TERMINAL
 
-$terminal-btn-bg: $bg-1;
-$terminal-output-bg: #{$bg-1}cc;
-$terminal-output-shadow: #{$bg-1}aa;
-
-$terminal-bg: $bg-1; // Use main background
-$terminal-border-color: $accent; // Use accent color for borders
-$terminal-shadow: $shadow-soft; // Use existing shadow-soft
-$terminal-btn-color-active: $bg-1; // Use main background for active button text
-$terminal-btn-border-active: $white; // Use white for active button border
-$terminal-prompt: $accent; // Use accent for prompts
-$terminal-cursor: $accent; // Use accent for cursor
-$terminal-btn-color: $accent; // Use accent for button text
-$terminal-btn-bg-active: $accent; // Use accent for active button background
-
 .terminal-container {
   position: relative;
   width: 100%;
   max-width: $max-content-width;
   height: $height-terminal;
   max-height: $height-terminal;
-  background: $terminal-bg;
-  border: $border-thick solid $terminal-border-color;
-  @include box-shadow($terminal-shadow);
-  border-radius: $radius-lg;
+  @include terminal-glow;
   overflow: hidden;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
   min-width: 340px;
-  box-sizing: border-box; // Terminal content area
+  box-sizing: border-box;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: $radius-lg;
+    pointer-events: none;
+    box-shadow: $shadow-soft;
+    z-index: 1;
+  }
+
   .terminal-inner {
     position: relative;
     z-index: 1;
-    padding: 0.5rem 0.5rem 0.5rem 0.7rem; // Reduced padding
+    padding: 0.5rem 0.5rem 0.5rem 0.7rem;
     min-height: 140px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    font-family: "Typewriter", monospace;
-    font-size: $font-size-base;
+    @include typewriter-text;
     flex: 1 1 auto;
     height: 100%;
     overflow-y: auto;
     max-height: 100%;
     width: 100%;
     cursor: text;
-    max-width: 100%;
     box-sizing: border-box;
     text-align: left;
   }
-}
-
-.terminal-container::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: $radius-lg;
-  pointer-events: none;
-  box-shadow: $terminal-shadow;
-  z-index: 1;
 }
 
 .pixel-stream-bg {
@@ -596,20 +467,16 @@ $terminal-btn-bg-active: $accent; // Use accent for active button background
   z-index: 0;
   pointer-events: none;
   background: url("/assets/images/static.gif") center center/cover no-repeat;
-  animation: none;
-  mask-image: none;
   opacity: 50%;
 }
 
 .terminal-row {
   display: flex;
   align-items: flex-start;
-  font-size: $font-size-base; // Updated for consistency
-  font-family: "Typewriter", monospace;
+  @include typewriter-text;
   margin-bottom: 0.2rem;
   width: 100%;
   cursor: text;
-  max-width: 100%;
   box-sizing: border-box;
 }
 
@@ -618,14 +485,11 @@ $terminal-btn-bg-active: $accent; // Use accent for active button background
   display: inline-block;
   padding-right: $spacing-1-2;
   color: $text-color;
-  font-size: $font-size-base; // Updated for consistency
-  letter-spacing: 0.08em;
-  text-shadow:
-    0 0 1.5px $text-color,
-    0 0 3px $text-color,
-    0 0 1px $text-color;
+  @include typewriter-text;
+  text-shadow: 0 0 1.5px $text-color, 0 0 3px $text-color, 0 0 1px $text-color;
+
   &.flicker {
-    padding-right: $spacing-sm; // Tighter spacing for flicker prompt
+    padding-right: $spacing-sm;
   }
 }
 
@@ -639,18 +503,14 @@ $terminal-btn-bg-active: $accent; // Use accent for active button background
   background: none;
   border: none;
   color: $white;
-  font-family: "Typewriter", monospace;
-  font-size: $font-size-base; // Updated for consistency
-  letter-spacing: 0.08em;
+  @include typewriter-text;
   caret-color: $white;
   padding: 0;
   margin: 0;
   flex: 1;
-  min-width: 0;
-  width: 100%;
   display: inline-block;
-  max-width: 100%;
   box-sizing: border-box;
+
   &::selection {
     background: $accent;
     color: $white;
@@ -660,16 +520,10 @@ $terminal-btn-bg-active: $accent; // Use accent for active button background
 .terminal-cursor {
   color: $text-color;
   margin-left: 2px;
-  font-size: $font-size-base; // Updated for consistency
-  font-family: "Typewriter", monospace;
-  letter-spacing: 0.08em;
-  text-shadow:
-    0 0 3px $text-color,
-    0 0 6px $text-color,
-    0 0 1px $text-color;
-  // Input cursor specific styling
+  @include typewriter-text;
+  text-shadow: 0 0 3px $text-color, 0 0 6px $text-color, 0 0 1px $text-color;
+
   &.input-cursor {
-    left: auto;
     color: $accent;
     background: $bg-1;
     border-radius: $radius-xs;
@@ -683,13 +537,12 @@ $terminal-btn-bg-active: $accent; // Use accent for active button background
 .blink {
   animation: blink 1s steps(1) infinite;
 }
+
 @keyframes blink {
-  0%,
-  50% {
+  0%, 50% {
     opacity: 1;
   }
-  51%,
-  100% {
+  51%, 100% {
     opacity: 0;
   }
 }
@@ -698,25 +551,14 @@ $terminal-btn-bg-active: $accent; // Use accent for active button background
   animation: flicker 1.2s infinite alternate;
   color: $text-color !important;
 }
+
 @keyframes flicker {
-  0% {
-    opacity: 1;
-  }
-  10% {
-    opacity: 0.7;
-  }
-  20% {
-    opacity: 1;
-  }
-  30% {
-    opacity: 0.8;
-  }
-  40% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0.95;
-  }
+  0% { opacity: 1; }
+  10% { opacity: 0.7; }
+  20% { opacity: 1; }
+  30% { opacity: 0.8; }
+  40% { opacity: 1; }
+  100% { opacity: 0.95; }
 }
 
 .terminal-options {
@@ -728,59 +570,64 @@ $terminal-btn-bg-active: $accent; // Use accent for active button background
 }
 
 .terminal-btn {
-  background: $terminal-btn-bg;
+  background: $bg-1;
   color: $accent;
-  border: 1.5px solid $terminal-border-color;
+  border: 1.5px solid $accent;
   border-radius: $radius-sm;
-  font-family: "Typewriter", monospace;
-  font-size: $font-size-base;
+  @include typewriter-text;
   padding: 0.2em 1.2em;
   margin-right: 0.5em;
   cursor: pointer;
-  box-shadow: 0 0 2px $terminal-shadow; // reduced glow
-  transition:
-    background 0.15s,
-    color 0.15s,
-    border 0.15s;
-  letter-spacing: 0.08em; // Updated for consistency
+  box-shadow: 0 0 2px #{$bg-1}aa;
+  transition: background 0.15s, color 0.15s, border 0.15s;
   user-select: none;
   outline: none;
   position: relative;
-}
 
-.terminal-btn.selected,
-.terminal-btn:hover,
-.terminal-btn:focus {
-  background: $accent;
-  color: $terminal-btn-color-active;
-  border-color: $terminal-btn-border-active;
-  box-shadow: 0 0 4px $terminal-shadow; // reduced glow
+  &.selected,
+  &:hover,
+  &:focus {
+    background: $accent;
+    color: $bg-1;
+    border-color: $white;
+    box-shadow: 0 0 4px #{$bg-1}aa;
+  }
 }
 
 .terminal-output {
   margin-top: 0.6rem;
   color: $accent;
-  font-family: "Typewriter", monospace;
-  font-size: $font-size-base; // Updated for consistency
-  background: $terminal-output-bg;
+  @include typewriter-text;
+  background: #{$bg-1}cc;
   border-radius: $radius-sm;
   padding: 1.2em 1.5em;
   min-width: 220px;
   min-height: 2.5em;
-  box-shadow: 0 0 8px $terminal-output-shadow;
-  letter-spacing: 0.08em;
+  box-shadow: 0 0 8px #{$bg-1}aa;
   word-break: break-word;
   text-align: left;
   border: 1px solid rgba($accent, 0.3);
   text-shadow: 0 0 2px $accent;
 }
 
+.terminal-user,
+.terminal-output-line,
+.ls-list,
+.help-list,
+.error,
+.ls-item,
+.terminal-input-history {
+  @include typewriter-text;
+  word-break: break-word;
+  white-space: pre-wrap;
+  text-align: left;
+  text-shadow: 0 0 1px $accent;
+}
+
 .terminal-user {
   margin-right: 0.4em;
-  font-family: $typewriter-font !important;
   color: $text-color;
-  font-size: $font-size-base; // Updated for consistency
-  letter-spacing: 0.08em;
+
   &::selection {
     background: $accent;
     color: $white;
@@ -791,26 +638,16 @@ $terminal-btn-bg-active: $accent; // Use accent for active button background
 .ls-list,
 .help-list,
 .error {
-  word-break: break-word;
-  white-space: pre-wrap;
   flex: 1 1 0%;
   min-width: 0;
   display: block;
   color: $link-accent;
-  text-align: left;
-  letter-spacing: 0.08em; 
-  text-shadow: 0 0 1px $accent;
 }
 
 .terminal-input-history {
   color: $white;
-  font-family: $typewriter-font;
-  font-size: $font-size-base;
   font-weight: normal;
-  letter-spacing: 0.08em;
-  text-shadow:
-    0 0 1px $accent,
-    0 0 4px #222;
+  text-shadow: 0 0 1px $accent, 0 0 4px #222;
 }
 
 .error {
@@ -823,7 +660,6 @@ $terminal-btn-bg-active: $accent; // Use accent for active button background
   flex-direction: column;
   gap: 0.2rem;
   align-items: flex-start;
-  justify-content: flex-start;
   width: 100%;
   margin: 0;
   padding: 0;
@@ -831,27 +667,18 @@ $terminal-btn-bg-active: $accent; // Use accent for active button background
 
 .ls-item {
   color: $link-accent;
-  font-family: "Typewriter", monospace;
-  font-size: $font-size-base;
-  letter-spacing: 0.08em;
   white-space: nowrap;
   flex: 0 0 auto;
   min-width: fit-content;
-  text-shadow: 0 0 1px $accent;
 
   &.clickable-item {
     cursor: pointer;
-    transition:
-      color 0.15s,
-      text-shadow 0.15s,
-      transform 0.15s;
+    transition: color 0.15s, text-shadow 0.15s, transform 0.15s;
 
     &:hover,
     &:focus {
       color: $white;
-      text-shadow:
-        0 0 4px $accent,
-        0 0 8px $accent;
+      text-shadow: 0 0 4px $accent, 0 0 8px $accent;
       transform: scale(1.05);
     }
 
@@ -869,7 +696,6 @@ $terminal-btn-bg-active: $accent; // Use accent for active button background
   margin-top: 1.2em;
   line-height: 1.5;
   color: $white;
-  text-shadow: none;
 }
 
 .bio-mobile-item {
@@ -888,11 +714,8 @@ $terminal-btn-bg-active: $accent; // Use accent for active button background
   width: 100%;
   max-width: 100%;
   padding: 0;
-  margin: 0;
-  margin-bottom: 1.5rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  margin: 0 0 1.5rem;
+  @include flex-center;
 }
 
 .resume-img {
@@ -903,23 +726,20 @@ $terminal-btn-bg-active: $accent; // Use accent for active button background
   margin: 0 auto;
   background: $bg-1;
   border-radius: $radius-lg;
-  @include box-shadow($shadow-strong);
+  box-shadow: $shadow-strong;
 }
 
 .resume-content {
-  display: flex;
+  @include flex-center;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
   min-height: $height-min-content;
   text-align: center;
   font-size: $font-size-lg;
-  font-family: "Typewriter", monospace;
+  font-family: $typewriter-font;
   letter-spacing: 0.04em;
   line-height: 1.6;
   max-width: 1200px;
-  margin: 2rem auto;
-  margin-top: 0;
+  margin: 2rem auto 0;
 }
 
 .resume-title {
@@ -927,10 +747,8 @@ $terminal-btn-bg-active: $accent; // Use accent for active button background
   font-size: $font-size-xl;
   letter-spacing: 0.08em;
   color: $white;
-  text-shadow:
-    0 0 6px $accent,
-    0 0 12px #222;
-  font-family: $typewriter-font; // Updated to use typewriter font
+  text-shadow: 0 0 6px $accent, 0 0 12px #222;
+  font-family: $typewriter-font;
 }
 
 
@@ -940,37 +758,25 @@ $terminal-btn-bg-active: $accent; // Use accent for active button background
   background: $bg-1;
   border-radius: $radius-xl;
   border: $border-thick solid $accent;
-  box-shadow:
-    0 0 $shadow-size-md $text-color,
-    0 0 $shadow-size-lg $text-color,
-    0 0 $shadow-size-xl $text-color,
-    0 0 $shadow-size-xxl $text-color;
+  box-shadow: 0 0 $shadow-size-md $text-color, 0 0 $shadow-size-lg $text-color, 0 0 $shadow-size-xl $text-color, 0 0 $shadow-size-xxl $text-color;
   margin-bottom: $spacing-lg;
-  padding: $spacing-sm $spacing-md $spacing-md $spacing-md;
-  padding-left: $spacing-sm;
-  padding-right: $spacing-sm;
+  padding: $spacing-sm $spacing-sm $spacing-md;
   max-width: 1200px;
   width: 100%;
-  transition:
-    box-shadow 0.18s,
-    border 0.18s;
+  transition: box-shadow 0.18s, border 0.18s;
   position: relative;
   line-height: 1.6;
-}
 
-.cardgame-box:hover,
-.cardgame-box:focus {
-  box-shadow:
-    0 0 $shadow-size-lg $text-color,
-    0 0 $shadow-size-xl $text-color,
-    0 0 $shadow-size-xxl $text-color,
-    0 0 $shadow-size-huge $text-color;
+  &:hover,
+  &:focus {
+    box-shadow: 0 0 $shadow-size-lg $text-color, 0 0 $shadow-size-xl $text-color, 0 0 $shadow-size-xxl $text-color, 0 0 $shadow-size-huge $text-color;
+  }
 }
 
 .cardgame-divider {
   border: none;
   border-top: $border-thick solid $text-color;
-  margin: 1.1em 0 1.1em 0;
+  margin: 1.1em 0;
   opacity: 0.8;
 }
 
@@ -982,19 +788,18 @@ $terminal-btn-bg-active: $accent; // Use accent for active button background
   width: 100%;
 }
 
-.game-header {
-  .game-name {
-    span {
-      text-decoration: underline;
-      text-decoration-skip-ink: auto;
-      text-underline-offset: 2px;
-    }
+.game-header .game-name {
+  color: $accent;
+
+  span {
+    text-decoration: underline;
+    text-decoration-skip-ink: auto;
+    text-underline-offset: 2px;
   }
 }
 
 .game-rules {
-  padding-left: $spacing-sm;
-  padding-right: $spacing-sm;
+  padding: 0 $spacing-sm;
 
   strong {
     text-decoration: underline;
@@ -1006,10 +811,7 @@ $terminal-btn-bg-active: $accent; // Use accent for active button background
     }
   }
 
-  .rule-label {
-    color: $accent;
-  }
-
+  .rule-label,
   .round-label {
     color: $accent;
   }
@@ -1034,27 +836,8 @@ $terminal-btn-bg-active: $accent; // Use accent for active button background
   }
 }
 
-.game-header {
-  .game-name {
-    color: $accent;
-
-    span {
-      text-decoration: underline;
-      text-decoration-skip-ink: auto;
-      text-underline-offset: 2px;
-    }
-  }
-}
-
 .terminal-glow-border {
-  border-radius: $radius-lg;
-  border: $border-thick solid $accent;
-  box-shadow:
-    0 0 4px $text-color,
-    0 0 6px $text-color,
-    0 0 8px $text-color,
-    0 0 12px $text-color;
-  background: $bg-1;
+  @include terminal-glow;
   margin-bottom: 1rem;
   overflow: hidden;
 }
@@ -1063,36 +846,32 @@ $terminal-btn-bg-active: $accent; // Use accent for active button background
 .media-image {
   width: 100%;
   max-width: $max-content-width;
-  margin: 0 auto 1rem auto;
+  margin: 0 auto 1rem;
 
   iframe {
     width: 100%;
     height: 315px;
     border: none;
-    border-radius: $radius-xl; // Slightly smaller radius than container
+    border-radius: $radius-xl;
     display: block;
   }
 
   img {
     width: 100%;
     height: auto;
-    border-radius: $radius-md; // Slightly smaller radius than container
+    border-radius: $radius-md;
     display: block;
   }
 }
 
 .media-video.terminal-glow-border {
-  height: 315px; // Match iframe height exactly
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  height: 315px;
+  @include flex-center;
 }
 
 .media-image.terminal-glow-border {
   height: auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  @include flex-center;
 }
 
 .media-caption {
@@ -1113,27 +892,14 @@ $terminal-btn-bg-active: $accent; // Use accent for active button background
 
 @media (min-width: 601px) {
   *,
-  *:hover,
-  *:active,
-  *:focus {
-    cursor: none !important;
-  }
-  
   html,
   body,
   .root,
   .xp-content,
   .xp-content *,
-  html:active,
-  body:active,
-  .root:active,
-  .xp-content:active,
-  .xp-content *:active,
-  html:focus,
-  body:focus,
-  .root:focus,
-  .xp-content:focus,
-  .xp-content *:focus {
+  *:hover,
+  *:active,
+  *:focus {
     cursor: none !important;
   }
 
@@ -1151,10 +917,7 @@ $terminal-btn-bg-active: $accent; // Use accent for active button background
 
 @media (max-width: 600px) {
   button,
-  a,
-  input,
-  [contenteditable],
-  .terminal-input {
+  a {
     cursor: pointer !important;
   }
 
@@ -1167,8 +930,6 @@ $terminal-btn-bg-active: $accent; // Use accent for active button background
   .footer > span {
     flex-direction: column;
     gap: 0.5em;
-    align-items: center;
-    justify-content: center;
   }
   
   .terminal-container {
@@ -1178,9 +939,8 @@ $terminal-btn-bg-active: $accent; // Use accent for active button background
 
   .terminal-inner {
     font-size: $font-size-xs;
-    padding: 0.3rem 0.3rem 0.3rem 0.3rem; // Even less padding on mobile
+    padding: 0.3rem;
     max-width: 96vw;
-    box-sizing: border-box;
   }
 
   .bio-content,
@@ -1193,8 +953,7 @@ $terminal-btn-bg-active: $accent; // Use accent for active button background
 
   .project-description {
     text-align: center;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 0 auto;
   }
 
   .lain-img {
@@ -1221,22 +980,6 @@ $terminal-btn-bg-active: $accent; // Use accent for active button background
   .terminal-input-history {
     font-size: $font-size-xs !important;
   }
-  
-  .terminal-prompt {
-    font-size: $font-size-xs !important;
-  }
-
-  .terminal-input {
-    font-size: $font-size-xs !important;
-  }
-
-  .terminal-user {
-    font-size: $font-size-xs !important;
-  }
-
-  .terminal-cursor {
-    font-size: $font-size-xs !important;
-  }
 
   .terminal-btn {
     font-size: $font-size-xs !important;
@@ -1246,7 +989,6 @@ $terminal-btn-bg-active: $accent; // Use accent for active button background
   .grid {
     max-width: 100%;
     padding: 0 $spacing-sm;
-    box-sizing: border-box;
   }
 
   .section-item {

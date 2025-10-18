@@ -1,7 +1,6 @@
 // Application constants
 export const TERMINAL_OPTIONS = [
   { label: "bio", display: "bio" },
-  { label: "projects", display: "projects" },
   { label: "resume", display: "resume" },
   { label: "archive", display: "archive" },
 ];
