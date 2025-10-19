@@ -1,13 +1,14 @@
 // ==========================================
 // FILE: src/App.jsx (MAIN FILE - SIMPLIFIED)
 // ==========================================
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate, Routes, Route } from "react-router-dom";
 import { CursorTrail, CustomCursor, PageLayout } from "./components";
 import {
   Root,
   Bio,
   Resume,
+  Love,
   Archive,
   ArchiveCardGames,
   ArchiveRecipes,
@@ -157,6 +158,14 @@ function App() {
           element={
             <PageLayout playSwap={audio.playSwap}>
               <Resume />
+            </PageLayout>
+          }
+        />
+        <Route
+          path="/love"
+          element={
+            <PageLayout playSwap={audio.playSwap}>
+              <Love />
             </PageLayout>
           }
         />

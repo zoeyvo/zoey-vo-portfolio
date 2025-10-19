@@ -2,6 +2,7 @@
 export { default as Root } from "./Root";
 export { default as Bio } from "./Bio";
 export { default as Resume } from "./Resume";
+export { default as Love } from "./Love";
 export { default as Archive } from "./Archive";
 export { default as ArchiveBookmarks } from "./ArchiveBookmarks";
 export { default as ArchiveCardGames } from "./ArchiveCardGames";

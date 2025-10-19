@@ -87,13 +87,10 @@ export function useTerminal() {
     if (state.waitingForPassword === true) {
       const pass = "052022";
       if (pass === value) {
-        addOutput("HI");
-        clearInput();
+        dispatch({ type: "SET_WAITING_PASSWORD", payload: false });
+        navigateAndClear("love");
       }
-      dispatch({ type: "SET_WAITING_PASSWORD", payload: false });
-    }
-
-    if (val === ".\\forever.exe" || val === "./forever.exe") {
+    } else if (val === ".\\forever.exe" || val === "./forever.exe") {
       dispatch({ type: "SET_LOADING", payload: true });
       addOutput(LOADING_MSG);
       clearInput();
@@ -106,7 +103,7 @@ export function useTerminal() {
         clearInput();
         dispatch({ type: "SET_LOADING", payload: false });
         dispatch({ type: "SET_WAITING_PASSWORD", payload: true });
-      }, 3000);
+      }, 1500);
     } else if (val === "ls") {
       addOutput(TERMINAL_OPTIONS.map((opt) => opt.label));
       clearInput();
