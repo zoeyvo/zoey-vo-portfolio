@@ -125,11 +125,8 @@ function ArchiveNotes() {
           <br />
         </div>
         {notes.map((note, index) => (
-          <div key={index} className="item" style={{ textAlign: "center" }}>
-            <div
-              className="note-header"
-              style={{ justifyContent: "center", textAlign: "center" }}
-            >
+          <div key={index} className="item">
+            <div className="note-header">
               <span className="note-content">{note.content}</span> <br />
               <span className="note-date">[{note.date}]</span>
             </div>

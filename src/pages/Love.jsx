@@ -78,22 +78,23 @@ function LoveNotes() {
           <br />
         </div>
 
-        <div>
-          <div style={{ color: "pink" }}>
-            {elapsed.years} years, {elapsed.months} months, {elapsed.days} days,{" "}
-            {elapsed.hours} hours, {elapsed.minutes} minutes, {elapsed.seconds}{" "}
-            seconds
+        <div className="item" style={{ color: "pink" }}>
+          <div className="note-header">
+            <div>
+              {elapsed.years} years, {elapsed.months} months, {elapsed.days}{" "}
+              days
+              <br />
+              {elapsed.hours} hours, {elapsed.minutes} minutes,{" "}
+              {elapsed.seconds} seconds
+            </div>
           </div>
+          <br />
+          <hr />
         </div>
 
-        <hr />
-
         {notes.map((note, index) => (
-          <div key={index} className="item" style={{ textAlign: "center" }}>
-            <div
-              className="note-header"
-              style={{ justifyContent: "center", textAlign: "center" }}
-            >
+          <div key={index} className="item">
+            <div className="note-header">
               <span className="note-content">{note.content}</span> <br />
               <span className="note-date">[{note.date}]</span>
             </div>
