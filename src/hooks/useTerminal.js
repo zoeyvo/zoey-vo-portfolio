@@ -79,8 +79,8 @@ export function useTerminal() {
     };
 
     const navigateAndClear = (route) => {
-      dispatch({ type: "APPEND_OUTPUT", payload: { type: "cmd", value: val } });
-      dispatch({ type: "CLEAR_INPUT" });
+      dispatch({ type: "CLEAR_OUTPUT" });
+      clearInput();
       navigate(`/${route}`);
     };
 
@@ -120,7 +120,6 @@ export function useTerminal() {
         "cat .",
         "cat [section]",
         "cat archive/[section]",
-        "./forever.exe",
         "help",
         "clear",
       ]);
