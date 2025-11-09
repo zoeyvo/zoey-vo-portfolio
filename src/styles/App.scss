@@ -284,7 +284,7 @@ a {
 }
 
 .item {
-  margin-bottom: $spacing-lg;
+  margin: $spacing-lg 0;
   width: 100%;
   max-width: $content-width;
 }
@@ -697,7 +697,6 @@ a:focus,
   }
 }
 
-
 // BIO
 
 .bio-desc {
@@ -750,6 +749,27 @@ a:focus,
   color: $white;
   text-shadow: 0 0 6px $accent, 0 0 12px #222;
   font-family: $typewriter-font;
+}
+
+// NOTES
+
+.note-item {
+  width: 100%;
+  max-width: $content-width;
+  margin-top: $spacing-lg;
+}
+
+.note-content {
+    margin-bottom: $spacing-lg;
+}
+
+.note-images {
+  display: flex;
+  justify-content: center;
+}
+
+.note-img {
+  width: 128px;
 }
 
 // CARDGAMES

@@ -1,6 +1,31 @@
 function ArchiveNotes() {
   const notes = [
     {
+      date: "2025-11-08",
+      title: "note 27",
+      content: "climbed @ sessions",
+    },
+    {
+      date: "2025-11-06",
+      title: "note 26",
+      content: "favorite pokemon",
+      images: [
+        "../assets/images/pokemon/mew.png",
+        "../assets/images/pokemon/hzorua.png",
+        "../assets/images/pokemon/slowpoke.png",
+      ],
+    },
+    {
+      date: "2025-11-04",
+      title: "note 25",
+      content: "employed, hooray!",
+    },
+    {
+      date: "2025-11-04",
+      title: "note 24",
+      content: "employed, hooray!",
+    },
+    {
       date: "2025-10-16",
       title: "note 23",
       content: "'alleged misandrist'",
@@ -124,16 +149,27 @@ function ArchiveNotes() {
         <div>
           <br />
         </div>
-        {notes.map((note, index) => (
-          <div key={index} className="item">
-            <div className="note-header">
-              <span className="note-content">{note.content}</span> <br />
-              <span className="note-date">[{note.date}]</span>
+        {[...notes]
+          .sort((a, b) => new Date(b.date) - new Date(a.date))
+          .map((note, index) => (
+            <div key={index} className="note-item">
+              <p className="note-date">[{note.date}]</p>
+              <p className="note-content">{note.content}</p>
+              {note.images && (
+                <div className="note-images">
+                  {note.images.map((img, i) => (
+                    <img
+                      key={i}
+                      src={img}
+                      alt={`note ${index} img ${i}`}
+                      className="note-img"
+                    />
+                  ))}
+                </div>
+              )}
+              <hr />
             </div>
-            <br />
-            <hr />
-          </div>
-        ))}
+          ))}
       </div>
     </div>
   );
