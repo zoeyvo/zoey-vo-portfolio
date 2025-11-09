@@ -12,11 +12,11 @@ function Archive({ playSwap }) {
   }, []);
 
   const archiveItems = [
+    { name: "notes", description: "stream of concisousness" },
     { name: "bookmarks", description: "good links and resources" },
     { name: "cardgames", description: "card games i like" },
-    { name: "recipes", description: "favorite foods to make and consume" },
     { name: "media", description: "media i resonate with" },
-    { name: "notes", description: "stream of concisousness" },
+    { name: "recipes", description: "favorite foods to make and consume" },
   ];
 
   const handleItemClick = (item) => {
