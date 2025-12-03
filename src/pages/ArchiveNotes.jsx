@@ -1,24 +1,44 @@
 function ArchiveNotes() {
   const notes = [
     {
-      date: "2025-11-08",
+      date: "2025-12-2",
+      title: "note 31",
+      content: "I LOVE PROGESTERONE",
+    },
+    {
+      date: "2025-11-29",
+      title: "note 30",
+      content: "pulled gardevoir SAR at card show",
+    },
+    {
+      date: "2025-11-23",
+      title: "note 29",
+      content: "V1 ✓",
+    },
+    {
+      date: "2025-11-20",
+      title: "note 28",
+      content: "3.5 years together ❤",
+    },
+    {
+      date: "2025-11-15",
       title: "note 27",
+      content: "V0 ✓",
+    },
+    {
+      date: "2025-11-08",
+      title: "note 26",
       content: "climbed @ sessions",
     },
     {
       date: "2025-11-06",
-      title: "note 26",
+      title: "note 25",
       content: "favorite pokemon",
       images: [
         "../assets/images/pokemon/mew.png",
         "../assets/images/pokemon/hzorua.png",
         "../assets/images/pokemon/slowpoke.png",
       ],
-    },
-    {
-      date: "2025-11-04",
-      title: "note 25",
-      content: "employed, hooray!",
     },
     {
       date: "2025-11-04",
