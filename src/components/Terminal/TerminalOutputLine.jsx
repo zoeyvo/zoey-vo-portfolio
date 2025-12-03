@@ -4,8 +4,6 @@
 import React from "react";
 
 export function TerminalOutputLine({ line }) {
-
-
   const isError =
     line.value === "cat" ||
     line.output?.toString().includes("is not a command") ||
@@ -19,7 +17,7 @@ export function TerminalOutputLine({ line }) {
       {line.value && (
         <div className="terminal-row">
           <span className="terminal-user">
-            zoey<span className="at-symbol">@</span>wired
+            zoey<span className="at-symbol">@</span>wired/root
           </span>
           <span className="terminal-prompt flicker">&gt;</span>
           <span className="terminal-input-history">

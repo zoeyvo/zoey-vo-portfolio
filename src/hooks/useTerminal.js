@@ -118,8 +118,8 @@ export function useTerminal() {
         "ls",
         "ls archive",
         "cat .",
-        "cat [section]",
-        "cat archive/[section]",
+        "cat [file]",
+        "cat archive/[file]",
         "help",
         "clear",
       ]);
@@ -134,12 +134,12 @@ export function useTerminal() {
         navigateAndClear(`archive/${section}`);
       } else {
         addOutput(
-          `archive section "${section}" not found. Use 'ls archive' to see available sections.`
+          `archive file "${section}" not found. Use 'ls archive' to see available files.`
         );
         clearInput();
       }
     } else if (val === "cat") {
-      addOutput("Usage: cat [section] or cat archive/[section]");
+      addOutput("Usage: cat [file] or cat archive/[file]");
       clearInput();
     } else if (TERMINAL_OPTIONS.some((opt) => opt.label === val)) {
       dispatch({ type: "APPEND_OUTPUT", payload: { type: "cmd", value: val } });
