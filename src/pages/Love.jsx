@@ -1,16 +1,14 @@
 import { useState, useEffect } from "react";
 
 function LoveNotes() {
-  const [elapsed, setElapsed] = useState({
-    years: 0,
-    months: 0,
-    days: 0,
-    hours: 0,
-    minutes: 0,
-    seconds: 0,
-  });
+  const [detailedElapsed, setDetailedElapsed] = useState("");
 
   const notes = [
+    {
+      date: "2025-12-06",
+      title: "note 2",
+      content: "have the happiest of birthdays my love ❤",
+    },
     {
       date: "2025-10-18",
       title: "note 1",
@@ -23,46 +21,33 @@ function LoveNotes() {
 
     const calculateElapsed = () => {
       const now = new Date();
+      const diffMs = now - startDate;
 
-      // Calendar-based years and months
-      let years = now.getFullYear() - startDate.getFullYear();
-      let months = now.getMonth() - startDate.getMonth();
+      // Calculate total units
+      const diffSeconds = Math.floor(diffMs / 1000);
+      const diffMinutes = Math.floor(diffSeconds / 60);
+      const diffHours = Math.floor(diffMinutes / 60);
+      const diffDays = Math.floor(diffHours / 24);
 
-      if (now.getDate() < startDate.getDate()) {
-        months--;
-      }
+      // For detailed breakdown, create a human-readable string
+      const years = Math.floor(diffDays / 365.25);
+      const months = Math.floor((diffDays % 365.25) / 30.44);
+      const days = Math.floor((diffDays % 365.25) % 30.44);
+      const hours = diffHours % 24;
+      const minutes = diffMinutes % 60;
+      const seconds = diffSeconds % 60;
 
-      if (months < 0) {
-        years--;
-        months += 12;
-      }
+      const parts = [];
+      if (years > 0) parts.push(`${years} year${years !== 1 ? "s" : ""}`);
+      if (months > 0) parts.push(`${months} month${months !== 1 ? "s" : ""}`);
+      if (days > 0) parts.push(`${days} day${days !== 1 ? "s" : ""}`);
+      if (hours > 0) parts.push(`${hours} hour${hours !== 1 ? "s" : ""}`);
+      if (minutes > 0)
+        parts.push(`${minutes} minute${minutes !== 1 ? "s" : ""}`);
+      if (seconds > 0)
+        parts.push(`${seconds} second${seconds !== 1 ? "s" : ""}`);
 
-      // Anchor date for day/hour/minute/second calculation
-      const monthAnchor = new Date(
-        startDate.getFullYear() + years,
-        startDate.getMonth() + months,
-        startDate.getDate(),
-        startDate.getHours(),
-        startDate.getMinutes(),
-        startDate.getSeconds()
-      );
-
-      const diffMs = now - monthAnchor;
-
-      // Break down remaining time
-      const totalSeconds = Math.floor(diffMs / 1000);
-      const seconds = totalSeconds % 60;
-
-      const totalMinutes = Math.floor(totalSeconds / 60);
-      const minutes = totalMinutes % 60;
-
-      const totalHours = Math.floor(totalMinutes / 60);
-      const hours = totalHours % 24;
-
-      const totalDays = Math.floor(totalHours / 24);
-      const days = totalDays;
-
-      setElapsed({ years, months, days, hours, minutes, seconds });
+      setDetailedElapsed(parts.join(", "));
     };
 
     calculateElapsed();
@@ -80,13 +65,7 @@ function LoveNotes() {
 
         <div className="item" style={{ color: "pink" }}>
           <div className="note-header">
-            <div>
-              {elapsed.years} years, {elapsed.months} months, {elapsed.days}{" "}
-              days
-              <br />
-              {elapsed.hours} hours, {elapsed.minutes} minutes,{" "}
-              {elapsed.seconds} seconds
-            </div>
+            <div>{detailedElapsed}</div>
           </div>
           <br />
           <hr />
