@@ -439,7 +439,7 @@ a:focus,
   .terminal-inner {
     position: relative;
     z-index: 1;
-    padding: 0.5rem 0.5rem 0.5rem 0.7rem;
+    padding: 0.75rem 0.75rem 0.75rem 0.75rem;
     min-height: 140px;
     display: flex;
     flex-direction: column;
@@ -651,6 +651,7 @@ a:focus,
   min-width: 0;
   display: block;
   color: $link-accent;
+  padding-left: 3.5rem;
 }
 
 .terminal-input-history {
@@ -991,6 +992,13 @@ a:focus,
   .ls-item,
   .terminal-input-history {
     font-size: $font-size-xs !important;
+  }
+
+  .terminal-output-line,
+  .ls-list,
+  .help-list,
+  .error {
+    padding-left: 2.6rem;
   }
 
   .terminal-btn {
