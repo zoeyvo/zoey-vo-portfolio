@@ -8,4 +8,4 @@ export { default as ArchiveBookmarks } from "./ArchiveBookmarks";
 export { default as ArchiveCardGames } from "./ArchiveCardGames";
 export { default as ArchiveMedia } from "./ArchiveMedia";
 export { default as ArchiveNotes } from "./ArchiveNotes";
-export { default as ArchiveRecipes } from "./ArchiveRecipes";
+export { default as ArchiveGuides } from "./ArchiveGuides";

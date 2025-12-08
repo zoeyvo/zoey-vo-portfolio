@@ -11,7 +11,7 @@ import {
   Love,
   Archive,
   ArchiveCardGames,
-  ArchiveRecipes,
+  ArchiveGuides,
   ArchiveMedia,
   ArchiveNotes,
   ArchiveBookmarks,
@@ -186,10 +186,10 @@ function App() {
           }
         />
         <Route
-          path="/archive/recipes"
+          path="/archive/guides"
           element={
             <PageLayout playSwap={audio.playSwap}>
-              <ArchiveRecipes />
+              <ArchiveGuides />
             </PageLayout>
           }
         />

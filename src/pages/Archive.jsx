@@ -13,10 +13,10 @@ function Archive({ playSwap }) {
 
   const archiveItems = [
     { name: "notes", description: "stream of concisousness" },
-    { name: "bookmarks", description: "good links and resources" },
+    { name: "bookmarks", description: "important links and resources" },
+    { name: "guides", description: "anecdotal how to's" },
     { name: "cardgames", description: "card games i like" },
     { name: "media", description: "media i resonate with" },
-    { name: "recipes", description: "favorite foods to make and consume" },
   ];
 
   const handleItemClick = (item) => {
