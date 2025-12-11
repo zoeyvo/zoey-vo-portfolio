@@ -7,7 +7,7 @@ export const TERMINAL_OPTIONS = [
 
 export const ARCHIVE_SECTIONS = [
   "cardgames",
-  "recipes",
+  "guides",
   "media",
   "notes",
   "bookmarks",
