@@ -1,11 +1,12 @@
 function ArchiveGuides() {
   return (
     <div className="grid-cell">
-      <div className="content">
+      <div className="content" style={{ paddingBottom: "4rem" }}>
         <span className="title">~/archive/guides</span>
         <div>
           <br />
         </div>
+
         <div className="archive-guides__body">
           {/* Main Header */}
           <div className="archive-guides__main-header">
@@ -20,225 +21,263 @@ function ArchiveGuides() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              Kaiser Permanente Guide - Adult Name or Name and Gender Change
+              Kaiser Permanente Guide - 18+ Name or Name and Gender Change
             </a>
           </div>
 
-          {/* Phase 0 */}
+          <hr className="archive-guides__hr" />
+
+          {/* Phase 0: Obtain Court Order */}
           <div className="archive-guides__phase-title archive-guides__phase-title--first">
             Phase 0: Obtain Court Order
           </div>
-          <div>
+
+          <div className="archive-guides__section">
             <strong>Required Forms to File:</strong>
+            <ol className="archive-guides__numbered-list">
+              <li>
+                <a
+                  href="https://www.courts.ca.gov/documents/nc125.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  NC-125 (Name and Gender Change Petition)
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://www.courts.ca.gov/documents/nc330.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  NC-330 (Attachment to Petition - Confidential)
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://www.courts.ca.gov/documents/cm010.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  CM-010 (Civil Case Cover Sheet)
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://www.courts.ca.gov/documents/nc300.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  NC-300 (Order to Show Cause)
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://www.courts.ca.gov/documents/fw001.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  FW-001 (Information Sheet for Family Law Facilitator Review)
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://www.courts.ca.gov/documents/fw003.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  FW-003 (Fee Waiver Request, if applicable)
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://www.courts.ca.gov/documents/nc110.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  NC-110 (Name Change Order - Judgment)
+                </a>
+              </li>
+            </ol>
           </div>
-          <ol className="archive-guides__numbered-list">
-            <li>
-              <a
-                href="https://www.courts.ca.gov/documents/nc125.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                NC-125 (Name and Gender Change Petition)
-              </a>
-            </li>
-            <li>
-              <a
-                href="https://www.courts.ca.gov/documents/nc330.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                NC-330 (Attachment to Petition - Confidential)
-              </a>
-            </li>
-            <li>
-              <a
-                href="https://www.courts.ca.gov/documents/cm010.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                CM-010 (Civil Case Cover Sheet)
-              </a>
-            </li>
-            <li>
-              <a
-                href="https://www.courts.ca.gov/documents/nc300.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                NC-300 (Order to Show Cause)
-              </a>
-            </li>
-            <li>
-              <a
-                href="https://www.courts.ca.gov/documents/fw001.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                FW-001 (Information Sheet for Family Law Facilitator Review)
-              </a>
-            </li>
-            <li>
-              <a
-                href="https://www.courts.ca.gov/documents/fw003.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                FW-003 (Fee Waiver Request, if applicable)
-              </a>
-            </li>
-            <li>
-              <a
-                href="https://www.courts.ca.gov/documents/nc110.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                NC-110 (Name Change Order - Judgment)
-              </a>
-            </li>
-          </ol>
+
           <div className="archive-guides__steps">
             <div>
-              <strong>Step 1:</strong> Go to your local civil/family court to
-              file these forms.
+              <strong>Step 1:</strong> File these forms at your local civil or
+              family court.
             </div>
             <div>
-              <strong>Step 2:</strong> Wait for court order approval and mailing
-              (about 2-3 months).
+              <strong>Step 2:</strong> Wait 2-3 months for court approval and
+              mailed order.
             </div>
             <div>
-              <strong>Step 3:</strong> Once approved, return to the court to
-              obtain 4-5 official, certified copies.
+              <strong>Step 3:</strong> Return to court to obtain 4-5 certified
+              copies of your order.
             </div>
           </div>
+
           <hr className="archive-guides__hr" />
 
-          {/* Phase 1 */}
+          {/* Phase 1: Update Social Security Card */}
           <div className="archive-guides__phase-title">
-            Phase 1: Update Birth Certificate
+            Phase 1: Update Social Security Card (NAME ONLY)
           </div>
-          <div>
-            <strong>Required Documents:</strong>
-          </div>
-          <ol className="archive-guides__numbered-list">
-            <li>Certified Court Order</li>
-            <li>
-              <a
-                href="https://www.cdph.ca.gov/CDPH%20Document%20Library/ControlledForms/VS24B.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                VS 24B form (Application to Amend a Birth Record)
-              </a>
-            </li>
-            <li>
-              <a
-                href="https://www.cdph.ca.gov/CDPH%20Document%20Library/ControlledForms/VS20.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                VS 20 form (With notarized signature)
-              </a>
-            </li>
-            <li>Photocopy of your ID and original birth certificate</li>
-            <li>$26 check or money order payable to "CDPH Vital Records"</li>
-          </ol>
-          <div>
-            <strong>Send To:</strong> California Dept of Public Health Vital
-            Records MS 5103 PO Box 997410, Sacramento, CA 95899-7410
-          </div>
-          <hr className="archive-guides__hr" />
 
-          {/* Phase 2 */}
-          <div className="archive-guides__phase-title">
-            Phase 2: Update U.S. Passport
-          </div>
-          <div className="archive-guides__phase-subtitle">
-            (Can be started without new birth certificate)
-          </div>
-          <div>
+          <div className="archive-guides__section">
             <strong>Required Documents:</strong>
+            <ol className="archive-guides__numbered-list">
+              <li>Certified Court Order</li>
+              <li>
+                <a
+                  href="https://www.ssa.gov/forms/ss-5.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Form SS-5 (Application for Social Security Card)
+                </a>
+              </li>
+            </ol>
           </div>
-          <ol className="archive-guides__numbered-list">
-            <li>Certified Court Order</li>
-            <li>
-              <a
-                href="https://eforms.state.gov/Forms/ds11_pdf.PDF"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Form DS-11 (Application for U.S. Passport)
-              </a>
-            </li>
-            <li>Your current passport</li>
-            <li>Parent/Guardian ID</li>
-            <li>Parent/Guardian must accompany you to apply in person</li>
-          </ol>
-          <div>
-            <strong>Wait Time:</strong> For approval and mailing (~2-3 months).
-          </div>
-          <hr className="archive-guides__hr" />
 
-          {/* Phase 3 */}
-          <div className="archive-guides__phase-title">
-            Phase 3: Update Social Security Card
-          </div>
-          <div>
-            <strong>Required Documents:</strong>
-          </div>
-          <ol className="archive-guides__numbered-list">
-            <li>Certified Court Order</li>
-            <li>
-              <a
-                href="https://www.ssa.gov/forms/ss-5.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Form SS-5 (Application for Social Security Card)
-              </a>
-            </li>
-            <li>Your new Birth Certificate (from Phase 1)</li>
-          </ol>
           <div className="archive-guides__steps">
             <div>
-              <strong>Step 1:</strong> Submit in person at a Social Security
-              office.
+              Submit these documents in person at a Social Security office.
             </div>
-            <div>
-              <strong>Step 2:</strong> Wait for systems to update (~2 weeks).
-              Delay other updates until complete.
-            </div>
+            <span className="archive-guides__error">
+              <strong>WAIT TO PROCEED:</strong> Allow ~2 weeks for record
+              updates and new card delivery.
+            </span>
           </div>
+
           <hr className="archive-guides__hr" />
 
-          {/* Phase 4 */}
+          {/* Phase 2: Update Birth Certificate */}
           <div className="archive-guides__phase-title">
-            Phase 4: Update Driver's License/State ID
+            Phase 2: Update Birth Certificate
           </div>
-          <div>
-            <strong>Apply on:</strong>{" "}
-            <a
-              href="https://www.dmv.ca.gov/portal/driver-licenses-identification-cards/updating-information-on-your-driver-license-or-identification-dl-id-card/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              CA DMV Website - Updating Information
-            </a>
-          </div>
-          <div>
+
+          <div className="archive-guides__section">
             <strong>Required Documents:</strong>
+            <ol className="archive-guides__numbered-list">
+              <li>Certified Court Order</li>
+              <li>
+                <a
+                  href="https://www.cdph.ca.gov/CDPH%20Document%20Library/ControlledForms/VS24B.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  VS 24B (Application to Amend a Birth Record)
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://www.cdph.ca.gov/CDPH%20Document%20Library/ControlledForms/VS20.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  VS 20 (With notarized signature)
+                </a>
+              </li>
+              <li>Photocopy of your ID and original birth certificate</li>
+              <li>$26 check/money order payable to "CDPH Vital Records"</li>
+            </ol>
+
+            <div className="archive-guides__mailing-info">
+              <strong>Send by Certified Mail to:</strong>
+              <br />
+              California Dept of Public Health Vital Records MS 5103
+              <br />
+              PO Box 997410, Sacramento, CA 95899-7410
+            </div>
           </div>
-          <ol className="archive-guides__numbered-list">
-            <li>Proof of Identity: New Passport or New Birth Certificate</li>
-            <li>
-              Proof of CA Residency: 2 documents (e.g., utility bills, insurance
-              docs, official mail)
-            </li>
-            <li>
-              Social Security Number: Must match your updated name/gender (no
-              card needed, but ensure Phase 3 is complete)
-            </li>
-          </ol>
-          <hr className="archive-guides__hr archive-guides__hr--solid" />
+
+          <div className="archive-guides__steps">
+            <span className="archive-guides__error">
+              <strong>WAIT TO PROCEED:</strong> Processing takes 2-3 months for
+              approval, plus 3-6 weeks for document delivery.
+            </span>
+          </div>
+
+          <hr className="archive-guides__hr" />
+
+          {/* Phase 3: Update Driver's License/State ID */}
+          <div className="archive-guides__phase-title">
+            Phase 3: Update Driver's License/State ID
+          </div>
+
+          <div className="archive-guides__section">
+            <div>
+              <strong>Apply on:</strong>{" "}
+              <a
+                href="https://www.dmv.ca.gov/portal/driver-licenses-identification-cards/updating-information-on-your-driver-license-or-identification-dl-id-card/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                CA DMV Website - Updating Information
+              </a>
+            </div>
+
+            <div className="archive-guides__note">
+              After online application, complete in-person at DMV office. Pay
+              $37 for new card and take new photo.
+            </div>
+
+            <strong>Required Documents:</strong>
+            <ol className="archive-guides__numbered-list">
+              <li>Proof of Identity: New Passport or New Birth Certificate</li>
+              <li>
+                Proof of CA Residency: 2 documents (utility bills, insurance,
+                official mail)
+              </li>
+              <li>Social Security Number</li>
+            </ol>
+          </div>
+
+          <div className="archive-guides__steps">
+            <span className="archive-guides__error">
+              <strong>WAIT TO PROCEED:</strong> Card mailing takes ~10 days;
+              interim paper version provided.
+            </span>
+          </div>
+
+          <hr className="archive-guides__hr" />
+
+          {/* Phase 4: Update U.S. Passport */}
+          <div className="archive-guides__phase-title">
+            Phase 4: Update U.S. Passport
+          </div>
+
+          <div className="archive-guides__section">
+            <strong>Required Documents:</strong>
+            <ol className="archive-guides__numbered-list">
+              <li>Certified Court Order</li>
+              <li>
+                <a
+                  href="https://eforms.state.gov/Forms/ds11_pdf.PDF"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Form DS-11 (Application for U.S. Passport)
+                </a>
+              </li>
+              <li>Current passport</li>
+              <li>
+                $130 check/money order payable to "U.S. Department of State"
+              </li>
+            </ol>
+
+            <div className="archive-guides__note">
+              Submit at passport acceptance facility (e.g., post office). Take
+              photo and pay fee in person.
+            </div>
+          </div>
+
+          <div className="archive-guides__steps">
+            <span className="archive-guides__error">
+              <strong>WAIT TO PROCEED:</strong> Processing takes 2-3 months for
+              approval, plus 3-6 weeks for document delivery.
+            </span>
+          </div>
         </div>
       </div>
     </div>

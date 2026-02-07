@@ -26,7 +26,10 @@ $accent: #aec8a4;
 $link-accent: #90c87a;
 $text-color: #e9ecda;
 $white: #ebebeb;
-$error-color: #fc7676;
+$error-color: #d52d00;
+$pink: #d461a6;
+$dark-pink: #a50062;
+$orage: #ff9b55;
 
 $glow-green: rgb(0, 159, 32);
 $glow-light: rgba($glow-green, 0.27);
@@ -297,13 +300,13 @@ a {
   font-size: 1.4rem;
   font-weight: bold;
   margin-bottom: 1rem;
-  text-decoration: underline;
 }
 
 .archive-guides__phase-title {
   font-size: 1.2rem;
   font-weight: bold;
   margin-bottom: 0.5rem;
+  color: $dark-pink;
 }
 
 .archive-guides__phase-title--first {
@@ -339,6 +342,56 @@ a {
 .archive-guides__tip-title {
   font-weight: bold;
   margin-bottom: 0.25rem;
+}
+
+.archive-guides__reference-link {
+  margin-bottom: 1rem;
+  padding: 0.75rem;
+  background: rgba($accent, 0.05);
+  border-left: 3px solid $accent;
+  font-size: 0.95rem;
+  color: $text-color;
+}
+
+.archive-guides__numbered-list {
+  margin: 0.5rem 0 1rem 2rem;
+  text-align: left;
+  color: $text-color;
+
+  li {
+    margin-bottom: 0.5rem;
+    line-height: 1.5;
+
+    a {
+      color: $pink;
+      text-decoration: none;
+
+      &:hover,
+      &:focus {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+.archive-guides__steps {
+  margin: 0.75rem 0;
+  padding: 0.5rem 0;
+  text-align: left;
+  color: $text-color;
+
+  div {
+    margin-bottom: 0.5rem;
+    line-height: 1.5;
+  }
+}
+
+.archive-guides__section strong {
+  color: $orage;
+}
+
+.archive-guides__error strong {
+  color: $error-color;
 }
 
 .item {
