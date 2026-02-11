@@ -1,13 +1,5 @@
-// ==========
-// APP STYLES
-// ==========
-
-// =========================================
+// ========== APP STYLES ==========
 // FONTS, COLOR PALETTE, VARIABLES, & MIXINS
-// =========================================
-
-// FONTS
-
 @font-face {
   font-family: "Typewriter";
   src: url("/assets/fonts/typewriter.ttf") format("truetype");
@@ -17,9 +9,6 @@
 }
 $typewriter-font: "Typewriter", "Courier New", "Lucida Console", "Monaco",
   monospace;
-
-// COLORS
-
 $bg-1: #101010;
 $bg-2: #656865;
 $accent: #aec8a4;
@@ -29,17 +18,12 @@ $white: #ebebeb;
 $error-color: #d52d00;
 $pink: #d461a6;
 $dark-pink: #a50062;
-$orage: #ff9b55;
-
-$glow-green: rgb(0, 159, 32);
-$glow-light: rgba($glow-green, 0.27);
-$glow-medium: rgba($glow-green, 0.53);
-$glow-strong: rgba($glow-green, 0.8);
-
-// SIZING/SPACING
-
+$orange: #ff9b55;
+$glow-green: #009f20;
+$glow-light: #009f2045;
+$glow-medium: #009f2087;
+$glow-strong: #009f20cc;
 $mute-icon-size: 18px;
-
 $shadow-size-xs: 2px;
 $shadow-size-sm: 4px;
 $shadow-size-md: 6px;
@@ -47,86 +31,57 @@ $shadow-size-lg: 8px;
 $shadow-size-xl: 12px;
 $shadow-size-xxl: 16px;
 $shadow-size-huge: 24px;
-
-$shadow-strong: 0 0 $shadow-size-xxl rgba($bg-1, 0.65);
+$shadow-strong: 0 0 $shadow-size-xxl #101010a6;
 $shadow-soft: 0 0 $shadow-size-sm $text-color, 0 0 $shadow-size-md $text-color,
   0 0 $shadow-size-lg $text-color, 0 0 $shadow-size-xl $text-color;
-
 $font-size-hero: 2rem;
 $font-size-xl: 1.5rem;
 $font-size-lg: 1.25rem;
 $font-size-base: 1rem;
 $font-size-xs: 0.75rem;
-$font-size-cursor: 1.1rem;
-
-$spacing-sm: 0.5rem;
-$spacing-md: 1rem;
-$spacing-lg: 1.5rem;
 $spacing-2: 0.125rem;
+$spacing-sm: 0.5rem;
 $spacing-10: 0.625rem;
-$spacing-15: 0.9375rem;
-$spacing-2px: 2px;
-$spacing-10px: 10px;
-$spacing-1-2: 1.2rem;
 $spacing-0-7: 0.7rem;
+$spacing-15: 0.9375rem;
+$spacing-md: 1rem;
+$spacing-1-2: 1.2rem;
+$spacing-lg: 1.5rem;
 $spacing-2-2: 2.2rem;
-
 $width-full: 100vw;
-$max-content-width: 720px;
-$content-width: 420px;
 $height-full: 100vh;
+$content-width: 420px;
+$max-content-width: 720px;
 $height-terminal: 320px;
 $height-min-content: 60vh;
 $height-min-small: 100px;
-
 $radius-xs: 2px;
 $radius-sm: 4px;
 $radius-md: 6px;
 $radius-lg: 8px;
 $radius-xl: 12px;
-
 $border-thin: 1px;
 $border-thick: 2px;
-
-$letter-spacing-normal: 0.1em;
-$opacity-light: 0.3;
-
-// UTILITY MIXINS
-
 @mixin flex-center {
   display: flex;
   justify-content: center;
   align-items: center;
 }
-
-@mixin text-glow(
-  $color: $accent,
-  $size1: $shadow-size-sm,
-  $size2: $shadow-size-lg
-) {
-  text-shadow: 0 0 $size1 $color, 0 0 $size2 $color;
-}
-
 @mixin terminal-glow {
   border-radius: $radius-lg;
   border: $border-thick solid $accent;
   box-shadow: $shadow-soft;
   background: $bg-1;
 }
-
 @mixin content-padding {
   padding: $spacing-15;
 }
-
 @mixin typewriter-text($size: $font-size-base) {
   font-family: $typewriter-font;
   font-size: $size;
   letter-spacing: 0.08em;
 }
-
-// =======
 // LAYOUTS
-// =======
 
 body {
   height: 100vh;
@@ -197,8 +152,8 @@ body {
 
   .navi-img {
     width: 20vh;
-    min-width: $spacing-10px * 4;
-    max-width: $spacing-10px * 12;
+    min-width: $spacing-10 * 4;
+    max-width: $spacing-10 * 12;
     height: auto;
     display: block;
     border-radius: $radius-xl;
@@ -287,7 +242,7 @@ a {
 }
 
 // =======
-// Archive Guides / Recipes styling (extracted from inline styles)
+// Archive Guides
 // =======
 .archive-guides__body {
   @include typewriter-text($font-size-base);
@@ -307,6 +262,7 @@ a {
   font-weight: bold;
   margin-bottom: 0.5rem;
   color: $dark-pink;
+  text-decoration: underline;
 }
 
 .archive-guides__phase-title--first {
@@ -387,7 +343,11 @@ a {
 }
 
 .archive-guides__section strong {
-  color: $orage;
+  color: $orange;
+}
+
+.archive-guides__section div a {
+  color: $pink;
 }
 
 .archive-guides__error strong {
@@ -442,11 +402,11 @@ a {
   text-shadow: 0 0 $shadow-size-md $glow-green, 0 0 $shadow-size-xl $glow-green;
   background: none;
   border: none;
-  letter-spacing: $letter-spacing-normal;
+  letter-spacing: $spacing-2;
   font-family: $typewriter-font;
   font-weight: bold;
   z-index: 256;
-  font-size: $font-size-cursor;
+  font-size: $font-size-base;
 }
 
 // BUTTONS
@@ -491,12 +451,12 @@ a {
   color: $white;
   background: none;
   border: none;
-  padding: $spacing-2px $spacing-10px;
+  padding: $spacing-2 $spacing-10;
   border-radius: $radius-md;
   font-size: $font-size-base;
   font-family: inherit;
   cursor: pointer;
-  margin-top: $spacing-10px;
+  margin-top: $spacing-10;
   transition: background 0.2s, color 0.2s, border 0.2s;
   letter-spacing: 0.1em;
   outline: none;

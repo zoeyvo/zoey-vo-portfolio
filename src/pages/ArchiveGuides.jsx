@@ -15,13 +15,13 @@ function ArchiveGuides() {
 
           {/* Reference Link */}
           <div className="archive-guides__reference-link">
-            <strong>Reference Resource:</strong>{" "}
+            <strong>Reference Resource:</strong> <br></br>
             <a
               href="https://mydoctor.kaiserpermanente.org/ncal/article/adult-name-only-or-name-and-gender-change-eba-gender-affirming-care-2413679"
               target="_blank"
               rel="noopener noreferrer"
             >
-              Kaiser Permanente Guide - 18+ Name or Name and Gender Change
+              Kaiser Permanente Guide - 18+ Name and/or Gender Change
             </a>
           </div>
 
@@ -31,7 +31,6 @@ function ArchiveGuides() {
           <div className="archive-guides__phase-title archive-guides__phase-title--first">
             Phase 0: Obtain Court Order
           </div>
-
           <div className="archive-guides__section">
             <strong>Required Forms to File:</strong>
             <ol className="archive-guides__numbered-list">
@@ -102,17 +101,15 @@ function ArchiveGuides() {
           </div>
 
           <div className="archive-guides__steps">
+            <div>1. File these forms at your local civil or family court.</div>
             <div>
-              <strong>Step 1:</strong> File these forms at your local civil or
-              family court.
+              <span className="archive-guides__error">
+                <strong>WAIT TO PROCEED:</strong> Allow ~2-3 months for court
+                approval and arrival.
+              </span>
             </div>
             <div>
-              <strong>Step 2:</strong> Wait 2-3 months for court approval and
-              mailed order.
-            </div>
-            <div>
-              <strong>Step 3:</strong> Return to court to obtain 4-5 certified
-              copies of your order.
+              2. Return to court to obtain 4-5 certified copies of your order.
             </div>
           </div>
 
@@ -122,7 +119,6 @@ function ArchiveGuides() {
           <div className="archive-guides__phase-title">
             Phase 1: Update Social Security Card (NAME ONLY)
           </div>
-
           <div className="archive-guides__section">
             <strong>Required Documents:</strong>
             <ol className="archive-guides__numbered-list">
@@ -184,10 +180,16 @@ function ArchiveGuides() {
 
             <div className="archive-guides__mailing-info">
               <strong>Send by Certified Mail to:</strong>
-              <br />
-              California Dept of Public Health Vital Records MS 5103
-              <br />
-              PO Box 997410, Sacramento, CA 95899-7410
+              <div
+                className="archive-guides__reference-link"
+                style={{ marginTop: "0.5rem", whiteSpace: "pre-line" }}
+              >
+                California Dept of Public Health Vital Records MS 5103
+                <br />
+                PO Box 997410
+                <br />
+                Sacramento, CA 95899-7410
+              </div>
             </div>
           </div>
 
@@ -206,6 +208,16 @@ function ArchiveGuides() {
           </div>
 
           <div className="archive-guides__section">
+            <strong>Required Documents:</strong>
+            <ol className="archive-guides__numbered-list">
+              <li>Proof of Identity: New Passport or New Birth Certificate</li>
+              <li>
+                Proof of CA Residency: 2 documents (utility bills, insurance,
+                official mail)
+              </li>
+              <li>Social Security Number</li>
+            </ol>
+
             <div>
               <strong>Apply on:</strong>{" "}
               <a
@@ -221,16 +233,6 @@ function ArchiveGuides() {
               After online application, complete in-person at DMV office. Pay
               $37 for new card and take new photo.
             </div>
-
-            <strong>Required Documents:</strong>
-            <ol className="archive-guides__numbered-list">
-              <li>Proof of Identity: New Passport or New Birth Certificate</li>
-              <li>
-                Proof of CA Residency: 2 documents (utility bills, insurance,
-                official mail)
-              </li>
-              <li>Social Security Number</li>
-            </ol>
           </div>
 
           <div className="archive-guides__steps">
@@ -265,7 +267,6 @@ function ArchiveGuides() {
                 $130 check/money order payable to "U.S. Department of State"
               </li>
             </ol>
-
             <div className="archive-guides__note">
               Submit at passport acceptance facility (e.g., post office). Take
               photo and pay fee in person.
