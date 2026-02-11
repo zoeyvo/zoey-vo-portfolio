@@ -9,7 +9,7 @@ function ArchiveCardGames() {
         </div>
         <div className="cardgames-grid">
           {/* Card Game Section 1: Tiến Lên */}
-          <div className="cardgame-section cardgame-box">
+          <div className="cardgame-box">
             <div className="game-header">
               <h3 className="game-name accent">
                 <span>Tiến Lên</span> 🇻🇳
@@ -87,7 +87,7 @@ function ArchiveCardGames() {
             </div>
           </div>
           {/* Card Game Section 2: Busfahrer (Drive the Bus) */}
-          <div className="cardgame-section cardgame-box">
+          <div className="cardgame-box">
             <div className="game-header">
               <h3 className="game-name accent">
                 <span>Busfahrer</span> 🇩🇪

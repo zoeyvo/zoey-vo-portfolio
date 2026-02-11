@@ -48,6 +48,8 @@ $spacing-md: 1rem;
 $spacing-1-2: 1.2rem;
 $spacing-lg: 1.5rem;
 $spacing-2-2: 2.2rem;
+$spacing-xl: 3rem;
+$spacing-xxl: 5rem;
 $width-full: 100vw;
 $height-full: 100vh;
 $content-width: 420px;
@@ -851,7 +853,7 @@ a:focus,
   border: $border-thick solid $accent;
   box-shadow: 0 0 $shadow-size-md $text-color, 0 0 $shadow-size-lg $text-color,
     0 0 $shadow-size-xl $text-color, 0 0 $shadow-size-xxl $text-color;
-  margin-bottom: $spacing-lg;
+  margin-bottom: $spacing-xxl;
   padding: $spacing-sm $spacing-sm $spacing-md;
   max-width: 1200px;
   width: 100%;
@@ -869,14 +871,12 @@ a:focus,
 .cardgame-divider {
   border: none;
   border-top: $border-thick solid $text-color;
-  margin: 1.1em 0;
   opacity: 0.8;
 }
 
 .cardgames-grid {
   display: flex;
   flex-direction: column;
-  gap: 0.75em;
   align-items: center;
   width: 100%;
 }

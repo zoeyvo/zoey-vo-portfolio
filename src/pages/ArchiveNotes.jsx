@@ -1,6 +1,26 @@
 function ArchiveNotes() {
   const notes = [
     {
+      date: "2026-01-16",
+      title: "note 35",
+      content: "REJECT FACISM",
+    },
+    {
+      date: "2026-01-07",
+      title: "note 34",
+      content: "V3 ✓",
+    },
+    {
+      date: "2026-01-01",
+      title: "note 33",
+      content: "yurimaxxing",
+    },
+    {
+      date: "2025-12-14",
+      title: "note 32",
+      content: "V2 ✓",
+    },
+    {
       date: "2025-12-2",
       title: "note 31",
       content: "I LOVE PROGESTERONE",
