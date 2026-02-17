@@ -1,9 +1,12 @@
 function ArchiveMedia() {
   const mediaItems = [
     {
+      type: "image",
+      src: "../assets/images/media/collage.jpeg",
+    },
+    {
       type: "video",
       src: "https://www.youtube.com/watch?v=RiwEzF3DsGk",
-      caption: "jrjrjr!!!",
     },
   ];
 
@@ -32,7 +35,6 @@ function ArchiveMedia() {
                     width="100%"
                     height="315"
                     src={formatYouTubeUrl(item.src)}
-                    title={item.caption}
                     allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                     allowFullScreen
                   ></iframe>
@@ -41,12 +43,10 @@ function ArchiveMedia() {
                 <div className="media-image terminal-glow-border">
                   <img
                     src={item.src}
-                    alt={item.caption}
                     style={{ maxWidth: "100%" }}
                   />
                 </div>
               )}
-              <div className="media-caption mono">{item.caption}</div>
             </div>
           ))}
         </div>
