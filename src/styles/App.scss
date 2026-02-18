@@ -23,7 +23,6 @@ $glow-green: #009f20;
 $glow-light: #009f2045;
 $glow-medium: #009f2087;
 $glow-strong: #009f20cc;
-$mute-icon-size: 18px;
 $shadow-size-xs: 2px;
 $shadow-size-sm: 4px;
 $shadow-size-md: 6px;
@@ -83,7 +82,7 @@ $border-thick: 2px;
   font-size: $size;
   letter-spacing: 0.08em;
 }
-// LAYOUTS
+// ========== LAYOUTS ==========
 
 body {
   height: 100vh;
@@ -106,8 +105,7 @@ body {
   }
 }
 
-.grid-cell,
-.page-cell {
+.grid-cell {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -123,8 +121,8 @@ body {
   box-sizing: border-box;
   overflow-x: hidden;
 
-  .landing &,
-  .terminal & {
+  &.landing,
+  &.terminal {
     @include flex-center;
     min-height: $height-min-content;
   }
@@ -142,7 +140,7 @@ body {
   width: 100%;
 }
 
-// HEADER
+// ========== HEADER ==========
 
 .header-navi {
   width: 100vw;
@@ -169,7 +167,7 @@ body {
   }
 }
 
-// FOOTER
+// ========== FOOTER ==========
 .footer {
   @include flex-center;
   position: fixed; // Change to fixed
@@ -212,9 +210,7 @@ a {
   }
 }
 
-// ======================
-// ELEMENT & CLASS STYLES
-// ======================
+// ========== ELEMENT & CLASS STYLES ==========
 
 .content {
   @include flex-center;
@@ -241,119 +237,6 @@ a {
   color: $white;
   text-shadow: 0 0 $shadow-size-xl $accent, 0 0 $shadow-size-xxl #222;
   font-family: $typewriter-font;
-}
-
-// =======
-// Archive Guides
-// =======
-.archive-guides__body {
-  @include typewriter-text($font-size-base);
-  white-space: pre-wrap;
-  text-align: left;
-  color: $text-color;
-}
-
-.archive-guides__main-header {
-  font-size: 1.4rem;
-  font-weight: bold;
-  margin-bottom: 1rem;
-}
-
-.archive-guides__phase-title {
-  font-size: 1.2rem;
-  font-weight: bold;
-  margin-bottom: 0.5rem;
-  color: $dark-pink;
-  text-decoration: underline;
-}
-
-.archive-guides__phase-title--first {
-  margin-top: 1.5rem;
-}
-
-.archive-guides__phase-subtitle {
-  font-style: italic;
-  margin-bottom: 0.5rem;
-}
-
-.archive-guides__indent {
-  margin-left: 20px;
-}
-
-.archive-guides__hr {
-  margin: 1.5rem 0;
-  border: none;
-  border-top: 1px dashed #ccc;
-}
-
-.archive-guides__hr--solid {
-  border-top: 2px solid #999;
-}
-
-.archive-guides__tip {
-  margin-top: 1.5rem;
-  padding: 0.75rem;
-  background: #f5f5f5;
-  border-left: 4px solid #666;
-}
-
-.archive-guides__tip-title {
-  font-weight: bold;
-  margin-bottom: 0.25rem;
-}
-
-.archive-guides__reference-link {
-  margin-bottom: 1rem;
-  padding: 0.75rem;
-  background: rgba($accent, 0.05);
-  border-left: 3px solid $accent;
-  font-size: 0.95rem;
-  color: $text-color;
-}
-
-.archive-guides__numbered-list {
-  margin: 0.5rem 0 1rem 2rem;
-  text-align: left;
-  color: $text-color;
-
-  li {
-    margin-bottom: 0.5rem;
-    line-height: 1.5;
-
-    a {
-      color: $pink;
-      text-decoration: none;
-
-      &:hover,
-      &:focus {
-        text-decoration: underline;
-      }
-    }
-  }
-}
-
-.archive-guides__steps {
-  margin: 0.75rem 0;
-  padding: 0.5rem 0;
-  text-align: left;
-  color: $text-color;
-
-  div {
-    margin-bottom: 0.5rem;
-    line-height: 1.5;
-  }
-}
-
-.archive-guides__section strong {
-  color: $orange;
-}
-
-.archive-guides__section div a {
-  color: $pink;
-}
-
-.archive-guides__error strong {
-  color: $error-color;
 }
 
 .item {
@@ -395,59 +278,7 @@ a {
   }
 }
 
-// CURSOR
-
-.cursor-trail-char {
-  position: fixed;
-  pointer-events: none;
-  color: $white;
-  text-shadow: 0 0 $shadow-size-md $glow-green, 0 0 $shadow-size-xl $glow-green;
-  background: none;
-  border: none;
-  letter-spacing: $spacing-2;
-  font-family: $typewriter-font;
-  font-weight: bold;
-  z-index: 256;
-  font-size: $font-size-base;
-}
-
-// BUTTONS
-
-.mute-btn-fixed {
-  position: fixed;
-  top: 1rem;
-  right: 1rem;
-  background: none;
-  border: none;
-  color: $text-color;
-  font-size: 1.5rem;
-  cursor: pointer;
-  padding: 0.5rem;
-  z-index: 1000;
-  font-family: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji",
-    sans-serif;
-  -webkit-tap-highlight-color: transparent;
-  touch-action: manipulation;
-  user-select: none;
-  -webkit-user-select: none;
-
-  &:hover {
-    opacity: 0.8;
-  }
-
-  &:active {
-    transform: scale(0.9);
-  }
-}
-
-.mute-btn-icon {
-  width: $mute-icon-size;
-  height: $mute-icon-size;
-  vertical-align: middle;
-  display: inline-block;
-  filter: brightness(0) saturate(100%) invert(94%) sepia(6%) saturate(300%)
-    hue-rotate(0deg) brightness(1) contrast(1);
-}
+// ========== BUTTONS ==========
 
 .enter-btn {
   color: $white;
@@ -473,7 +304,7 @@ a {
   }
 }
 
-// LINKS
+// ========== LINKS ==========
 
 a:hover,
 a:focus,
@@ -483,7 +314,7 @@ a:focus,
   text-decoration: underline;
 }
 
-// TERMINAL
+// ========== TERMINAL ==========
 
 .terminal-container {
   position: relative;
@@ -643,6 +474,20 @@ a:focus,
   }
 }
 
+// ========== CURSOR TRAIL ==========
+.cursor-trail-char {
+  position: fixed;
+  pointer-events: none;
+  color: $white;
+  text-shadow: 0 0 $shadow-size-md $glow-green, 0 0 $shadow-size-lg $glow-green;
+  background: none;
+  border: none;
+  letter-spacing: 0.08em;
+  @include typewriter-text;
+  font-weight: 700;
+  z-index: 256;
+}
+
 .terminal-options {
   margin-bottom: 0.6rem;
   display: flex;
@@ -771,7 +616,213 @@ a:focus,
   }
 }
 
-// BIO
+// ========== UTILITIES ==========
+
+// Page Body Text
+.page-body {
+  @include typewriter-text($font-size-base);
+  white-space: pre-wrap;
+  text-align: left;
+  color: $text-color;
+}
+
+// Heading Hierarchy
+.heading-lg {
+  font-size: 1.4rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.heading-md {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.heading-sm {
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+// Card Container
+.card {
+  background: $bg-1;
+  border-radius: $radius-xl;
+  border: $border-thick solid $accent;
+  box-shadow: 0 0 $shadow-size-md $text-color, 0 0 $shadow-size-lg $text-color,
+    0 0 $shadow-size-xl $text-color, 0 0 $shadow-size-xxl $text-color;
+  padding: $spacing-sm $spacing-sm $spacing-md;
+  max-width: 1200px;
+  width: 100%;
+  transition: box-shadow 0.18s, border 0.18s;
+  position: relative;
+  line-height: 1.6;
+
+  &:hover,
+  &:focus {
+    box-shadow: 0 0 $shadow-size-lg $text-color, 0 0 $shadow-size-xl $text-color,
+      0 0 $shadow-size-xxl $text-color, 0 0 $shadow-size-huge $text-color;
+  }
+}
+
+.card--small {
+  max-width: $content-width;
+  margin-bottom: $spacing-lg;
+}
+
+.card--minimal {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  padding: 0;
+  margin-bottom: $spacing-lg;
+  max-width: $content-width;
+
+  &:hover,
+  &:focus {
+    box-shadow: none;
+  }
+}
+
+// Reference Box (accent left border)
+.reference-box {
+  margin-bottom: 1rem;
+  padding: 0.75rem;
+  background: rgba($accent, 0.05);
+  border-left: 3px solid $accent;
+  font-size: 0.95rem;
+  color: $text-color;
+}
+
+// Dividers
+.divider {
+  margin: 1.5rem 0;
+  border: none;
+  border-top: 1px dashed #ccc;
+}
+
+.divider--solid {
+  border-top: $border-thick solid $text-color;
+}
+
+// Text Utilities
+.text-error {
+  color: $error-color;
+  text-shadow: 0 0 1px $error-color;
+
+  strong {
+    color: $error-color;
+  }
+}
+
+.text-accent {
+  color: $accent;
+
+  strong {
+    color: $accent;
+  }
+}
+
+.text-highlight {
+  color: $orange;
+
+  strong {
+    color: $orange;
+  }
+}
+
+.text-link {
+  color: $pink;
+  text-decoration: none;
+
+  &:hover,
+  &:focus {
+    text-decoration: underline;
+  }
+}
+
+// List Utilities
+.list-numbered {
+  margin: 0.5rem 0 1rem 2rem;
+  text-align: left;
+  color: $text-color;
+
+  li {
+    margin-bottom: 0.5rem;
+    line-height: 1.5;
+  }
+}
+
+.list-steps {
+  margin: 0.75rem 0;
+  padding: 0.5rem 0;
+  text-align: left;
+  color: $text-color;
+
+  div {
+    margin-bottom: 0.5rem;
+    line-height: 1.5;
+  }
+}
+
+// ========== ARCHIVE GUIDES ==========
+
+.archive-guides__body {
+  @extend .page-body;
+}
+
+.archive-guides__main-header {
+  @extend .heading-lg;
+}
+
+.archive-guides__phase-title {
+  @extend .heading-md;
+  color: $dark-pink;
+  text-decoration: underline;
+}
+
+.archive-guides__phase-title--first {
+  margin-top: 1.5rem;
+}
+
+.archive-guides__phase-subtitle {
+  font-style: italic;
+  margin-bottom: 0.5rem;
+}
+
+.archive-guides__hr {
+  @extend .divider;
+}
+
+.archive-guides__reference-link {
+  @extend .reference-box;
+}
+
+.archive-guides__numbered-list {
+  @extend .list-numbered;
+
+  li a {
+    @extend .text-link;
+  }
+}
+
+.archive-guides__steps {
+  @extend .list-steps;
+}
+
+.archive-guides__section strong {
+  @extend .text-highlight;
+}
+
+.archive-guides__section div a {
+  @extend .text-link;
+}
+
+.archive-guides__error strong {
+  @extend .text-error;
+}
+
+// ========== BIO ==========
 
 .bio-desc {
   font-size: $font-size-base;
@@ -795,7 +846,7 @@ a:focus,
   margin-bottom: 1.2em;
 }
 
-// RESUME
+// ========== RESUME ==========
 
 .resume-root {
   width: 100%;
@@ -825,11 +876,10 @@ a:focus,
   font-family: $typewriter-font;
 }
 
-// NOTES
+// ========== NOTES ==========
 
 .note-item {
-  width: 100%;
-  max-width: $content-width;
+  @extend .card--minimal;
 }
 
 .note-content {
@@ -845,32 +895,15 @@ a:focus,
   width: 128px;
 }
 
-// CARDGAMES
+// ========== CARDGAMES ==========
 
 .cardgame-box {
-  background: $bg-1;
-  border-radius: $radius-xl;
-  border: $border-thick solid $accent;
-  box-shadow: 0 0 $shadow-size-md $text-color, 0 0 $shadow-size-lg $text-color,
-    0 0 $shadow-size-xl $text-color, 0 0 $shadow-size-xxl $text-color;
+  @extend .card;
   margin-bottom: $spacing-xxl;
-  padding: $spacing-sm $spacing-sm $spacing-md;
-  max-width: 1200px;
-  width: 100%;
-  transition: box-shadow 0.18s, border 0.18s;
-  position: relative;
-  line-height: 1.6;
-
-  &:hover,
-  &:focus {
-    box-shadow: 0 0 $shadow-size-lg $text-color, 0 0 $shadow-size-xl $text-color,
-      0 0 $shadow-size-xxl $text-color, 0 0 $shadow-size-huge $text-color;
-  }
 }
 
 .cardgame-divider {
-  border: none;
-  border-top: $border-thick solid $text-color;
+  @extend .divider--solid;
   opacity: 0.8;
 }
 
@@ -935,49 +968,7 @@ a:focus,
   overflow: hidden;
 }
 
-.media-video,
-.media-image {
-  width: 100%;
-  max-width: $max-content-width;
-  margin: 0 auto 1rem;
-
-  iframe {
-    width: 100%;
-    height: 315px;
-    border: none;
-    border-radius: $radius-xl;
-    display: block;
-  }
-
-  img {
-    width: 100%;
-    height: auto;
-    border-radius: $radius-md;
-    display: block;
-  }
-}
-
-.media-video.terminal-glow-border {
-  height: 315px;
-  @include flex-center;
-}
-
-.media-image.terminal-glow-border {
-  height: auto;
-  @include flex-center;
-}
-
-.media-caption {
-  text-align: center;
-  margin-top: 0.5rem;
-  font-size: $font-size-xs;
-  color: $text-color;
-  font-family: $typewriter-font;
-}
-
-// =========================
-// RESPONSIVE STYLES
-// =========================
+// ========== RESPONSIVE STYLES ==========
 
 // WEB
 
@@ -1086,8 +1077,7 @@ a:focus,
     margin-bottom: $spacing-md;
   }
 
-  .grid-cell,
-  .page-cell {
+  .grid-cell {
     padding: $spacing-sm;
   }
 

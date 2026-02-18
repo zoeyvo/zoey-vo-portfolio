@@ -13,8 +13,7 @@ function Root() {
 
   const rootItems = [
     { name: "bio", description: "about me" },
-    { name: "resume", description: "my skills and experience" },
-    { name: "archive", description: "content i resonate with" },
+    { name: "archive", description: "information store" },
   ];
 
   const handleItemClick = (item) => {

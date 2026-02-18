@@ -9,3 +9,4 @@ export { default as ArchiveCardGames } from "./ArchiveCardGames";
 export { default as ArchiveMedia } from "./ArchiveMedia";
 export { default as ArchiveNotes } from "./ArchiveNotes";
 export { default as ArchiveGuides } from "./ArchiveGuides";
+export { default as ArchiveSection } from "./ArchiveSection";
