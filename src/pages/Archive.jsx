@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-function Archive({ playSwap }) {
+function Archive() {
   const navigate = useNavigate();
 
   // Ensure font is loaded to reduce browser warnings
@@ -15,12 +15,11 @@ function Archive({ playSwap }) {
     { name: "notes", description: "stream of concisousness" },
     { name: "bookmarks", description: "important links and resources" },
     { name: "guides", description: "anecdotal how to's" },
-    { name: "cardgames", description: "card games i like" },
     { name: "media", description: "media i resonate with" },
+    { name: "cardgames", description: "card games i like" },
   ];
 
   const handleItemClick = (item) => {
-    if (playSwap) playSwap();
     navigate(`/archive/${item}`);
   };
 
@@ -34,7 +33,6 @@ function Archive({ playSwap }) {
               key={item.name}
               className="item section-item"
               onClick={() => handleItemClick(item.name)}
-              onMouseDown={playSwap}
             >
               <div className="item-header">
                 <span className="cmd">{item.name}</span>

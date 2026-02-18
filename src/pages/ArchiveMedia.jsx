@@ -1,23 +1,12 @@
 function ArchiveMedia() {
   const mediaItems = [
     {
-      type: "image",
       src: "../assets/images/media/collage.jpeg",
     },
     {
-      type: "video",
       src: "https://www.youtube.com/watch?v=RiwEzF3DsGk",
     },
   ];
-
-  // Convert YouTube links into proper embed URLs with autoplay=0
-  const formatYouTubeUrl = (url) => {
-    const match = url.match(/(?:youtu\.be\/|v=)([A-Za-z0-9_-]+)/);
-    if (match && match[1]) {
-      return `https://www.youtube.com/embed/${match[1]}?autoplay=0`;
-    }
-    return url;
-  };
 
   return (
     <div className="grid-cell">
@@ -28,25 +17,10 @@ function ArchiveMedia() {
         </div>
         <div className="media-list">
           {mediaItems.map((item, idx) => (
-            <div className="media-video" key={idx}>
-              {item.type === "video" ? (
-                <div className="media-video terminal-glow-border">
-                  <iframe
-                    width="100%"
-                    height="315"
-                    src={formatYouTubeUrl(item.src)}
-                    allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    allowFullScreen
-                  ></iframe>
-                </div>
-              ) : (
-                <div className="media-image terminal-glow-border">
-                  <img
-                    src={item.src}
-                    style={{ maxWidth: "100%" }}
-                  />
-                </div>
-              )}
+            <div className="media-item terminal-glow-border" key={idx}>
+              <div>
+                {item.src}
+              </div>
             </div>
           ))}
         </div>

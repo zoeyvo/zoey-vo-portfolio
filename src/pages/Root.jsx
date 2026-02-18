@@ -2,7 +2,7 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-function Root({ playSwap }) {
+function Root() {
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -18,7 +18,6 @@ function Root({ playSwap }) {
   ];
 
   const handleItemClick = (item) => {
-    if (playSwap) playSwap();
     navigate(`/${item}`);
   };
 
@@ -32,7 +31,6 @@ function Root({ playSwap }) {
               key={item.name}
               className="item section-item"
               onClick={() => handleItemClick(item.name)}
-              onMouseDown={playSwap}
             >
               <div className="item-header">
                 <span className="cmd">{item.name}</span>

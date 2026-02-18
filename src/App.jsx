@@ -17,9 +17,7 @@ import {
   ArchiveBookmarks,
 } from "./pages";
 import { Terminal } from "./components/Terminal/Terminal";
-import { MuteButton } from "./components/MuteButton";
 import { useTerminal } from "./hooks/useTerminal";
-import { useAudio } from "./hooks/useAudio";
 import { useCursorEnlargeOnClick } from "./hooks";
 import "./styles/App.scss";
 
@@ -27,7 +25,6 @@ function App() {
   const [entered, setEntered] = useState(false);
   const navigate = useNavigate();
   const terminal = useTerminal();
-  const audio = useAudio(entered);
 
   useCursorEnlargeOnClick();
 
@@ -43,23 +40,6 @@ function App() {
   return (
     <>
       <CustomCursor />
-      <MuteButton isMuted={audio.isMuted} onToggle={audio.toggleMute} />
-
-      <audio ref={audio.phwipRef} src="/assets/audio/swap.mp3" preload="auto" />
-      <audio
-        ref={audio.musicRef}
-        src="/assets/audio/within.mp3"
-        preload="auto"
-        loop
-        style={{ display: "none" }}
-      />
-      <audio
-        ref={audio.windRef}
-        src="/assets/audio/wind.mp3"
-        loop
-        autoPlay
-        style={{ display: "none" }}
-      />
 
       <Routes>
         <Route
@@ -80,7 +60,6 @@ function App() {
                       />
                       <button
                         className="enter-btn"
-                        onMouseDown={audio.playSwap}
                         onClick={() => setEntered(true)}
                       >
                         [enter]
@@ -107,7 +86,6 @@ function App() {
                     href="https://github.com/zoeyvo"
                     target="_blank"
                     rel="noopener noreferrer"
-                    onClick={audio.playSwap}
                   >
                     github.com/zoeyvo
                   </a>
@@ -116,7 +94,6 @@ function App() {
                     href="https://www.linkedin.com/in/zoeyvo"
                     target="_blank"
                     rel="noopener noreferrer"
-                    onClick={audio.playSwap}
                   >
                     linkedin.com/in/zoeyvo
                   </a>
@@ -126,7 +103,6 @@ function App() {
                       href="https://mail.google.com/mail/?view=cm&to=zoeyvo256@gmail.com"
                       target="_blank"
                       rel="noopener noreferrer"
-                      onClick={audio.playSwap}
                     >
                       zoeyvo256<span className="at-symbol">@</span>gmail.com
                     </a>
@@ -140,15 +116,15 @@ function App() {
         <Route
           path="/root"
           element={
-            <PageLayout playSwap={audio.playSwap}>
-              <Root playSwap={audio.playSwap} />
+            <PageLayout>
+              <Root />
             </PageLayout>
           }
         />
         <Route
           path="/bio"
           element={
-            <PageLayout playSwap={audio.playSwap}>
+            <PageLayout>
               <Bio />
             </PageLayout>
           }
@@ -156,7 +132,7 @@ function App() {
         <Route
           path="/resume"
           element={
-            <PageLayout playSwap={audio.playSwap}>
+            <PageLayout>
               <Resume />
             </PageLayout>
           }
@@ -164,7 +140,7 @@ function App() {
         <Route
           path="/love"
           element={
-            <PageLayout playSwap={audio.playSwap}>
+            <PageLayout>
               <Love />
             </PageLayout>
           }
@@ -172,15 +148,15 @@ function App() {
         <Route
           path="/archive"
           element={
-            <PageLayout playSwap={audio.playSwap}>
-              <Archive playSwap={audio.playSwap} />
+            <PageLayout>
+              <Archive />
             </PageLayout>
           }
         />
         <Route
           path="/archive/cardgames"
           element={
-            <PageLayout playSwap={audio.playSwap}>
+            <PageLayout>
               <ArchiveCardGames />
             </PageLayout>
           }
@@ -188,7 +164,7 @@ function App() {
         <Route
           path="/archive/guides"
           element={
-            <PageLayout playSwap={audio.playSwap}>
+            <PageLayout>
               <ArchiveGuides />
             </PageLayout>
           }
@@ -196,7 +172,7 @@ function App() {
         <Route
           path="/archive/media"
           element={
-            <PageLayout playSwap={audio.playSwap}>
+            <PageLayout>
               <ArchiveMedia />
             </PageLayout>
           }
@@ -204,7 +180,7 @@ function App() {
         <Route
           path="/archive/notes"
           element={
-            <PageLayout playSwap={audio.playSwap}>
+            <PageLayout>
               <ArchiveNotes />
             </PageLayout>
           }
@@ -212,7 +188,7 @@ function App() {
         <Route
           path="/archive/bookmarks"
           element={
-            <PageLayout playSwap={audio.playSwap}>
+            <PageLayout>
               <ArchiveBookmarks />
             </PageLayout>
           }

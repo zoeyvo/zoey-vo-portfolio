@@ -14,19 +14,19 @@ function ArchiveBookmarks() {
     },
     {
       url: "https://acousticgender.space/",
-      title: "voice training tool",
+      title: "Voice Training Tool",
     },
     {
       url: "https://mydoctor.kaiserpermanente.org/ncal/structured-content/hormone-therapy-with-estrogen-and-androgen-blockers-1123088",
-      title: "trans hormone therapy guide",
+      title: "Trans HRT Guide",
     },
     {
       url: "https://learngitbranching.js.org/",
-      title: "learn git branching",
+      title: "Learn Git Branching",
     },
     {
       url: "https://www.cs.usfca.edu/~galles/visualization/Algorithms.html",
-      title: "algorithm visualizations",
+      title: "Algorithm Visualizations",
     },
   ];
 

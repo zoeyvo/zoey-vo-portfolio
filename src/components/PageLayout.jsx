@@ -5,12 +5,11 @@ import { getAssetUrl } from "../utils/constants";
 /**
  * PageLayout is a minimal wrapper for all non-landing pages.
  * - Renders the Navi header, cursor trail, header, children, and footer.
- * - Preloads all major assets (images, fonts, audio, PDF) for instant navigation.
- * - Passes playSwap to children for consistent sound effects.
+ * - Preloads all major assets (images, fonts, PDF) for instant navigation.
  * - All layout and sizing is handled by SCSS for consistency.
  */
 
-function PageLayout({ children, playSwap }) {
+function PageLayout({ children }) {
   // Preload all major assets for instant navigation
   useEffect(() => {
     const assets = [
@@ -18,8 +17,6 @@ function PageLayout({ children, playSwap }) {
       "assets/images/lain.gif",
       "assets/images/static.gif",
       "assets/fonts/typewriter.ttf",
-      "assets/audio/swap.mp3",
-      "assets/audio/within.mp3",
       "assets/images/Zoey-Vo-Resume-2025.png",
       "assets/cursor/cursor.cur",
     ];
@@ -29,9 +26,6 @@ function PageLayout({ children, playSwap }) {
       if (["png", "gif", "jpg", "jpeg", "cur"].includes(ext)) {
         const img = new window.Image();
         img.src = getAssetUrl(asset);
-      } else if (["mp3", "wav", "ogg"].includes(ext)) {
-        const audio = new window.Audio();
-        audio.src = getAssetUrl(asset);
       } else if (["ttf", "woff", "woff2", "otf"].includes(ext)) {
         const link = document.createElement("link");
         link.rel = "preload";
@@ -70,7 +64,6 @@ function PageLayout({ children, playSwap }) {
             href="https://github.com/zoeyvo"
             target="_blank"
             rel="noopener noreferrer"
-            onClick={playSwap}
           >
             github.com/zoeyvo
           </a>
@@ -79,7 +72,6 @@ function PageLayout({ children, playSwap }) {
             href="https://www.linkedin.com/in/zoeyvo"
             target="_blank"
             rel="noopener noreferrer"
-            onClick={playSwap}
           >
             linkedin.com/in/zoeyvo
           </a>
@@ -89,7 +81,6 @@ function PageLayout({ children, playSwap }) {
               href="https://mail.google.com/mail/?view=cm&to=zoeyvo256@gmail.com"
               target="_blank"
               rel="noopener noreferrer"
-              onClick={playSwap}
             >
               zoeyvo256<span className="at-symbol">@</span>gmail.com
             </a>

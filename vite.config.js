@@ -23,8 +23,6 @@ export default defineConfig({
             extType = "images";
           } else if (/\.(woff2?|eot|ttf|otf)$/i.test(assetInfo.name)) {
             extType = "fonts";
-          } else if (/\.(mp3|wav|ogg|m4a|aac)$/i.test(assetInfo.name)) {
-            extType = "audio";
           } else if (/\.(cur|ico)$/i.test(assetInfo.name)) {
             extType = "cursors";
           }
