@@ -40,7 +40,7 @@ function ArchiveMedia() {
                   ></iframe>
                 </div>
               ) : (
-                <div className="media-image terminal-glow-border">
+                <div className="media-image terminal-glow-border">  
                   <img
                     src={item.src}
                     style={{ maxWidth: "100%" }}
