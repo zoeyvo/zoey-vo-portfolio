@@ -1,6 +1,10 @@
 function ArchiveBookmarks() {
   const bookmarks = [
     {
+      url: "https://chuffed.org/project/157569-help-baha-and-his-family-rebuild-their-home-and-meet-their-d",
+      title: "Help Baha'a and Sama'a",
+    },
+    {
       url: "https://bdsmovement.net/Act-Now-Against-These-Companies-Profiting-From-Genocide",
       title: "BDS Boycott List",
     },

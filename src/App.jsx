@@ -7,6 +7,7 @@
 
 import { useEffect } from "react";
 import { useNavigate, Routes, Route, Outlet } from "react-router-dom";
+import { CustomCursor } from "./components";
 import ErrorBoundary from "./components/ErrorBoundary";
 import PageLayout from "./layouts/PageLayout";
 import RootLayout from "./layouts/RootLayout";
@@ -30,6 +31,7 @@ function App() {
 
   return (
     <ErrorBoundary>
+      <CustomCursor />
       <Routes>
         {/* Landing page route */}
         <Route path="/" element={<RootLayout />} />

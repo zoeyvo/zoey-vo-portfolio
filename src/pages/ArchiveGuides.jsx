@@ -7,14 +7,14 @@ function ArchiveGuides() {
           <br />
         </div>
 
-        <div className="archive-guides__body">
+        <div className="archive-guides-body">
           {/* Main Header */}
-          <div className="archive-guides__main-header">
+          <div className="archive-guides-main-header">
             Complete Guide for Name & Gender Marker Change (CA 2025)
           </div>
 
           {/* Reference Link */}
-          <div className="archive-guides__reference-link">
+          <div className="archive-guides-reference-link">
             <strong>Reference Resource:</strong> <br></br>
             <a
               href="https://mydoctor.kaiserpermanente.org/ncal/article/adult-name-only-or-name-and-gender-change-eba-gender-affirming-care-2413679"
@@ -25,15 +25,15 @@ function ArchiveGuides() {
             </a>
           </div>
 
-          <hr className="archive-guides__hr" />
+          <hr className="archive-guides-hr" />
 
           {/* Phase 0: Obtain Court Order */}
-          <div className="archive-guides__phase-title archive-guides__phase-title--first">
+          <div className="archive-guides-phase-title archive-guides-phase-title-first">
             Phase 0: Obtain Court Order
           </div>
-          <div className="archive-guides__section">
+          <div className="archive-guides-section">
             <strong>Required Forms to File:</strong>
-            <ol className="archive-guides__numbered-list">
+            <ol className="archive-guides-numbered-list">
               <li>
                 <a
                   href="https://www.courts.ca.gov/documents/nc125.pdf"
@@ -100,10 +100,10 @@ function ArchiveGuides() {
             </ol>
           </div>
 
-          <div className="archive-guides__steps">
+          <div className="archive-guides-steps">
             <div>1. File these forms at your local civil or family court.</div>
             <div>
-              <span className="archive-guides__error">
+              <span className="archive-guides-error">
                 <strong>WAIT TO PROCEED:</strong> Allow ~2-3 months for court
                 approval and arrival.
               </span>
@@ -113,15 +113,15 @@ function ArchiveGuides() {
             </div>
           </div>
 
-          <hr className="archive-guides__hr" />
+          <hr className="archive-guides-hr" />
 
           {/* Phase 1: Update Social Security Card */}
-          <div className="archive-guides__phase-title">
+          <div className="archive-guides-phase-title">
             Phase 1: Update Social Security Card (NAME ONLY)
           </div>
-          <div className="archive-guides__section">
+          <div className="archive-guides-section">
             <strong>Required Documents:</strong>
-            <ol className="archive-guides__numbered-list">
+            <ol className="archive-guides-numbered-list">
               <li>Certified Court Order</li>
               <li>
                 <a
@@ -135,26 +135,26 @@ function ArchiveGuides() {
             </ol>
           </div>
 
-          <div className="archive-guides__steps">
+          <div className="archive-guides-steps">
             <div>
               Submit these documents in person at a Social Security office.
             </div>
-            <span className="archive-guides__error">
+            <span className="archive-guides-error">
               <strong>WAIT TO PROCEED:</strong> Allow ~2 weeks for record
               updates and new card delivery.
             </span>
           </div>
 
-          <hr className="archive-guides__hr" />
+          <hr className="archive-guides-hr" />
 
           {/* Phase 2: Update Birth Certificate */}
-          <div className="archive-guides__phase-title">
+          <div className="archive-guides-phase-title">
             Phase 2: Update Birth Certificate
           </div>
 
-          <div className="archive-guides__section">
+          <div className="archive-guides-section">
             <strong>Required Documents:</strong>
-            <ol className="archive-guides__numbered-list">
+            <ol className="archive-guides-numbered-list">
               <li>Certified Court Order</li>
               <li>
                 <a
@@ -178,10 +178,10 @@ function ArchiveGuides() {
               <li>$26 check/money order payable to "CDPH Vital Records"</li>
             </ol>
 
-            <div className="archive-guides__mailing-info">
+            <div className="archive-guides-mailing-info">
               <strong>Send by Certified Mail to:</strong>
               <div
-                className="archive-guides__reference-link"
+                className="archive-guides-reference-link"
                 style={{ marginTop: "0.5rem", whiteSpace: "pre-line" }}
               >
                 California Dept of Public Health Vital Records MS 5103
@@ -193,23 +193,23 @@ function ArchiveGuides() {
             </div>
           </div>
 
-          <div className="archive-guides__steps">
-            <span className="archive-guides__error">
+          <div className="archive-guides-steps">
+            <span className="archive-guides-error">
               <strong>WAIT TO PROCEED:</strong> Processing takes 2-3 months for
               approval, plus 3-6 weeks for document delivery.
             </span>
           </div>
 
-          <hr className="archive-guides__hr" />
+          <hr className="archive-guides-hr" />
 
           {/* Phase 3: Update Driver's License/State ID */}
-          <div className="archive-guides__phase-title">
+          <div className="archive-guides-phase-title">
             Phase 3: Update Driver's License/State ID
           </div>
 
-          <div className="archive-guides__section">
+          <div className="archive-guides-section">
             <strong>Required Documents:</strong>
-            <ol className="archive-guides__numbered-list">
+            <ol className="archive-guides-numbered-list">
               <li>Proof of Identity: New Passport or New Birth Certificate</li>
               <li>
                 Proof of CA Residency: 2 documents (utility bills, insurance,
@@ -229,29 +229,29 @@ function ArchiveGuides() {
               </a>
             </div>
 
-            <div className="archive-guides__note">
+            <div className="archive-guides-note">
               After online application, complete in-person at DMV office. Pay
               $37 for new card and take new photo.
             </div>
           </div>
 
-          <div className="archive-guides__steps">
-            <span className="archive-guides__error">
+          <div className="archive-guides-steps">
+            <span className="archive-guides-error">
               <strong>WAIT TO PROCEED:</strong> Card mailing takes ~10 days;
               interim paper version provided.
             </span>
           </div>
 
-          <hr className="archive-guides__hr" />
+          <hr className="archive-guides-hr" />
 
           {/* Phase 4: Update U.S. Passport */}
-          <div className="archive-guides__phase-title">
+          <div className="archive-guides-phase-title">
             Phase 4: Update U.S. Passport
           </div>
 
-          <div className="archive-guides__section">
+          <div className="archive-guides-section">
             <strong>Required Documents:</strong>
-            <ol className="archive-guides__numbered-list">
+            <ol className="archive-guides-numbered-list">
               <li>Certified Court Order</li>
               <li>
                 <a
@@ -267,14 +267,14 @@ function ArchiveGuides() {
                 $130 check/money order payable to "U.S. Department of State"
               </li>
             </ol>
-            <div className="archive-guides__note">
+            <div className="archive-guides-note">
               Submit at passport acceptance facility (e.g., post office). Take
               photo and pay fee in person.
             </div>
           </div>
 
-          <div className="archive-guides__steps">
-            <span className="archive-guides__error">
+          <div className="archive-guides-steps">
+            <span className="archive-guides-error">
               <strong>WAIT TO PROCEED:</strong> Processing takes 2-3 months for
               approval, plus 3-6 weeks for document delivery.
             </span>
@@ -286,3 +286,4 @@ function ArchiveGuides() {
 }
 
 export default ArchiveGuides;
+

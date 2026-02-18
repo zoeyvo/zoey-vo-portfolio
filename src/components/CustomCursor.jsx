@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from "react";
-import "./CustomCursor.scss";
 
 // Custom cursor overlay that follows the mouse and expands on click
 const CustomCursor = () => {

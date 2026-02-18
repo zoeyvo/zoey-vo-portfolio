@@ -87,7 +87,7 @@ function ArchiveCardGames() {
             </div>
           </div>
           {/* Card Game Section 2: Busfahrer (Drive the Bus) */}
-          <div className="cardgame-box">
+          <div className="cardgame-box-last">
             <div className="game-header">
               <h3 className="game-name accent">
                 <span>Busfahrer</span> 🇩🇪

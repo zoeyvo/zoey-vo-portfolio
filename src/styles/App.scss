@@ -474,6 +474,46 @@ a:focus,
   }
 }
 
+// ========== CUSTOM CURSOR ==========
+.custom-cursor {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 32px;
+  height: 32px;
+  pointer-events: none;
+  z-index: 1024;
+  transform: translate(-50%, -50%) scale(1);
+  transition:
+    transform 0.18s cubic-bezier(0.4, 1.4, 0.6, 1),
+    filter 0.18s;
+  filter: drop-shadow(0 0 2px $glow-green)
+    drop-shadow(0 0 4px $glow-medium);
+  mix-blend-mode: lighten;
+}
+
+.custom-cursor img {
+  width: 32px;
+  height: 32px;
+  display: block;
+  user-select: none;
+  pointer-events: none;
+}
+
+.custom-cursor.plump {
+  transform: translate(-50%, -50%) scale(1.35);
+  filter: drop-shadow(0 0 6px $glow-green)
+    drop-shadow(0 0 12px $glow-strong);
+}
+
+@media (max-width: 600px) {
+  .custom-cursor,
+  .custom-cursor img {
+    width: 24px;
+    height: 24px;
+  }
+}
+
 // ========== CURSOR TRAIL ==========
 .cursor-trail-char {
   position: fixed;
@@ -696,12 +736,11 @@ a:focus,
 
 // Dividers
 .divider {
-  margin: 1.5rem 0;
   border: none;
   border-top: 1px dashed #ccc;
 }
 
-.divider--solid {
+.divider-solid {
   border-top: $border-thick solid $text-color;
 }
 
@@ -767,38 +806,38 @@ a:focus,
 
 // ========== ARCHIVE GUIDES ==========
 
-.archive-guides__body {
+.archive-guides-body {
   @extend .page-body;
 }
 
-.archive-guides__main-header {
+.archive-guides-main-header {
   @extend .heading-lg;
 }
 
-.archive-guides__phase-title {
+.archive-guides-phase-title {
   @extend .heading-md;
   color: $dark-pink;
   text-decoration: underline;
 }
 
-.archive-guides__phase-title--first {
+.archive-guides-phase-title-first {
   margin-top: 1.5rem;
 }
 
-.archive-guides__phase-subtitle {
+.archive-guides-phase-subtitle {
   font-style: italic;
   margin-bottom: 0.5rem;
 }
 
-.archive-guides__hr {
+.archive-guides-hr {
   @extend .divider;
 }
 
-.archive-guides__reference-link {
+.archive-guides-reference-link {
   @extend .reference-box;
 }
 
-.archive-guides__numbered-list {
+.archive-guides-numbered-list {
   @extend .list-numbered;
 
   li a {
@@ -806,19 +845,19 @@ a:focus,
   }
 }
 
-.archive-guides__steps {
+.archive-guides-steps {
   @extend .list-steps;
 }
 
-.archive-guides__section strong {
+.archive-guides-section strong {
   @extend .text-highlight;
 }
 
-.archive-guides__section div a {
+.archive-guides-section div a {
   @extend .text-link;
 }
 
-.archive-guides__error strong {
+.archive-guides-error strong {
   @extend .text-error;
 }
 
@@ -879,31 +918,59 @@ a:focus,
 // ========== NOTES ==========
 
 .note-item {
-  @extend .card--minimal;
+  margin-top: $spacing-lg;
+  margin-bottom: $spacing-lg;
 }
 
-.note-content {
-  margin-bottom: $spacing-lg;
+.note-item-last {
+  margin-top: $spacing-lg;
+  margin-bottom: $spacing-xxl;
+}
+
+.note-date {
+  color: $accent;
+  @include typewriter-text;
+  font-weight: bold;
+}
+
+.note-message {
+  @include typewriter-text;
+  color: $text-color;
 }
 
 .note-images {
   display: flex;
   justify-content: center;
+  margin-top: $spacing-lg;
 }
 
 .note-img {
   width: 128px;
 }
 
+.note-item hr {
+  @extend .divider;
+  width: $content-width;
+}
+
+.note-item-last hr {
+  display: none;
+}
+
 // ========== CARDGAMES ==========
 
 .cardgame-box {
   @extend .card;
+  margin-bottom: $spacing-xl;
+}
+
+.cardgame-box-last {
+  @extend .cardgame-box;
   margin-bottom: $spacing-xxl;
 }
 
 .cardgame-divider {
-  @extend .divider--solid;
+  @extend .divider-solid;
   opacity: 0.8;
 }
 
@@ -964,8 +1031,15 @@ a:focus,
 
 .terminal-glow-border {
   @include terminal-glow;
-  margin-bottom: 1rem;
   overflow: hidden;
+}
+
+.media-video {
+  margin-bottom: $spacing-xl;
+
+  .terminal-glow-border {
+    margin-bottom: 0;
+  }
 }
 
 // ========== RESPONSIVE STYLES ==========

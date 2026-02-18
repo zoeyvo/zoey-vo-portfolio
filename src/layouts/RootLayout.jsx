@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { CursorTrail, CustomCursor } from "../components";
+import { CursorTrail } from "../components";
 import { Terminal } from "../components/Terminal/Terminal";
 import { useTerminal } from "../hooks/useTerminal";
 
@@ -14,8 +14,6 @@ function RootLayout({ children }) {
 
   return (
     <>
-      <CustomCursor />
-
       <div className="root">
         <CursorTrail />
         <header className="header"></header>
