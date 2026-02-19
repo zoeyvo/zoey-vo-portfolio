@@ -126,7 +126,7 @@ export function useTerminal() {
       clearInput();
     } else if (val === "cat .") {
       navigateAndClear("root");
-    } else if (["cat bio", "cat resume", "cat archive"].includes(val)) {
+    } else if (["cat bio", "cat archive"].includes(val)) {
       navigateAndClear(val.replace("cat ", ""));
     } else if (val.startsWith("cat archive/")) {
       const section = val.replace("cat archive/", "");

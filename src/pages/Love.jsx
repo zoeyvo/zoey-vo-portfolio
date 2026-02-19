@@ -5,7 +5,7 @@ function LoveNotes() {
 
   const notes = [
     {
-      date: "2025-2-14",
+      date: "2026-2-14",
       title: "note 3",
       content: "HAPPY VALENTINE'S DAY!!!",
     },
@@ -28,13 +28,11 @@ function LoveNotes() {
       const now = new Date();
       const diffMs = now - startDate;
 
-      // Calculate total units
       const diffSeconds = Math.floor(diffMs / 1000);
       const diffMinutes = Math.floor(diffSeconds / 60);
       const diffHours = Math.floor(diffMinutes / 60);
       const diffDays = Math.floor(diffHours / 24);
 
-      // For detailed breakdown, create a human-readable string
       const years = Math.floor(diffDays / 365.25);
       const months = Math.floor((diffDays % 365.25) / 30.44);
       const days = Math.floor((diffDays % 365.25) % 30.44);
@@ -64,28 +62,34 @@ function LoveNotes() {
     <div className="grid-cell">
       <div className="content">
         <span className="title">~/love</span>
-        <div>
+
+        {/* Elapsed header rendered as a note-item for consistent styling */}
+        <div className="note-item" style={{ color: "pink" }}>
+          <span className="note-date">&nbsp;</span>
           <br />
+          <span className="note-message">{detailedElapsed}</span>
         </div>
 
-        <div className="item" style={{ color: "pink" }}>
-          <div className="note-header">
-            <div>{detailedElapsed}</div>
-          </div>
-          <br />
-          <hr />
-        </div>
+        {(() => {
+          const parseDate = (s) => {
+            if (!s) return new Date(0);
+            const parts = String(s).split(/[^0-9]+/).map(Number);
+            const [y = 0, m = 1, d = 1] = parts;
+            return new Date(y, m - 1, d);
+          };
 
-        {notes.map((note, index) => (
-          <div key={index} className="item">
-            <div className="note-header">
-              <span className="note-content">{note.content}</span> <br />
+          const sortedNotes = [...notes].sort((a, b) => parseDate(b.date) - parseDate(a.date));
+          return sortedNotes.map((note, index) => (
+            <div
+              key={index}
+              className={`note-item ${index === sortedNotes.length - 1 ? 'note-item-last' : ''}`}
+            >
               <span className="note-date">[{note.date}]</span>
+              <br />
+              <span className="note-message">{note.content}</span>
             </div>
-            <br />
-            <hr />
-          </div>
-        ))}
+          ));
+        })()}
       </div>
     </div>
   );

@@ -1,7 +1,6 @@
 import {
   Root,
   Bio,
-  Resume,
   Love,
   Archive,
 } from "../pages";
@@ -22,11 +21,6 @@ export const layoutRoutes = [
     path: "/bio",
     label: "bio",
     component: Bio,
-  },
-  {
-    path: "/resume",
-    label: "resume",
-    component: Resume,
   },
   {
     path: "/love",

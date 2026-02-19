@@ -17,7 +17,6 @@ function PageLayout({ children }) {
       "assets/images/lain.gif",
       "assets/images/static.gif",
       "assets/fonts/typewriter.ttf",
-      "assets/images/Zoey-Vo-Resume-2025.png",
       "assets/cursor/cursor.cur",
     ];
 

@@ -11,7 +11,7 @@ const Bio = () => (
       </h1>
 
       <span className="bio-desc">
-        
+        great american nightmare
       </span>
     </div>
   </div>

@@ -1,6 +1,10 @@
 function ArchiveNotes() {
   const notes = [
     {
+      date: "2026-02-11",
+      message: "V4 ✓",
+    },
+    {
       date: "2026-01-16",
       message: "REJECT FACISM",
     },
@@ -44,9 +48,9 @@ function ArchiveNotes() {
       date: "2025-11-06",
       message: "favorite pokemon",
       images: [
-        "/assets/images/pokemon/mew.png",
-        "/assets/images/pokemon/hzorua.png",
-        "/assets/images/pokemon/slowpoke.png",
+        "/assets/images/notes/mew.png",
+        "/assets/images/notes/hzorua.png",
+        "/assets/images/notes/slowpoke.png",
       ],
     },
     {

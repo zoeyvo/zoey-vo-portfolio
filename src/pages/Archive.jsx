@@ -12,11 +12,11 @@ function Archive() {
   }, []);
 
   const archiveItems = [
-    { name: "notes", description: "stream of concisousness" },
-    { name: "bookmarks", description: "important links and resources" },
     { name: "guides", description: "anecdotal how to's" },
-    { name: "media", description: "media i resonate with" },
-    { name: "cardgames", description: "card games i like" },
+    { name: "notes", description: "stream of concisousness" },
+    { name: "bookmarks", description: "resources & information" },
+    { name: "media", description: "shit i fuck with" },
+    { name: "cardgames", description: "learned card games" },
   ];
 
   const handleItemClick = (item) => {

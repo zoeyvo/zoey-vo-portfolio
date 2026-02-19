@@ -885,36 +885,6 @@ a:focus,
   margin-bottom: 1.2em;
 }
 
-// ========== RESUME ==========
-
-.resume-root {
-  width: 100%;
-  max-width: 100%;
-  padding: 0;
-  margin: 0;
-  @include flex-center;
-}
-
-.resume-img {
-  width: 100%;
-  max-width: 1200px;
-  height: auto;
-  display: block;
-  margin: 0 auto;
-  background: $bg-1;
-  border-radius: $radius-lg;
-  box-shadow: $shadow-strong;
-}
-
-.resume-title {
-  font-weight: bold;
-  font-size: $font-size-xl;
-  letter-spacing: 0.08em;
-  color: $white;
-  text-shadow: 0 0 6px $accent, 0 0 12px #222;
-  font-family: $typewriter-font;
-}
-
 // ========== NOTES ==========
 
 .note-item {
