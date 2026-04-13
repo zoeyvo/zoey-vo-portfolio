@@ -13,7 +13,7 @@ function Root() {
 
   const rootItems = [
     { name: "bio", description: "about me" },
-    { name: "archive", description: "information store" },
+    { name: "archive", description: "records & information" },
   ];
 
   const handleItemClick = (item) => {

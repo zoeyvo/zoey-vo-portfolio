@@ -15,16 +15,7 @@
 
 # Zoey Vo's Portfolio
 
-A retro-styled developer portfolio built with React, Vite, and SCSS. Features a terminal interface for navigation and custom cursor effects.
-
-## Features
-
-- **Terminal-Based Navigation**: Command-line style interface for browsing content
-- **Custom Cursor**: Dynamic cursor with trail effect
-- **Responsive Design**: Mobile-friendly retro aesthetic
-- **Asset Preloading**: Fast navigation between pages
-- **Error Boundary**: Graceful error handling
-- **Dynamic Routing**: Flexible archive system
+A retro-styled developer portfolio built with React, Vite, and SCSS. 
 
 ## Project Structure
 
@@ -70,52 +61,6 @@ src/
 ├── App.jsx                      # Main app with routing
 └── main.jsx                     # React DOM entry point
 ```
-
-## Key Changes & Refactoring
-
-### 1. Layout Routes
-Routes are now organized using React Router's layout pattern. The `PageLayout` wrapper is applied to all routes except the root page.
-
-### 2. Dynamic Archive Routes
-Instead of individual routes for each archive section (`/archive/cardgames`, `/archive/guides`, etc.), a single dynamic route `/archive/:section` uses the `ArchiveSection` component to render the appropriate content.
-
-### 3. Route Configuration
-Route definitions are now centralized in `src/routes/routeConfig.js`, reducing duplication in `App.jsx`.
-
-### 4. Error Boundary
-`ErrorBoundary.jsx` wraps the entire app to gracefully handle React errors and prevent full app crashes.
-
-### 5. Layout Organization
-Layouts are now in a dedicated `src/layouts/` directory, separating layout concerns from page components.
-
-### 6. Cursor Trail Styles
-Cursor trail styling has been consolidated in `src/styles/App.scss` instead of being split across multiple files.
-
-## Commands
-
-### Development
-```bash
-npm run dev
-```
-Starts the Vite dev server on `http://localhost:5173`
-
-### Build
-```bash
-npm run build
-```
-Builds the production bundle
-
-### Preview
-```bash
-npm run preview
-```
-Preview the production build locally
-
-### Lint
-```bash
-npm lint
-```
-Run ESLint to check for code issues
 
 ## Technologies
 
