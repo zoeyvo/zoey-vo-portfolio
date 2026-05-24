@@ -906,6 +906,7 @@ a:focus,
 .note-message {
   @include typewriter-text;
   color: $text-color;
+  white-space: pre-wrap;
 }
 
 .note-images {

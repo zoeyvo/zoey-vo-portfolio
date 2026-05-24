@@ -5,6 +5,11 @@ function LoveNotes() {
 
   const notes = [
     {
+      date: "2026-5-20",
+      title: "note 4",
+      content: "FOUR YEARS TOGETHER!!!\ni want to hold you forever <3",
+    },
+    {
       date: "2026-2-14",
       title: "note 3",
       content: "HAPPY VALENTINE'S DAY!!!",
